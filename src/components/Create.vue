@@ -1,0 +1,86 @@
+<template>
+  <div>
+    <b-input v-model="subject" placeholder="제목을 입력해 주세요"></b-input>
+    <b-form-textarea
+      v-model="context"
+      placeholder="내용을 입력해 주세요"
+      rows="3"
+      max-rows="6"
+    ></b-form-textarea>
+    <!-- 업데이트모드가 true면 content update 하고 false면 그냥 새걸로 upload -->
+    <b-button @click="updateMode ? updateContent() : uploadContent()">저장</b-button>
+    <b-button @click="cancle">취소</b-button>
+  </div>
+</template>
+<script>
+import data from '@/data';
+import {addContent, modifyContent, findContent} from '../service';
+// import axios from 'axios'
+
+export default {
+  name: 'Create',
+  data() {
+    return {
+      subject: '',
+      context: '',
+      userNo: 1,
+      regdate: '',
+      content_no: Number(this.$route.params.contentNo),
+      // updatedAt: null,
+      // updateObject: null,
+      updateMode: this.$route.params.contentNo > 0 ? true : false
+    };
+  },
+  async created() {
+    if (this.$route.params.contentNo > 0) {
+        // contentno가 존재하면 전에 있던것들을 불러와라
+      // const contentNo = Number(this.$route.params.contentNo)
+      const ret = await findContent({ content_no: Number(this.$route.params.contentNo)})
+      const {data} = ret;
+      // this.updateObject = data.Content.filter(item => item.content_no === contentNo)[0]
+      this.subject = data.title;
+      this.context = data.context;
+      this.regdate = data.regdate;
+    }
+    // // axios.get('http://127.0.0.1:3000/add/user',{
+    // //   user_name: '강찬석'
+        // })
+  },
+  methods: {
+    async uploadContent() {
+        // 역순으로 하게 만드는게 items
+      let items = data.Content.sort((a,b) => {
+        return b.content_no - a.content_no;
+        });
+     // 제일 최신것이 items 배열 첫번째보다 1씩 오른것 -> 글번호 자동으로 1씩 증가
+     const content_no = items[0].content_no + 1
+     await addContent({
+       user_no: this.userNo,
+       title: this.subject,
+       context: this.context,
+       regdate:this.regdate,
+     });
+      this.$router.push({
+        path: '/board/free/'
+      });
+    },
+    async updateContent() {
+      await modifyContent({
+               
+        title: this.subject,
+        context: this.context,
+        content_no: Number(this.$route.params.contentNo)
+      });
+    
+      this.$router.push({
+        path: '/board/free/'
+      });
+    },
+    cancle() {
+      this.$router.push({
+        path: '/board/free/'
+      });
+    }
+  }
+};
+</script>
