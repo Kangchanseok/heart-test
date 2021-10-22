@@ -33,7 +33,7 @@
         <div class="comment-list-item-context">{{item.context}}</div>
         <div class="comment-list-item-button">
           <b-button variant="info">수정</b-button>
-          <b-button variant="info">삭제</b-button>
+          <b-button variant="info"  @click="deleteScData">삭제</b-button>
         </div>
       </div>
     </template>
@@ -42,7 +42,7 @@
 <script>
 import data from "@/data";
 import CommentCreate from "./CommentCreate";
-import {findSubComment, deleteComment} from '../service';
+import {findSubComment, deleteComment, deleteSubComment} from '../service';
 import CommentList from './CommentList';
 
 export default {
@@ -85,7 +85,13 @@ export default {
       this.$router.push({
         path: `/board/free/commentcreate/${this.commentObj.comment_no}`
     })
-  }
+  },
+      async deleteScData(){
+      await deleteSubComment({subcomment_no: this.subCommentList.subcomment_no})
+      this.$router.push({
+        path: `/board/free`
+      })
+    }
   }
 };
 </script>
