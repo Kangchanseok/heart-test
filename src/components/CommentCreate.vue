@@ -9,8 +9,8 @@
         max-rows="6"
       ></b-form-textarea>
       <b-input-group-append>
-        <b-button variant="info" @click="isSubComment ? createSubComment() : createComment()">작성하기</b-button>
-        <!-- b-button variant="info" @click="updateMode2 ? modifyCoComment() : createComment()">작성하기</-b-button -->
+        <b-button class="writeBtn" variant="outline-primary" @click="isSubComment ? createSubComment() : createComment()">작성하기</b-button>
+        <!-- <b-button variant="info" @click="updateMode2 ? modifyCoComment():createComment()">수정하기</b-button> -->
       </b-input-group-append>
     </b-input-group>
   </div>
@@ -38,28 +38,38 @@ export default {
   },
   methods: {
     async createComment() {
-      await addComment({user_no:1, content_no:this.contentNo, context:this.context});
-     
+      await addComment({user_no:1,
+       content_no:this.contentNo,
+       context:this.context
+        });
+        
       this.reloadComments();
       this.subCommentToggle();
       this.context = "";
     },
+
+    
+
     async createSubComment() {
-      await addSubComment({user_no:1, comment_no:this.commentNo, context:this.context});
+      await addSubComment({
+       user_no:1,
+       comment_no:this.commentNo,
+       context:this.context});
           
       this.reloadSubComments();
       this.subCommentToggle();
       this.context = "";
+      console.log(22)
     },
     async modifyCoComment(){
       await modifyComment({
-        context: this.context,
-        comment_no: this.commentNo
-         
+        context: this.context , 
+        comment_no: Number(this.$route.params.commentNo)
+
         })
-      // this.$router.push({
-      //   path: `/board/free`
-      // })
+      this.$router.push({
+        path: `/board/free`
+      })
     }
   }
 };
@@ -68,5 +78,9 @@ export default {
 .comment-create {
   display: flex;
   margin-bottom: 1em;
+}
+.writeBtn{
+  margin-left: 20px;
+  margin-top: 20px;
 }
 </style>

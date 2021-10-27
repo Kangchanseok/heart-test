@@ -1,14 +1,22 @@
 <template>
   <div>
-    <b-input v-model="subject" placeholder="제목을 입력해 주세요"></b-input>
-    <b-form-textarea
+    <br/>
+    <b-container>
+    <b-input  v-model="subject" placeholder="제목을 입력해 주세요"></b-input>
+    </b-container>
+    <br/>
+    <b-container>
+    <b-form-textarea size="lg"
       v-model="context"
       placeholder="내용을 입력해 주세요"
       rows="3"
       max-rows="6"
     ></b-form-textarea>
+    </b-container>
     <!-- 업데이트모드가 true면 content update 하고 false면 그냥 새걸로 upload -->
-    <b-button @click="updateMode ? updateContent() : uploadContent()">저장</b-button>
+    <br/>
+    <br/>
+    <b-button variant="primary" @click="updateMode ? updateContent() : uploadContent()">저장</b-button>
     <b-button @click="cancle">취소</b-button>
   </div>
 </template>

@@ -1,36 +1,43 @@
 <template>
   <div>
-    <a class="btn btn-primary " href="/#/board/free">목록으로</a>
+    <br/>
+    <a class="btn btn-primary" href="/#/board/free">목록으로</a>
+    <b-container>
+      <br/>
     <b-card>
       <div class="content-detail-content-info">
         <div class="content-detail-content-info-left">
           <div class="content-detail-content-info-left-number">
             {{contentNo}}
           </div>
-          <div class="content-detail-content-info-left-subject">
+        </div>
+          <div class="content-detail-content-info-center">
+          <div class="content-detail-content-info-center-subject">
             {{title}}
           </div>
         </div>
         <div class="content-detail-content-info-right">
           <div class="content-detail-content-info-right-user">
-            글쓴이: {{user}}
+            작성자: {{user}}
           </div>
-          <div class="content-detail-content-info-right-regdate">
+          <!-- <div class="content-detail-content-info-right-regdate">
             등록일: {{regdate}}
-          </div>
+          </div> -->
         </div>
       </div>
+      
       <div class="content-detail-content">
         {{context}}
       </div>
       <div class="content-detail-button">
-        <b-button variant="primary" @click="updateData">수정</b-button>
-        <b-button variant="success" @click="deleteData">삭제</b-button>
+        <b-button variant="outline-success" @click="updateData">수정</b-button>
+        <b-button variant="outline-danger" @click="deleteData">삭제</b-button>
       </div>
       <div class="content-detail-comment">
         <CommentList :contentNo="contentNo"/>
       </div>
     </b-card>
+    </b-container>
   </div>
 </template>
 
@@ -94,10 +101,18 @@ export default {
   justify-content: space-between;
 }
 .content-detail-content-info-left {
-  width: 720px;
+  width: 300px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+.content-detail-content-info-center {
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
   padding: 1rem;
 }

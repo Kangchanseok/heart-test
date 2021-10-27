@@ -82,7 +82,7 @@ export const addContent = ({ user_no, title, context, regdate }) => {
   };
   
   export const deleteSubComment = ({ subcomment_no }) => {
-    return axios.post("http://127.0.0.1:3000/delete/sub_comment", {
+    return axios.post("http://127.0.0.1:3000/delete/subcomment", {
       subcomment_no
     });
   };

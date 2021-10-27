@@ -3,7 +3,7 @@
     <div :key="item.comment_no" v-for="item in comments">
       <CommentListItem :commentObj="item"/>
     </div>
-    <CommentCreate :contentNo="contentNo" :reloadComments="reloadComments"/>
+    <CommentCreate :contentNo="contentNo" :reloadComments="reloadComments" />
   </div>
 </template>
 <script>
@@ -35,6 +35,7 @@ export default {
       const ret = await findComment({content_no:this.contentNo})
       this.comments = ret.data
     }
+    
   }
 };
 </script>

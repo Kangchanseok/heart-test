@@ -53,6 +53,7 @@ export default {
   components: {
     CommentCreate
   },
+ 
   async created(){
     const ret = await findSubComment({comment_no});
     this.subCommentList = ret.data;
@@ -67,6 +68,12 @@ export default {
     };
   },
   methods: {
+     async refresh(){
+    await window.addEventListener('beforeunload', function(event){
+     event.returnValue = reloadSubComments({comment_no: this.commentObj.comment_no}); 
+    //  return reloadSubComments;
+    })
+  },
     subCommentToggle() {
       this.subCommentCreateToggle = !this.subCommentCreateToggle;
     },
@@ -87,7 +94,7 @@ export default {
     })
   },
       async deleteScData(){
-      await deleteSubComment({subcomment_no: this.subCommentList.subcomment_no})
+      await deleteSubComment({subcomment_no: this.subcomment_no})
       this.$router.push({
         path: `/board/free`
       })

@@ -1,12 +1,13 @@
 <template>
   <div>
-      <!-- field 속성을 사용해서 보여주고 싶은 컬럼만 사용 가능! -->
+     <b-container> <!-- field 속성을 사용해서 보여주고 싶은 컬럼만 사용 가능! -->
     <b-table striped hover 
     :per-page="perPage" 
     :current-page="currentPage" 
     :items="items" 
     :fields="fields" 
     @row-clicked="rowClick"></b-table>
+     </b-container>
     <b-pagination
       v-model="currentPage"
       :total-rows="rows"
@@ -14,7 +15,7 @@
       align="center"
     ></b-pagination>
 
-     <b-button @click="writeContent">글쓰기</b-button>
+     <b-button variant="outline-primary" @click="writeContent">글쓰기</b-button>
   </div>
 
 </template>
@@ -49,13 +50,13 @@ export default {
           key: 'title',
           label: '제목',
         },
-        {
-          key: 'regdate',
-          label: '등록일'
-        },
+        // {
+        //   key: 'regdate',
+        //   label: '등록일'
+        // },
         {
           key: 'user_name',
-          label: '글쓴이'
+          label: '작성자'
         },
       ],
       items: []
