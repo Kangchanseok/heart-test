@@ -5,6 +5,10 @@ import Board from '@/components/Board'
 import ContentDetatil from '@/components/ContentDetail'
 import Create from '@/components/Create'
 import CommentCreate from '@/components/CommentCreate'
+// import Main from '@/components/Main'
+import Login from '@/components/Login'
+import Register from '@/components/Register'
+import Home from '@/components/Home'
 
 Vue.use(Router)
 
@@ -12,9 +16,24 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Home',
+      component: Home
     },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
+    },
+    {
+      path: '/register',
+      name: 'Register',
+      component: Register
+    },
+    // {
+    //   path: '/',
+    //   name: 'HelloWorld',
+    //   component: HelloWorld
+    // },
     {
       path: '/board/free',
       name: 'Board',

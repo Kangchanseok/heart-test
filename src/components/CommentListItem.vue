@@ -3,13 +3,14 @@
     <div class="comment-list-item">
       <div class="comment-list-item-name">
         <div>{{name}}</div>
-        <div>{{commentObj.regdate}}</div>
+        <!-- <div>{{commentObj.regdate}}</div> -->
       </div>
       <div class="comment-list-item-context">{{commentObj.context}}</div>
       <div class="comment-list-item-button">
-        <b-button variant="info" @click="modifyCoData">수정</b-button>
-        <b-button variant="info" @click="deleteCoData">삭제</b-button>
-        <b-button variant="info" @click="subCommentToggle">대댓글 달기</b-button>
+        <b-button size="sm"  class="btn1" variant="outline-success" @click="modifyCoData">수정</b-button>
+        <b-button size="sm" class="btn2" variant="outline-danger"
+        @click="deleteCoData">삭제</b-button>
+        <!-- <b-button variant="info" @click="subCommentToggle">대댓글 달기</b-button> -->
       </div>
     </div>
     <template v-if="subCommentCreateToggle">
@@ -20,7 +21,7 @@
         :subCommentToggle="subCommentToggle"
       />
     </template>
-    <template v-if="subCommentList.length > 0">
+    <!-- <template v-if="subCommentList.length > 0">
       <div
         class="comment-list-item-subcomment-list"
         :key="item.subcomment_no"
@@ -36,7 +37,7 @@
           <b-button variant="info"  @click="deleteScData">삭제</b-button>
         </div>
       </div>
-    </template>
+    </template> -->
   </div>
 </template>
 <script>
@@ -105,16 +106,22 @@ export default {
 <style scoped>
 .comment-list-item {
   display: flex;
-  justify-content: space-between;
+  justify-content:space-between;
   padding-bottom: 1em;
+  
+  
 }
 .comment-list-item-name {
   display: flex;
-  flex-direction: column;
+  flex-direction:column ;
   justify-content: center;
   align-items: center;
   border: 0.5px solid black;
   padding: 1em;
+  height: 125px;
+  text-align: center;
+  width: 130px;
+  
 }
 .comment-list-item-context {
   display: flex;
@@ -122,14 +129,19 @@ export default {
   align-items: center;
   width: 50em;
   border: 0.5px solid black;
+  height: 125px;
+  
 }
 .comment-list-item-button {
-  display: flex;
+  display:flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border: 0.5px solid black;
-  padding: 1em;
+  padding: 0.5em;
+  height: 125px;
+  padding-bottom: 1px;
+  writing-mode: horizontal-tb;
 }
 .btn {
   margin-bottom: 1em;
@@ -139,5 +151,11 @@ export default {
   justify-content: space-between;
   padding-bottom: 1em;
   margin-left: 10em;
+}
+.btn1, .btn2 {
+  height: 40px;
+  font-size: 10px;
+  writing-mode: horizontal-tb;
+
 }
 </style>
