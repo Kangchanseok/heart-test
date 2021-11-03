@@ -1,14 +1,10 @@
 <template>
   <div id="app">
-    <!-- <Header /> -->
-      <!-- <Main /> -->
 
     <Navbar />
     <router-view/>
-    <!-- <Home /> -->
     <BackToTop />
     <Footer />
-    
     
   </div>
 </template>

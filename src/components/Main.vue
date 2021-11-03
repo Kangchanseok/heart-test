@@ -35,7 +35,7 @@
     },
     data(){
       return{
-        search:'' , //? 뭐지
+        search:'' , 
 
       }
     },

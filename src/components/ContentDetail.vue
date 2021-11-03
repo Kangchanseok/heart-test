@@ -45,7 +45,6 @@
 </template>
 
 <script>
-import data from "@/data";
 import CommentList from "./CommentList";
 import {findContent, deleteContent} from '../service'
 
@@ -65,7 +64,6 @@ export default {
   },
   data() {
     const contentNo = Number(this.$route.params.contentNo);
-    // const contentData = data.Content.filter(item => item.content_no === contentNo)[0]
     return {
       contentNo: contentNo,
       title: '',
@@ -77,23 +75,18 @@ export default {
   },
   methods: {
     async deleteData() {
+      alert('글을 삭제합니다');
        await deleteContent({content_no: this.contentNo}),
-        // await deleteComment({comment_no: this.comment_no})
-       // fimdindex로 no=No 같은거 찾아서 가져오기
-      // const content_index = data.Content.findIndex(item => item.content_no === this.contentNo);
-      // data.Content.splice(content_index, 1)
-      this.$router.push({
+        this.$router.push({
         path: '/board/free'
       })
     },
     async updateData() {
-      // await modifyContent({content_no:this.contentNo, title:this.subject, context:this.context})
       this.$router.push({
         path: `/board/free/create/${this.contentNo}`
       })
     }
     
-
   }
 };
 </script>

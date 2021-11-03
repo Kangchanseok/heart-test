@@ -24,7 +24,6 @@
 </template>
 
 <script>
-import data from '@/data';
 import {findContentList} from '../service';
 
 
@@ -35,12 +34,7 @@ export default {
     this.items = ret.data;
   },
   data() {
-    // 글번호 역순 정렬
-// let items = data.Content.sort((a,b) => {return b.content_no - a.content_no})
-// // map으로 모든 객체배열에 user_name을 추가해주고...
-// // filter로 user_no 가져와서 no랑 name 연결해주는 작업
-// // 좀 더 숙련해야할듯
-// items = items.map(contentItem => {return {...contentItem, user_name: data.User.filter(userItem => userItem.user_no === contentItem.user_no)[0].name}})
+   
     return {
       currentPage: 1,
       perPage: 10,

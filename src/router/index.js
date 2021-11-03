@@ -1,11 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import Board from '@/components/Board'
 import ContentDetatil from '@/components/ContentDetail'
 import Create from '@/components/Create'
-import CommentCreate from '@/components/CommentCreate'
-// import Main from '@/components/Main'
 import Login from '@/components/Login'
 import Register from '@/components/Register'
 import Home from '@/components/Home'
@@ -29,11 +26,6 @@ export default new Router({
       name: 'Register',
       component: Register
     },
-    // {
-    //   path: '/',
-    //   name: 'HelloWorld',
-    //   component: HelloWorld
-    // },
     {
       path: '/board/free',
       name: 'Board',
@@ -48,14 +40,6 @@ export default new Router({
       path: '/board/free/create/:contentNo?',
       name: 'Create',
       component: Create
-    },
-    
-    {
-      path: '/board/free/commentcreate/:commentNo?',
-      name: 'CommentCreate',
-      component: CommentCreate
-    } 
-    // 댓글 수정페이지를 따로 만드는건 좀 아닌것같기도
-
+    }
   ]
 })

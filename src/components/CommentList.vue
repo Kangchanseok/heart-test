@@ -6,8 +6,8 @@
     <CommentCreate :contentNo="contentNo" :reloadComments="reloadComments" />
   </div>
 </template>
+
 <script>
-import data from "@/data";
 import CommentListItem from './CommentListItem';
 import CommentCreate from './CommentCreate';
 import {findComment} from '../service'
