@@ -1,26 +1,29 @@
-<template>
+<template >
   <div>
-    <div class="comment-list-item">
-      <div class="comment-list-item-name">
+    <template v-if="disappear">
+    <div class="comment-list-item" >
+      <div class="comment-list-item-name" >
         <div>{{name}}</div>
-        <!-- <div>{{commentObj.regdate}}</div> -->
+        <div>{{commentObj.regdate}}</div>
       </div>
       <div class="comment-list-item-context">{{commentObj.context}}</div>
       <div class="comment-list-item-button">
+
         <b-button size="sm"  class="btn1" variant="outline-success" @click="modifyCoData">수정</b-button>
         <b-button size="sm" class="btn2" variant="outline-danger"
         @click="deleteCoData">삭제</b-button>
         <!-- <b-button variant="info" @click="subCommentToggle">대댓글 달기</b-button> -->
       </div>
     </div>
-    <template v-if="subCommentCreateToggle">
+    <!-- <template v-if="subCommentCreateToggle">
       <CommentCreate
         :isSubComment="true"
         :commentNo="commentObj.comment_no"
         :reloadSubComments="reloadSubComments"
         :subCommentToggle="subCommentToggle"
       />
-    </template>
+    </template> -->
+   
     <!-- <template v-if="subCommentList.length > 0">
       <div
         class="comment-list-item-subcomment-list"
@@ -38,13 +41,32 @@
         </div>
       </div>
     </template> -->
+    </template>
+    <template v-if="!disappear">
+      <div class="comment-create">
+    <b-input-group :prepend="name" class="mt-3">
+      <b-form-textarea
+        id="textarea"
+        v-model="context"
+        rows="3"
+        max-rows="6"
+      >{{context}}</b-form-textarea>
+      <b-input-group-append>
+        <b-button class="writeBtn" variant="outline-primary" @click="[modifyCoData(),modifyCoData2()]">수정하기</b-button>
+        
+      </b-input-group-append>
+    </b-input-group>
+  </div>
+    </template>
   </div>
 </template>
+
 <script>
 import data from "@/data";
 import CommentCreate from "./CommentCreate";
-import {findSubComment, deleteComment, deleteSubComment} from '../service';
-import CommentList from './CommentList';
+import {findSubComment, deleteComment, deleteSubComment, modifyComment, addComment} from '../service';
+// import CommentModify from './CommentModify';
+
 
 export default {
   name: "CommentListItem",
@@ -53,6 +75,7 @@ export default {
   },
   components: {
     CommentCreate
+    
   },
  
   async created(){
@@ -60,40 +83,60 @@ export default {
     this.subCommentList = ret.data;
   },
   data() {
+    
     return {
       name: data.User.filter(
         item => item.user_no === this.commentObj.user_no
       )[0].name,
       subCommentList: [],
-      subCommentCreateToggle: false
+      subCommentCreateToggle: false,
+      modifyCreateToggle: false,
+      disappear: true,
+      context:`${this.commentObj.context}`
     };
   },
   methods: {
-     async refresh(){
-    await window.addEventListener('beforeunload', function(event){
-     event.returnValue = reloadSubComments({comment_no: this.commentObj.comment_no}); 
-    //  return reloadSubComments;
-    })
-  },
+    
+  //    async refresh(){
+  //   await window.addEventListener('beforeunload', function(event){
+  //    event.returnValue = reloadSubComments({comment_no: this.commentObj.comment_no}); 
+  //   //  return reloadSubComments;
+  //   })
+  // },
     subCommentToggle() {
       this.subCommentCreateToggle = !this.subCommentCreateToggle;
+    },
+    modifyCreateToggle(){
+      this.modifyCreateToggle = !this.modifyCreateToggle;
     },
     async reloadSubComments() {
       const ret = await findSubComment({comment_no: this.commentObj.comment_no});
       this.subCommentList = ret.data;
     },
     async deleteCoData(){
-      // commentObj 써서 삭제 해결!!
+      alert('댓글을 삭제합니다');
       await deleteComment({comment_no: this.commentObj.comment_no})
-      this.$router.push({
-        path: `/board/free`
-      })
+      this.$router.go(this.$router.currentRoute);
+      
+      // this.$router.push({
+      //   path: `/board/free/detail/${this.commentObj.content_no}`
+      // })
     },
-    async modifyCoData(){
-      this.$router.push({
-        path: `/board/free/commentcreate/${this.commentObj.comment_no}`
-    })
-  },
+     modifyCoData(){
+      this.disappear = !this.disappear;
+    },
+
+    async modifyCoData2(){
+        await modifyComment({
+        context: this.context , 
+        comment_no: Number(this.commentObj.comment_no)
+    }) 
+    this.$router.go(this.$router.currentRoute);
+    // this.$router.push({
+    //     path: `/board/free/detail/${this.commentObj.content_no}`
+    // })
+    },
+
       async deleteScData(){
       await deleteSubComment({subcomment_no: this.subcomment_no})
       this.$router.push({

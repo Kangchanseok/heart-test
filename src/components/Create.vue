@@ -17,13 +17,13 @@
     <br/>
     <br/>
     <b-button variant="primary" @click="updateMode ? updateContent() : uploadContent()">저장</b-button>
-    <b-button @click="cancle">취소</b-button>
+    <b-button @click="updateMode ? cancle2(): cancle()">취소</b-button>
   </div>
 </template>
 <script>
 import data from '@/data';
 import {addContent, modifyContent, findContent} from '../service';
-// import axios from 'axios'
+import axios from 'axios'
 
 export default {
   name: 'Create',
@@ -88,6 +88,11 @@ export default {
       this.$router.push({
         path: '/board/free/'
       });
+    },
+    cancle2(){
+      this.$router.push({
+        path: `/board/free/detail/${this.content_no}`
+      })
     }
   }
 };

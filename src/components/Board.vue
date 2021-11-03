@@ -53,10 +53,10 @@ export default {
           key: 'title',
           label: '제목',
         },
-        // {
-        //   key: 'regdate',
-        //   label: '등록일'
-        // },
+        {
+          key: 'regdate',
+          label: '등록일'
+        },
         {
           key: 'user_name',
           label: '작성자'

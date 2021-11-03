@@ -2,12 +2,12 @@ import axios from 'axios';
 
 // content
 
-export const addContent = ({ user_no, title, context, regdate }) => {
+export const addContent = ({ user_no, title, context }) => {
     return axios.post("http://127.0.0.1:3000/add/content", {
       user_no,
       title,
-      context,
-      regdate
+      context
+      
     });
   };
   

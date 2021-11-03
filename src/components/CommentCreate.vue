@@ -26,6 +26,7 @@ export default {
     reloadComments: Function,
     reloadSubComments: Function,
     subCommentToggle: Function,
+    modifyToggle: Function,
     isSubComment: Boolean,
     commentNo: Number,
   },
@@ -59,18 +60,17 @@ export default {
       this.reloadSubComments();
       this.subCommentToggle();
       this.context = "";
-      console.log(22)
     },
-    async modifyCoComment(){
-      await modifyComment({
-        context: this.context , 
-        comment_no: Number(this.$route.params.commentNo)
+    // async modifyCoComment(){
+    //   await modifyComment({
+    //     context: this.context , 
+    //     comment_no: Number(this.$route.params.commentNo)
 
-        })
-      this.$router.push({
-        path: `/board/free`
-      })
-    }
+    //     })
+    //   this.$router.push({
+    //     path: `/board/free`
+    //   })
+    // }
   }
 };
 </script>

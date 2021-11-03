@@ -17,14 +17,14 @@ Content: [
         user_no: 1,
         title: 'gd',
         context: 'gd',
-        regdate: '2021-10-21 12:33:22'
+        regdate: ''
     },
     {
         content_no: 2,
         user_no: 2,
         title: 'good',
         context: 'good',
-        regdate: '2021-10-21 12:33:22'
+        regdate: ''
     }
 ],
 
@@ -34,7 +34,7 @@ Comment: [
         user_no: 2,
         content_no: 1,
         context: 'czcz',
-        regdate: '2021-10-21 12:33:22'
+        regdate: ''
     }
 ],
 SubComment: [
@@ -43,7 +43,7 @@ SubComment: [
         comment_no: 1,
         user_no: 1,
         context: 'rtrt',
-        regdate: '2021-10-21 12:33:22'
+        regdate: ''
     }
 ]
 }

@@ -22,9 +22,9 @@
           <div class="content-detail-content-info-right-user">
             작성자: {{user}}
           </div>
-          <!-- <div class="content-detail-content-info-right-regdate">
+          <div class="content-detail-content-info-right-regdate">
             등록일: {{regdate}}
-          </div> -->
+          </div>
         </div>
       </div>
       

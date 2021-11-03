@@ -33,7 +33,7 @@ export default {
   methods: {
     async reloadComments() {
       const ret = await findComment({content_no:this.contentNo})
-      this.comments = ret.data
+      this.comments = ret.data;
     }
     
   }
