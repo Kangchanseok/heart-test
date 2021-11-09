@@ -2,7 +2,7 @@
   <div class="home">
 
   <Main />
-  <Popular />
+  <Popular2 />
   <Location />
 
   </div>
@@ -11,14 +11,14 @@
 <script>
 // @ is an alias to /src
 import Main from "@/components/Main"; 
-import Popular from '@/components/Popular';
+import Popular2 from '@/components/Popular2';
 import Location from '@/components/Location';
 
 export default {
   name: "Home",
   components: {
     Main,
-    Popular,
+    Popular2,
     Location
   },
 };

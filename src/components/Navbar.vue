@@ -9,8 +9,8 @@
       </div>
       <ul v-show="!mobile" class="navigation">
         <li><router-link class="link" to="/">Home</router-link></li>
-        <li><router-link class="link" :to="{name: 'PopularPlaces'}">상세 검색</router-link></li>
-        <li><router-link class="link" to= "">Location</router-link></li>
+        <li><router-link class="link" to="/detail3">상세 검색</router-link></li>
+        <!-- <li><router-link class="link" to= "">Location</router-link></li> -->
         <li><router-link class="link" to="/board/free">고객센터</router-link></li>
         <li><router-link class="link" to="/login">로그인</router-link></li>
       </ul>

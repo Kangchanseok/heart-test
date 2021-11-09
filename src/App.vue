@@ -2,7 +2,9 @@
   <div id="app">
 
     <Navbar />
-    <router-view/>
+    <router-view/>  
+    <!-- <test /> -->
+    <!-- <Popular2 /> -->
     <BackToTop />
     <Footer />
     
@@ -18,6 +20,12 @@ import Login from '@/components/Login'
 import Register from '@/components/Register'
 import BackToTop from '@/components/BackToTop'
 import Home from '@/components/Home'
+import test from '@/components/test'
+import Popular2 from '@/components/Popular2'
+import Detail1 from '@/components/Detail1'
+import Detail2 from '@/components/Detail2'
+import Detail3 from '@/components/Detail3'
+
 
 export default {
   name: 'App',
@@ -28,7 +36,12 @@ export default {
     Register,
     BackToTop,
     Home,
-    Footer
+    Footer,
+    test,
+    Popular2,
+    Detail1,
+    Detail2,
+    Detail3
   }
 }
 </script>

@@ -68,6 +68,7 @@
   text-align: center;
   box-sizing: border-box;
   overflow: hidden;
+  margin-bottom: 20px;
 }
 
 /** 메인 이미지 소스*/
@@ -152,8 +153,8 @@
   --page: 0;
   height: 100vh;
   /* background: #25303c; */
-  background : #ffffff;
-  background: linear-gradient(90deg, #7bc4c4 0%, #7bc4c4 100%);
+  /* background : #ffffff;
+  background: linear-gradient(90deg, #7bc4c4 0%, #7bc4c4 100%); */
   
   
   overflow: hidden;

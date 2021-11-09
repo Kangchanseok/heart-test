@@ -43,7 +43,7 @@ export default {
     },
     scrollFn: {
       type: Function,
-      default: function (eventObject) {},
+     
     }
   },
   data () {
@@ -90,7 +90,7 @@ export default {
 <style scoped>
 .back-to-top-fade-enter-active, 
 .back-to-top-fade-leave-active {
-  transition: opacity .5s;
+  transition: opacity .7s;
 }
 .back-to-top-fade-enter, 
 .back-to-top-fade-leave-to {

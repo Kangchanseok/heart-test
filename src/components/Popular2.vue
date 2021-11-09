@@ -1,16 +1,11 @@
 <template>
-<div id="hero-slides">
-    <div id="header">
+  <hooper :infiniteScroll="true" :settings="hooperSettings"
+   >
 
-        <div id="hamburger">
-          <div class="slice"></div>
-          <div class="slice"></div>
-          <div class="slice"></div>
-      </div>
-    </div>
-    <div id="slides-cont">
-      <div class="button" id="next"></div>
-      <div class="button" id="prev"></div>
+  <!-- 1 -->
+  <slide >
+    <div id="hero-slides">
+      <!-- <div id="slides-cont"> -->
       <div id="slides">
         <div class="slide" style="background-image: url(https://drive.google.com/file/d/120nXsZBZhJdejmDQ_xkwJjfd7ypNDCrH/view?usp=sharing)">
 
@@ -26,9 +21,17 @@
               <div class="link">View on Unsplash</div></a>
           </div>
         </div>
-        <!-- 2 -->
+      </div>
+    <!-- </div> -->
+    </div>
+  </slide>
 
-        <div class="slide" style="background-image: url(../src/assets/Popular/Deoksugung.jpg)">
+<!-- 2 -->
+  <slide>
+    <div id="hero-slides">
+      <!-- <div id="slides-cont"> -->
+      <div id="slides">
+    <div class="slide" style="background-image: url(../src/assets/Popular/Deoksugung.jpg)">
 
           <div class="icons">
             <div class="views"><i class="ion-eye"></i>8,731</div> 
@@ -42,8 +45,18 @@
               <div class="link">View on Unsplash</div></a>
           </div>
         </div>
+      </div>
+    <!-- </div> -->
+    </div>
+  </slide>
 
-        <div class="slide" style="background-image: url(https://alca.tv/static/u/9b5f71cb-34a3-4fb4-a3a6-0ce9557c0acd_opt.png)">
+<!-- 3 -->
+  <slide >
+    <div id="hero-slides" >
+      <!-- <div id="slides-cont"> -->
+  <div>
+    <div id="slides">
+    <div class="slide" style="background-image: url(https://alca.tv/static/u/9b5f71cb-34a3-4fb4-a3a6-0ce9557c0acd_opt.png)">
 
           <div class="icons">
             <div class="views"><i class="ion-eye"></i>10,239</div> 
@@ -57,8 +70,18 @@
               <div class="link">View on Unsplash</div></a>
           </div>
         </div>
+  </div>
+  </div>
+    <!-- </div> -->
+    </div>
+  </slide>
 
-        <div class="slide" style="background-image: url(https://alca.tv/static/u/10cfd52d-e217-41e9-bb8b-ad43384a5e63_opt.png)">
+<!-- 4 -->
+  <slide>
+    <div id="hero-slides">
+      <!-- <div id="slides-cont"> -->
+      <div id="slides">
+    <div class="slide" style="background-image: url(https://alca.tv/static/u/10cfd52d-e217-41e9-bb8b-ad43384a5e63_opt.png)">
 
           <div class="icons">
             <div class="views"><i class="ion-eye"></i>928</div> 
@@ -71,90 +94,87 @@
             <div class="headline">Photo by Sean Foley</div><a href="https://unsplash.com/photos/aPDCEoW7B78" target="_blank">
               <div class="link">View on Unsplash</div></a>
           </div>
-        </div>
 
-        <div class="slide" style="background-image: url(https://alca.tv/static/u/b9669f2a-17fc-47dc-b6b5-3f863004efa8_opt.png)">
+        </div>
+      </div>
+    <!-- </div> -->
+    </div>
+  </slide>
+
+<!-- 5 -->
+  <slide>
+    <div id="hero-slides">
+      <!-- <div id="slides-cont"> -->
+    <div id="slides">
+    <div class="slide" style="background-image: url(https://alca.tv/static/u/b9669f2a-17fc-47dc-b6b5-3f863004efa8_opt.png)">
 
           <div class="icons">
             <div class="views"><i class="ion-eye"></i>928</div> 
             <div class="love"><i class="ion-heart"></i>198</div>
           </div>
-
-
           <div class="number">05</div>
           <div class="body">
             <div class="location">Shibuya-ku, Japan</div>
             <div class="headline">Photo by Alex Knight</div><a href="https://unsplash.com/photos/Akz00I_GGjU" target="_blank">
               <div class="link">View on Unsplash</div></a>
           </div>
-        </div>
-
-        <div class="slide" style="background-image: url(https://alca.tv/static/u/31979576-5060-4513-aae2-b379b87e7fe6_opt.png)">
-
-          <div class="icons">
-            <div class="views"><i class="ion-eye"></i>928</div> 
-            <div class="love"><i class="ion-heart"></i>198</div>
-          </div>
-
-        <div class="number">06</div>
-          <div class="body">
-            <div class="location">Tokyo, Japan</div>
-            <div class="headline">Photo by Benjamin Hung</div><a href="https://unsplash.com/photos/pTn26knnKVw" target="_blank">
-              <div class="link">View on Unsplash</div></a>
-          </div>
-        </div>
-        <div class="slide" style="background-image: url(https://alca.tv/static/u/429b83b8-1ad4-4450-b0de-0a0c1073cf1e_opt.jpg)">
-
-          <div class="icons">
-            <div class="views"><i class="ion-eye"></i>928</div> 
-            <div class="love"><i class="ion-heart"></i>198</div>
-          </div>
-
-          <div class="number">07</div>
-          <div class="body">
-            <div class="location">Taipei City, Taiwan</div>
-            <div class="headline">Photo by Jesus In Taiwan</div><a href="https://unsplash.com/photos/v63B_MUiFw8" target="_blank">
-              <div class="link">View on Unsplash</div></a>
-          </div>
-        </div>
-      </div>
-      <div id="next-catch"></div>
-      <div id="prev-catch"></div>
     </div>
-
-  </div>
+        </div>
+    <!-- </div> -->
+    </div>
+        
+  </slide>
+  
+  <hooper-navigation slot="hooper-addons"></hooper-navigation>
+  <hooper-pagination slot="hooper-addons"></hooper-pagination>
+</hooper>
 </template>
 
-
 <script>
+import {Hooper,
+ Slide,
+  Navigation as HooperNavigation,
+  Pagination as HooperPagination
+  }
+   from "hooper";
+import 'hooper/dist/hooper.css';
+
 export default {
-//     methods: {
-//   goToPage(pageNumber = 0) {
-// 	currentPage = Math.min(maxPageCount(), Math.max(0, pageNumber));
-// 	console.log(currentPage);
-// 	hero.style.setProperty('--page', currentPage);
-// },
-//   sleep(time) {
-// 	return new Promise(res => setTimeout(res, time));
-// },
-//   hoverSlide(index) {
-// 	index in slideChildren &&
-// 		slideChildren[index].classList.add('hover');
-// },
-//   unhoverSlide(index) {
-// 	index in slideChildren &&
-// 		slideChildren[index].classList.remove('hover');
-// },
-//     },
+   
+    components: {
+        Hooper,
+        Slide,
+        HooperNavigation,
+        HooperPagination
+},
+data(){
+    return {
+        hooperSettings: {
+            itemsToShow : 5,
+            centerMode: true,
+            mouseDrag : false,
+            wheelControl: false,
+            transition: 500 // 슬라이딩 전환 시간 기본:300
+        }
+    };
 }
+
+};
+
+
 </script>
-
-
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+/* @import '.css/hooper.css'; */
 
-
+.hooper-next, .hooper-prev {
+background-color: blue;
+}
+/* 
+.hooper{
+  height: 700px
+} */
 .icons{
   display: inline-block;
   margin-top: 10px;
@@ -163,14 +183,16 @@ export default {
 #hero-slides {
   
   --page: 0;
-  height: 100vh;
+  height: 100%;
   /* background: #25303c; */
-  background : #ffffff;
-  background: linear-gradient(90deg, #7bc4c4 0%, #7bc4c4 100%);
+  /* background : #ffffff; */
+  /* background: linear-gradient(90deg, #7bc4c4 0%, #7bc4c4 100%); */
+  background-color: #7bc4c4;
   
   
   overflow: hidden;
 }
+
 #hero-slides #header {
   height: 12vh;
   line-height: 12vh;
@@ -299,9 +321,9 @@ export default {
   left: 0;
 }
 #hero-slides #slides {
-  --slides-height: 76vh;
+  /* --slides-height: 700px; */
   width: auto;
-  height: var(--slides-height);
+  height: 700px;
   padding: 0 10vw;
   
   font-size: 0;
@@ -312,10 +334,10 @@ export default {
 }
 #hero-slides #slides .slide {
   display: inline-block;
-  vertical-align: top;
+  vertical-align:baseline;
   font-size: 1.5vw;
   width: 24em;
-  height: var(--slides-height);
+  height: 700px;
   margin: 0 1.333em;
   background: #101419;
   
@@ -487,20 +509,34 @@ export default {
 #hero-slides #footer #dribbble.hover:after, #hero-slides #footer #dribbble:hover:after {
   filter: saturate(0%) contrast(200%) brightness(200%) invert(100%);
 }
-@media (min-width: 1200px) and (max-width: 1699px) {
-  body {
+@media (min-width: 100px) and (max-width: 1000px) {
+ 
+ 
+  #hero-slides #slides .slide {
+    font-size: 0.7vw;
+    height: 565px;
+  }
+  
+}
+@media (min-width: 1001px) and (max-width: 1649px) {
+  .body {
     --slides-per-page: 3;
   }
   #hero-slides #slides .slide {
-    font-size: 1vw;
+    font-size: 0.75vw;
+    height: 565px;
   }
+ 
 }
-@media (min-width: 1700px) {
-  body {
+@media (min-width: 1650px) {
+  .body {
     --slide-per-age: 4;
   }
   #hero-slides #slides .slide {
-    font-size: 0.75vw;
+    font-size: 0.8vw;
+    height: 700px;
   }
+
 }
+
 </style>
