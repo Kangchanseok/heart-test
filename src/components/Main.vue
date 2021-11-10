@@ -74,7 +74,7 @@
 /** 메인 이미지 소스*/
 .top-section {
   height: 100vh;
-  background: url("https://upload.wikimedia.org/wikipedia/commons/archive/e/e1/20141028134401%21Icefields%282013.07.16%29byRyanSchroeder.jpg") no-repeat center;
+  background: url("https://images.unsplash.com/photo-1540175496787-f3afe88ebc00?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2922&q=80") no-repeat center;
   background-size: cover;
 }
 

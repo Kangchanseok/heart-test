@@ -9,10 +9,10 @@
       <div id="slides">
         <div class="slide" style="background-image: url(https://drive.google.com/file/d/120nXsZBZhJdejmDQ_xkwJjfd7ypNDCrH/view?usp=sharing)">
 
-          <div class="icons">
+          <!-- <div class="icons">
             <div class="views"><i class="ion-eye"></i>9,280</div> 
             <div class="love"><i class="ion-heart"></i>2,341</div>
-          </div>
+          </div> -->
 
           <div class="number">01</div>
           <div class="body">            
@@ -33,10 +33,10 @@
       <div id="slides">
     <div class="slide" style="background-image: url(../src/assets/Popular/Deoksugung.jpg)">
 
-          <div class="icons">
+          <!-- <div class="icons">
             <div class="views"><i class="ion-eye"></i>8,731</div> 
             <div class="love"><i class="ion-heart"></i>3,011</div>
-          </div>
+          </div> -->
 
           <div class="number">02</div>
           <div class="body">
@@ -58,10 +58,10 @@
     <div id="slides">
     <div class="slide" style="background-image: url(https://alca.tv/static/u/9b5f71cb-34a3-4fb4-a3a6-0ce9557c0acd_opt.png)">
 
-          <div class="icons">
+          <!-- <div class="icons">
             <div class="views"><i class="ion-eye"></i>10,239</div> 
             <div class="love"><i class="ion-heart"></i>6,593</div>
-          </div>
+          </div> -->
 
           <div class="number">03</div>
           <div class="body">
@@ -83,10 +83,10 @@
       <div id="slides">
     <div class="slide" style="background-image: url(https://alca.tv/static/u/10cfd52d-e217-41e9-bb8b-ad43384a5e63_opt.png)">
 
-          <div class="icons">
+          <!-- <div class="icons">
             <div class="views"><i class="ion-eye"></i>928</div> 
             <div class="love"><i class="ion-heart"></i>198</div>
-          </div>
+          </div> -->
 
           <div class="number">04</div>
           <div class="body">
@@ -108,10 +108,10 @@
     <div id="slides">
     <div class="slide" style="background-image: url(https://alca.tv/static/u/b9669f2a-17fc-47dc-b6b5-3f863004efa8_opt.png)">
 
-          <div class="icons">
+          <!-- <div class="icons">
             <div class="views"><i class="ion-eye"></i>928</div> 
             <div class="love"><i class="ion-heart"></i>198</div>
-          </div>
+          </div> -->
           <div class="number">05</div>
           <div class="body">
             <div class="location">Shibuya-ku, Japan</div>

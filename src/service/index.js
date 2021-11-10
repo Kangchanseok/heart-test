@@ -86,3 +86,15 @@ export const addContent = ({ user_no, title, context }) => {
       subcomment_no
     });
   };
+
+  // location
+
+  export const findLocation = ({ loca_no }) => {
+    return axios.get("http://127.0.0.1:3000/find/location", {
+      params: { loca_no }
+    });
+  };
+  
+  export const findLocationList = () => {
+    return axios.get("http://127.0.0.1:3000/find/location_list");
+  };

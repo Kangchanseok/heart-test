@@ -9,7 +9,8 @@
     :current-page="currentPage" 
     :items="items" 
     :fields="fields" 
-    @row-clicked="rowClick"></b-table>
+    @row-clicked="rowClick">
+    </b-table>
      </b-container>
     <b-pagination
       v-model="currentPage"
