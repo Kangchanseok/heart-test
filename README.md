@@ -1,6 +1,6 @@
 # board-vue
 
-> A Vue.js project
+> 처음엔 게시판 전용 project 였는데 팀원들과 합치고 올리다보니 사이트 페이지가 되어버려따
 
 ## Build Setup
 
