@@ -25,6 +25,7 @@ import Popular2 from '@/components/Popular2'
 import Detail1 from '@/components/Detail1'
 import Detail2 from '@/components/Detail2'
 import Detail3 from '@/components/Detail3'
+import LocationDetail from '@/components/LocationDetail'
 
 
 export default {
@@ -41,7 +42,8 @@ export default {
     Popular2,
     Detail1,
     Detail2,
-    Detail3
+    Detail3,
+    LocationDetail
   }
 }
 </script>

@@ -11,8 +11,10 @@
             height="320"
             width="350"
             /> -->
-          <img class="test" :src="location.picture" height="320"
-            width="350" @click="goDetail">
+          <img class="test" :src= "location.picture"
+           height="320"
+           width="350"
+           @click="goDetail">
             <h3 class="test-text">{{location.title}}</h3>
             <p class="test-text"> {{ location.tag }}</p>
       
@@ -22,7 +24,6 @@
 </template>
 
 <script>
-// 백 -> store -> 해당 페이지 data -> 페이지 렌더링
 import {findLocationList} from '../service';
 
 export default {
@@ -45,7 +46,7 @@ export default {
     methods:{
       goDetail(){
         this.$router.push({
-        path: '/board/free'
+        path: '/detail3/locationdetail'
       })
       }
     }

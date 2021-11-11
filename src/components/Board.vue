@@ -38,7 +38,7 @@ export default {
    
     return {
       currentPage: 1,
-      perPage: 10,
+      perPage: 20,
       fields: [
         {
           key: 'content_no',
