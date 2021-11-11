@@ -59,7 +59,9 @@
         </ul>
     </div>
 
-    <p>{{locationdetail.context}}</p>
+    <div style="border: 3px solid black; padding: 100px; ">{{locationdetail.context}}</div>
+    <br/>
+    <br/>
     <div class="line"></div>
 
  <div class="comment-box" id="comment">
