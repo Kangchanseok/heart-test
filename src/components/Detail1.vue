@@ -3,18 +3,12 @@
     <div class="gallery-panel"
          v-for="location in locations" :key="location.loca_no">
         <div class="contents">
-           
-            <!-- <img 
-            class="test"
-            :src="photo.img"
-            @click="link"
-            height="320"
-            width="350"
-            /> -->
           <img class="test" :src= "location.picture"
            height="320"
            width="350"
            @click="goDetail">
+
+           
             <h3 class="test-text">{{location.title}}</h3>
             <p class="test-text"> {{ location.tag }}</p>
       

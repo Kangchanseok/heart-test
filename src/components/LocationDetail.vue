@@ -1,25 +1,37 @@
 <template>
   <div class="test3">
-
+    <div v-for="locationdetail in locationdetails" :key="locationdetail.detail_no">
       <div class="test-title">
-          <h1>상세페이지 제목을 써보자</h1>
+          <h1>{{locationdetail.title}}</h1>
           <p>상세페이지 어떻게 꾸미지 망했당</p>
       </div>
 
 <div class="line"></div>
 
-    <div class="test-contents"
+    <!-- <div class="test-contents"
          v-for="img in imgs"
-         :key="img.id">
+         :key="img.id"> -->
         <div class="contents-Detail">
             <img 
             class="test"
-            :src="img.img"
+            :src= "locationdetail.picture1"
+            height="500"
+            width="600"
+            />
+            <img 
+            class="test"
+            :src= "locationdetail.picture2"
+            height="500"
+            width="600"
+            />
+            <img 
+            class="test"
+            :src= "locationdetail.picture3"
             height="500"
             width="600"
             />
         </div>
-    </div>
+    <!-- </div> -->
     
     <Backtotop />
     
@@ -47,6 +59,7 @@
         </ul>
     </div>
 
+    <p>{{locationdetail.context}}</p>
     <div class="line"></div>
 
  <div class="comment-box" id="comment">
@@ -63,7 +76,7 @@
 
       
     </div>
-
+  </div>
 
 
 
@@ -71,6 +84,8 @@
 
 <script>
 import Backtotop from '@/components/BackToTop.vue';
+import {findLocationDetailList} from '../service';
+
 
 
 export default {
@@ -82,17 +97,22 @@ export default {
         return{
             loading: false,
             data: {},
-            imgs: [
+            locationdetails: [
                 {
-                    img:"https://i.postimg.cc/635Gr8rN/Deoksugung.jpg",
-                    
-                },
-                {
-                    img:"https://i.postimg.cc/k5w2g7kY/Gyeonghuigung.jpg",
-                },
-
+                 detail_no:"",
+                 title:"",
+                 picture1:"",
+                 picture2:"",
+                 picture3:"",
+                 picture4:"",
+                 picture5:"",
+                 context:""   
+                }
             ]
         }
+    },
+    created(){
+      findLocationDetailList().then(response => this.locationdetails = response.data);
     },
         methods: {
       submit() {
