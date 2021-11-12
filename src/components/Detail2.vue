@@ -1,23 +1,18 @@
 <template>
     <div class="hashtag" >
         <div class="tag-container"
-            v-for="tag in tags"
-            :key="tag.id">
+            v-for="hash in hashs"
+            :key="hash.hash_no">
         <div class="contents-tag">
             <ul class="area" id="region">
                 <li>
-                    <button type="button" class="btn">
-                        <span>{{tag.name}}</span>
+                    <button type="button" :class= "{btn: isActive}" @click="isActive = !isActive" :aria-pressed= "isActive ? 'true' : 'false' ">
+                        <span >{{hash.hash_name}}</span>
                     </button>
                 </li>
             </ul>
-
-
         </div>
-
-
         </div>
-        
     </div>
 </template>
 
@@ -25,145 +20,26 @@
 
 
 <script>
+import {findHashList} from '../service';
+
 export default {
     name: 'hashtag',
-    props: ["id","name","title"],
+    // props: ["id","name","title"],
     data(){
         return{
-            tags:[
+            isActive:false,
+            hashs:[
                 {
-                    id: "1",
-                    name: "#강남구",
-                    title: ""
-                },
-                {
-                    id: "2",
-                    name: "#도봉구",
-                    title: ""
-                },
-                {
-                    id: "3",
-                    name: "#동대문구",
-                    title: ""
-                },
-                {
-                    id: "4",
-                    name: "#동작구",
-                    title: ""
-                },
-                {
-                    id: "5",
-                    name: "#마포구",
-                    title: ""
-                },
-                {
-                    id: "6",
-                    name: "#서대문구",
-                    title: ""
-                },
-                {
-                    id: "7",
-                    name: "#서초구",
-                    title: ""
-                },
-                {
-                    id: "8",
-                    name: "#성동구",
-                    title: ""
-                },
-                {
-                    id: "9",
-                    name: "#성북구",
-                    title: ""
-                },
-                {
-                    id: "10",
-                    name: "#송파구",
-                    title: ""
-                },
-                {
-                    id: "11",
-                    name: "#양천구",
-                    title: ""
-                },
-                {
-                    id: "12",
-                    name: "#강동구",
-                    title: ""
-                },
-                {
-                    id: "13",
-                    name: "#영등포구",
-                    title: ""
-                },
-                {
-                    id: "14",
-                    name: "#용산구",
-                    title: ""
-                },
-                {
-                    id: "15",
-                    name: "#은평구",
-                    title: ""
-                },
-                {
-                    id: "16",
-                    name: "#종로구",
-                    title: ""
-                },
-                {
-                    id: "17",
-                    name: "#중구",
-                    title: ""
-                },
-                {
-                    id: "18",
-                    name: "#중랑구",
-                    title: ""
-                },
-                {
-                    id: "19",
-                    name: "#강북구",
-                    title: ""
-                },
-                {
-                    id: "20",
-                    name: "#강서구",
-                    title: ""
-                },
-                {
-                    id: "21",
-                    name: "#관악구",
-                    title: ""
-                },
-                {
-                    id: "22",
-                    name: "#광진구",
-                    title: ""
-                },
-                {
-                    id: "23",
-                    name: "#구로구",
-                    title: ""
-                },
-                {
-                    id: "24",
-                    name: "#금천구",
-                    title: ""
-                },
-                {
-                    id: "25",
-                    name: "#노원구",
-                    title: ""
-                },
-
-
-
-
-
+                    hash_no: "",
+                    hash_name: "",
+                    
+                }
             ]
         }
-    }
+    },
+    created() {
+      findHashList().then(response => this.hashs = response.data);
+}
 }
 </script>
 
@@ -206,6 +82,9 @@ li{
 }
 .btn:hover{
     color: #ffffff;
+    background-color: #7bc4c4;
+}
+.btn{
     background-color: #7bc4c4;
 }
 

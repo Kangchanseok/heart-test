@@ -110,3 +110,13 @@ export const addContent = ({ user_no, title, context }) => {
     return axios.get("http://127.0.0.1:3000/find/locationdetail_list");
   };
   
+  // hash
+  export const findHash = ({ hash_no }) => {
+    return axios.get("http://127.0.0.1:3000/find/hash", {
+      params: { hash_no }
+    });
+  };
+  
+  export const findHashList = () => {
+    return axios.get("http://127.0.0.1:3000/find/hash_list");
+  };
