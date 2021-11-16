@@ -17,8 +17,9 @@
           <div class="number">01</div>
           <div class="body">            
             <div class="location">Gyeonghuigung, South Korea</div>
-            <div class="headline">Photo by Bundo Kim</div><a href="https://unsplash.com/photos/Y7IilZ5VLdA" target="_blank">
-              <div class="link">View on Unsplash</div></a>
+            <div class="headline" @click="gogo">Photo by Bundo Kim</div>
+            <!-- <a href="https://unsplash.com/photos/Y7IilZ5VLdA" target="_blank">
+              <div class="link">View on Unsplash</div></a> -->
           </div>
         </div>
       </div>
@@ -157,6 +158,13 @@ data(){
             transition: 500 // 슬라이딩 전환 시간 기본:300
         }
     };
+},
+methods:{
+  gogo(){
+    this.$router.push({
+      path: "/detail3/locationdetail/1"
+    })
+  }
 }
 
 };

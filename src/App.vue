@@ -2,12 +2,13 @@
   <div id="app">
 
     <Navbar />
+    <!-- <Search /> -->
     <router-view/>  
     <!-- <test /> -->
     <!-- <Popular2 /> -->
     <BackToTop />
     <Footer />
-    
+        
   </div>
 </template>
 
@@ -26,6 +27,8 @@ import Detail1 from '@/components/Detail1'
 import Detail2 from '@/components/Detail2'
 import Detail3 from '@/components/Detail3'
 import LocationDetail from '@/components/LocationDetail'
+// import Search from '@/components/Search'
+
 
 
 export default {
@@ -43,7 +46,9 @@ export default {
     Detail1,
     Detail2,
     Detail3,
-    LocationDetail
+    LocationDetail,
+    // Search
+    
   }
 }
 </script>

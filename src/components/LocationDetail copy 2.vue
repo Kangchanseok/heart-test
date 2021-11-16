@@ -1,12 +1,13 @@
 <template>
-  <div class="test">
+  <div class="LocationDetail">
     <div>
       <div class="test-title">
           <h1>{{title}}</h1>
-          <p>{{tag}}</p>
+          <p>상세페이지 어떻게 꾸미지 망했당</p>
       </div>
 
 <div class="line"></div>
+
         <div class="contents-Detail">
             <img 
             class="test"
@@ -28,7 +29,7 @@
             />
         </div>
     <!-- </div> -->
-    <!-- <div class="test-taglist">
+    <div class="test-taglist">
         <ul class="taglist">
             <li>
                 <a href="/about"><span>#여행</span></a>
@@ -49,10 +50,9 @@
                 <a href="/about"><span>#어떻게 꾸며야할까아아아아</span></a>
             </li>
         </ul>
-    </div> -->
+    </div>
 
-    <div style="border: 3px solid black; padding: 100px; margin-top: 20px;
-    margin-left:100px; margin-right:100px; ">{{context}}</div>
+    <div style="border: 3px solid black; padding: 100px; ">{{context}}</div>
     <br/>
     <br/>
     <div class="line"></div>
@@ -74,7 +74,7 @@
 
 <script>
 import Backtotop from '@/components/BackToTop.vue';
-import {findLocation} from '../service';
+import {findLocationDetailList, findLocationDetail} from '../service';
 
 export default {
     name: 'LocationDetail',
@@ -82,30 +82,27 @@ export default {
         Backtotop,
     },
     async created(){
-      const ret = await findLocation({loca_no: Number(this.$route.params.locaNo)})
+      const ret = await findLocationDetail({detail_no: Number(this.$route.params.detailNo)})
       const {data} = ret;
       this.title = data.title;
       this.picture1 = data.picture1;
-      this.picture2 = data.picture2;
-      this.picture3 = data.picture3;
-      this.picture4 = data.picture4;
-      this.picture5 = data.picture5;
+      this.picture1 = data.picture2;
+      this.picture1 = data.picture3;
+      this.picture1 = data.picture4;
+      this.picture1 = data.picture5;
       this.context = data.context;
-      this.tag = data.tag;
-      
     },
     data(){
-      const locaNo = Number(this.$route.params.locaNo);
+      const detailNo = Number(this.$route.params.detailNo);
         return{
-          locaNo: locaNo,
+          detailNo: detailNo,
           title: '',
-          picture1: "",
+          picture1: '',
           picture2:'',
           picture3:'',
           picture4:'',
           picture5:'',
           context: '',
-          tag:''
             // loading: false,
             // data: {},
         };

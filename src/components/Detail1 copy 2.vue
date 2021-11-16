@@ -1,14 +1,14 @@
 <template>
-  <div class="gallery"  style="width: 25rem"  >
-    <div class="gallery-panel"  
+  <div class="gallery" style="width: 25rem">
+    <div class="gallery-panel"
          v-for="location in locations" :key="location.loca_no">
         <div class="contents">
-          <img class="test" :src= "location.picture1"
+          <img class="test" :src= "location.picture"
            height="320"
            width="350"
-           >
+           @click="goDetail">
 
-           <h3 class="test-text2" @click="goDetail" >{{location.loca_no}}</h3>
+           
             <h3 class="test-text">{{location.title}}</h3>
             <p class="test-text"> {{ location.tag }}</p>
       
@@ -27,23 +27,17 @@ export default {
       const ret = await findLocationList()
       this.locations = ret.data;
     },
-    
     data() {
         return {
           locations: [
             {
-              loca_no:'',
+              loca_no: "",
               title: "",
-              picture1: "",
-              picture2: "",
-              picture3: "",
-              picture4: "",
-              picture5: "",
-              context:"",
-              tag: ""
+              picture: "",
+              tag: "#강남구 #친구랑"
             }
           ],
-          // locations:[]
+          locations:[]
         };
     },
     // created() {
@@ -53,17 +47,11 @@ export default {
     //   );
     // },
     methods:{
-      goDetail(event){
-        // console.log(event.target.innerText);
-        // var test = document.querySelector(".test-text2")
-        var locaNo = event.target.innerText;
-        // var locaNo = event.currentTarget.className;        
+      goDetail(location){
         this.$router.push({
-        path: `/detail3/locationdetail/${locaNo}`
+        path: `/detail3/locationdetail/${location.loca_no}`
       })
       }
-      
-    
     }
   
 };

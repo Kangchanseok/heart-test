@@ -1,34 +1,42 @@
 <template>
-  <div class="test">
-    <div>
+  <div class="test3">
+    <div v-for="locationdetail in locationdetails" :key="locationdetail.detail_no">
       <div class="test-title">
-          <h1>{{title}}</h1>
-          <p>{{tag}}</p>
+          <h1>{{locationdetail.title}}</h1>
+          <p>상세페이지 어떻게 꾸미지 망했당</p>
       </div>
 
 <div class="line"></div>
+
+    <!-- <div class="test-contents"
+         v-for="img in imgs"
+         :key="img.id"> -->
         <div class="contents-Detail">
             <img 
             class="test"
-            :src= "picture1"
+            :src= "locationdetail.picture1"
             height="500"
             width="600"
             />
             <img 
             class="test"
-            :src= "picture2"
+            :src= "locationdetail.picture2"
             height="500"
             width="600"
             />
             <img 
             class="test"
-            :src= "picture3"
+            :src= "locationdetail.picture3"
             height="500"
             width="600"
             />
         </div>
     <!-- </div> -->
-    <!-- <div class="test-taglist">
+    
+    <Backtotop />
+    
+
+    <div class="test-taglist">
         <ul class="taglist">
             <li>
                 <a href="/about"><span>#여행</span></a>
@@ -49,88 +57,95 @@
                 <a href="/about"><span>#어떻게 꾸며야할까아아아아</span></a>
             </li>
         </ul>
-    </div> -->
+    </div>
 
-    <div style="border: 3px solid black; padding: 100px; margin-top: 20px;
-    margin-left:100px; margin-right:100px; ">{{context}}</div>
+    <div style="border: 3px solid black; padding: 100px; ">{{locationdetail.context}}</div>
     <br/>
     <br/>
     <div class="line"></div>
 
- <!-- <div class="comment-box" id="comment">
+ <div class="comment-box" id="comment">
         <div class="loader" v-show="loading" >
           <span class="spinner"></span>  
         </div>
-
+        
         <form action="" method="post" @submit.prevent="submit">
           <textarea v-model="data.message" class="input-message" name="message" id="message" rows="3" placeholder="Your comment..." required></textarea>
           <input v-model="data.name" class="input-name" type="text" name="name" placeholder="Your Name" required>
           <input :disabled="loading" type="submit" value="Comment">
         </form>
-</div> -->
-     </div>
+    </div>
+
+      
+    </div>
   </div>
+
+
+
 </template>
 
 <script>
 import Backtotop from '@/components/BackToTop.vue';
-import {findLocation} from '../service';
+import {findLocationDetailList, findLocation} from '../service';
+
+
 
 export default {
-    name: 'LocationDetail',
+    name: 'test3',
     components:{
         Backtotop,
     },
-    async created(){
-      const ret = await findLocation({loca_no: Number(this.$route.params.locaNo)})
-      const {data} = ret;
-      this.title = data.title;
-      this.picture1 = data.picture1;
-      this.picture2 = data.picture2;
-      this.picture3 = data.picture3;
-      this.picture4 = data.picture4;
-      this.picture5 = data.picture5;
-      this.context = data.context;
-      this.tag = data.tag;
-      
+    async created2(){
+      const response = await findLocation({detail_no: Number(this.$route.params.detailNo)})
+      const {data2} = response;
+      this.title = data2.title;
+      this.picture1 = data2.picture1;
+      this.picture1 = data2.picture2;
+      this.picture1 = data2.picture3;
+      this.picture1 = data2.picture4;
+      this.picture1 = data2.picture5;
+      this.context = data2.context;
     },
     data(){
-      const locaNo = Number(this.$route.params.locaNo);
+      const detailNo = Number(this.$route.params.detailNo);
         return{
-          locaNo: locaNo,
-          title: '',
-          picture1: "",
-          picture2:'',
-          picture3:'',
-          picture4:'',
-          picture5:'',
-          context: '',
-          tag:''
-            // loading: false,
-            // data: {},
-        };
+            loading: false,
+            data: {},
+            locationdetails: [
+                {
+                 detailNo: detailNo,
+                 title:"",
+                 picture1:"",
+                 picture2:"",
+                 picture3:"",
+                 picture4:"",
+                 picture5:"",
+                 context:""   
+                }
+            ]
+        }
     },
-    // created(){
-    //   findLocationDetailList().then(response => this.data2 = response.data);
-    // },
-        // methods: {
-      // submit() {
-      //   this.loading = true;
-      //   // Save Comment
-      //   this.$http.post('http://localhost:3434', this.data).then((response) => {
-      //     // success callback
-      //     // fire event for comment
-      //     this.$emit('commented', response.data);  
-      //     // Clear the message
-      //     this.data.message = "";
-      //     this.loading = false;
-      //   // }, //(response) => {
-      //   //   // error callback
-      //   //   this.loading = false;
-      //   });
-      // }
-    // }
-};
+    created(){
+      findLocationDetailList().then(response => this.locationdetails = response.data);
+    },
+        methods: {
+      submit() {
+        this.loading = true;
+        // Save Comment
+        this.$http.post('http://localhost:3434', this.data).then((response) => {
+          // success callback
+          // fire event for comment
+          this.$emit('commented', response.data);  
+          // Clear the message
+          this.data.message = "";
+          this.loading = false;
+        // }, //(response) => {
+        //   // error callback
+        //   this.loading = false;
+        });
+      }
+    }
+}
 </script>
 
 <style>

@@ -1,19 +1,26 @@
 <template>
     <div class="hashtag" >
+        
         <div class="tag-container"
             v-for="hash in hashs"
             :key="hash.hash_no">
+            
         <div class="contents-tag">
             <ul class="area" id="region">
                 <li>
-                    <button type="button" :class= "{btn: isActive}" @click="isActive = !isActive" :aria-pressed= "isActive ? 'true' : 'false' ">
+                    <button type="button" 
+                    :class= "{btn: isActive}" 
+                    @click="isActive" 
+                    :aria-pressed= "isActive ? 'true' : 'false' ">
                         <span >{{hash.hash_name}}</span>
                     </button>
                 </li>
             </ul>
+            </div>
         </div>
         </div>
-    </div>
+        
+    
 </template>
 
 
@@ -24,22 +31,37 @@ import {findHashList} from '../service';
 
 export default {
     name: 'hashtag',
-    // props: ["id","name","title"],
     data(){
         return{
-            isActive:false,
+            // isActive:false,
             hashs:[
                 {
                     hash_no: "",
                     hash_name: "",
-                    
                 }
             ]
         }
     },
+    hashlist() {
+        // 반복문
+        // 조건
+        // 나오는 결과값만 
+    },
     created() {
       findHashList().then(response => this.hashs = response.data);
-}
+      },
+    methods:{
+        isActive(event) {
+            const test= event.target.innerText;
+        //    console.log(event.target.innerText);
+        },
+            
+            // 비동기 써서 데이터 넘어오면 바껴야댐
+            // if (event.target  '#') {
+            //     console.log(123);
+            // }
+        
+    }
 }
 </script>
 
@@ -51,7 +73,7 @@ export default {
     border-radius: 10px;
     padding: 8px;
     position: absolute;
-    left: 1150px;
+    left: 1200px;
     top: 140px;
 
     display: grid;
