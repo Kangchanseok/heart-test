@@ -83,6 +83,7 @@ export default {
     },
     async created(){
       const ret = await findLocation({loca_no: Number(this.$route.params.locaNo)})
+      console.log(this.$route.params.locaNo)
       const {data} = ret;
       this.title = data.title;
       this.picture1 = data.picture1;

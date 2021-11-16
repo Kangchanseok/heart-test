@@ -10,6 +10,7 @@ import Detail3 from '@/components/Detail3'
 import LocationDetail from '@/components/LocationDetail'
 import Detail1 from '@/components/Detail1'
 
+
 Vue.use(Router)
 
 export default new Router({
@@ -53,7 +54,7 @@ export default new Router({
       path: '/detail3/locationdetail/:locaNo',
       name: 'LocationDetail',
       component: LocationDetail
-    }
+    },
     
   ]
 })

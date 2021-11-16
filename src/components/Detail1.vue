@@ -1,5 +1,5 @@
 <template>
-  <div class="gallery"  style="width: 25rem"  >
+  <div class="gallery"  style="width: 25rem" >
     <div class="gallery-panel"  
          v-for="location in locations" :key="location.loca_no">
         <div class="contents">
@@ -8,7 +8,7 @@
            width="350"
            >
 
-           <h3 class="test-text2" @click="goDetail" >{{location.loca_no}}</h3>
+           <div class="test-text2" style="width:500px height:500px" @click="goDetail">{{location.loca_no}}</div>
             <h3 class="test-text">{{location.title}}</h3>
             <p class="test-text"> {{ location.tag }}</p>
       
@@ -54,8 +54,11 @@ export default {
     // },
     methods:{
       goDetail(event){
+        // console.log(document.addEventListener('click', this.goDetail))
+        
         // console.log(event.target.innerText);
         // var test = document.querySelector(".test-text2")
+        console.log(event)
         var locaNo = event.target.innerText;
         // var locaNo = event.currentTarget.className;        
         this.$router.push({
