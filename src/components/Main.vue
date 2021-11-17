@@ -5,19 +5,19 @@
             <h1 class="big-text">NOOLIM</h1>
             <p class="top-small-text ">인생의 즐거움을 모두 누리자</p>
             <!-- <p class="top-small-text">Here is a some filler text that I am using to make this look like a site.<br>Not much else going on here so you can move along.</p> -->
-            
-            <section id="search" class="section section-search teal darken-1 white-text center scrollspy">
+            <Search />
+            <!-- <section-- id="search" class="section section-search teal darken-1 white-text center scrollspy">
                 <div class="container">
                 <div class="row">
                     <div class="col s12">
                     <h3>Search Destinations</h3>
-                    <div class="input-field"> <!-- 지워도 될듯? css 수정하기 -->
-                        <input type="text" v-model="search" placeholder="search places" />
+                    <div class="input-field"> 지워도 될듯? css 수정하기
+                        <input type="text" v-model="search" placeholder="search places" /> 
                     </div>
                     </div>
                 </div>
                 </div>
-            </section> 
+            </section--> 
         </div>
     </div>
 
@@ -28,10 +28,14 @@
 
 
 <script>
+import Search from '@/components/Search'
+
+
   export default{
     name:"Main",
     components:{
-    
+      Search
+        
     },
     data(){
       return{

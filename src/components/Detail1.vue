@@ -1,35 +1,48 @@
 <template>
   <div class="gallery"  style="width: 25rem" >
     <div class="gallery-panel"  
-         v-for="location in locations" :key="location.loca_no">
-        <div class="contents">
+         v-for="location in locations" :key="location.loca_no" @click="goDetail(location.loca_no)">
+         <div class="gallery-panel2"
+               v-for="hash in hashs" :key="hash.hash_name">
+          <div class="contents">
           <img class="test" :src= "location.picture1"
            height="320"
-           width="350"
-           >
-
-           <div class="test-text2" style="width:500px height:500px" @click="goDetail">{{location.loca_no}}</div>
-            <h3 class="test-text">{{location.title}}</h3>
-            <p class="test-text"> {{ location.tag }}</p>
-      
-        </div>
+           width="350">
+          <h3 class="test-text">{{location.title}}</h3>
+          <p class="test-text"> {{ hash.hash_name }}</p>
+      </div>
     </div>
   </div>
+  
+  </div>
+  
 </template>
 
 <script>
-import {findLocationList} from '../service';
+import {findLocationList, findHashName} from '../service';
+
 
 
 export default {
     name: 'gallery',
     async created(){
-      const ret = await findLocationList()
+      const ret = await findLocationList()      
       this.locations = ret.data;
     },
+
+    // async created2(){
+    //   const ret2 = await findHashName(this.location.loca_no)
+    //   this.hashs = ret2.data;
+    // },
+    
     
     data() {
         return {
+          hashs:[
+            {
+            hash_name: ''
+          }
+          ],
           locations: [
             {
               loca_no:'',
@@ -39,8 +52,7 @@ export default {
               picture3: "",
               picture4: "",
               picture5: "",
-              context:"",
-              tag: ""
+              context:""
             }
           ],
           // locations:[]
@@ -53,22 +65,18 @@ export default {
     //   );
     // },
     methods:{
-      goDetail(event){
-        // console.log(document.addEventListener('click', this.goDetail))
-        
-        // console.log(event.target.innerText);
-        // var test = document.querySelector(".test-text2")
-        console.log(event)
-        var locaNo = event.target.innerText;
-        // var locaNo = event.currentTarget.className;        
-        this.$router.push({
-        path: `/detail3/locationdetail/${locaNo}`
+     async goDetail(event){
+        console.log(event);
+      const ret2 = await findHashName(event)
+      const {data} = ret2;
+      console.log(findHashName({event}))
+      console.log(data.hash_name);
+      // this.hashs = ret2.data;
+      this.$router.push({
+      path: `/detail3/locationdetail/${event}`
       })
-      }
-      
-    
+      },
     }
-  
 };
 
 </script>

@@ -2,7 +2,7 @@
   <div id="app">
 
     <Navbar />
-    <Search />
+    <!-- <Search /> -->
     <router-view/>  
     <!-- <test /> -->
     <!-- <Popular2 /> -->

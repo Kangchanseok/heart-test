@@ -10,8 +10,7 @@
                 <li>
                     <button type="button" 
                     :class= "{btn: isActive}" 
-                    @click="isActive" 
-                    :aria-pressed= "isActive ? 'true' : 'false' ">
+                    @click="isActives(hash.hash_no)">
                         <span >{{hash.hash_name}}</span>
                     </button>
                 </li>
@@ -33,7 +32,7 @@ export default {
     name: 'hashtag',
     data(){
         return{
-            // isActive:false,
+            isActive:false,
             hashs:[
                 {
                     hash_no: "",
@@ -51,9 +50,10 @@ export default {
       findHashList().then(response => this.hashs = response.data);
       },
     methods:{
-        isActive(event) {
-            const test= event.target.innerText;
-        //    console.log(event.target.innerText);
+        isActives(e) {
+            
+            console.log(e)
+            //    console.log(event.target.innerText);
         },
             
             // 비동기 써서 데이터 넘어오면 바껴야댐
@@ -74,7 +74,7 @@ export default {
     padding: 8px;
     position: absolute;
     left: 1200px;
-    top: 140px;
+    top: 300px;
 
     display: grid;
     grid-template-columns:  1fr 1fr;

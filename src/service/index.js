@@ -126,3 +126,9 @@ export const addContent = ({ user_no, title, context }) => {
       params: { hash_name }
     });
   }; 
+
+  export const findHashName = ({ loca_no }) => {
+    return axios.get("http://127.0.0.1:3000/find/hashname", {
+      params: { loca_no }
+    });
+  };
