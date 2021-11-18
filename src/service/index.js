@@ -66,6 +66,38 @@ export const addContent = ({ user_no, title, context }) => {
       comment_no
     });
   };
+
+  // locationcomment
+
+  export const addLocationComment = ({user_no, loca_no, context}) => {
+    return axios.post("http://127.0.0.1:3000/add/locationcomment", {
+      user_no, loca_no, context
+    })
+  }
+
+  export const findLocationComment = ({ loca_no }) => {
+    return axios.get("http://127.0.0.1:3000/find/locationcomment", {
+      params: { loca_no }
+    });
+  };
+
+  export const findLocationCommentList = () => {
+    return axios.get("http://127.0.0.1:3000/find/locationcomment_list");
+  };
+
+  export const modifyLocationComment = ({ context, comment_no }) => {
+    return axios.post("http://127.0.0.1:3000/modify/locationcomment", {
+      context,
+      comment_no
+    });
+  };
+
+  export const deleteLocationComment = ({ comment_no }) => {
+    return axios.post("http://127.0.0.1:3000/delete/locationcomment", {
+      comment_no
+    });
+  };
+
   
   // subcomment
   
