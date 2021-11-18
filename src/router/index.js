@@ -14,6 +14,10 @@ import Detail1 from '@/components/Detail1'
 Vue.use(Router)
 
 export default new Router({
+
+  scrollBehavior(to, from, savedPosition) {
+    return {x:0, y:0};
+  },
   routes: [
     {
       path: '/',
@@ -56,5 +60,10 @@ export default new Router({
       component: LocationDetail
     },
     
-  ]
-})
+  ],
+  // mode:'history'
+  
+});
+
+
+

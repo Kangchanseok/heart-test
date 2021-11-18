@@ -24,22 +24,46 @@ import {findLocationList, findHashName} from '../service';
 
 
 export default {
+  // location
+  // connection
+  // hashtag
     name: 'gallery',
-    async created(){
-      const ret = await findLocationList()      
-      this.locations = ret.data;
-    },
 
-    // async created2(){
-    //   const ret2 = await findHashName(this.location.loca_no)
-    //   this.hashs = ret2.data;
+    async created(){
+      // var test_li = {}
+      // var i = 0
+      const ret = await findLocationList()
+      const {data} = ret;
+      this.locations = ret.data;
+      // for (i = 0; i<= 10; i++) {
+      //   test_li = created2(data[i].loca_no)
+      // }
+      // console.log(test_li)
+      // console.log(data[0].loca_no);
+
+      // const ret2 = await findHashName(data[0].loca_no);
+      // const {data2} = ret2;
+      // this.hashs = ret2.data2;
+      // console.log(data2);
+
+      // console.log(data[1].loca_no);
+      // console.log(data[0].loca_no);
+    },
+    // created2(){
+    //   const ret = findHashName()
+    //   const {data} = ret;
+    //   this.hashs = ret.data;
+    //   console.log(123);
     // },
+
+    
     
     
     data() {
         return {
           hashs:[
             {
+            // hash_no:'',
             hash_name: ''
           }
           ],
@@ -48,11 +72,11 @@ export default {
               loca_no:'',
               title: "",
               picture1: "",
-              picture2: "",
-              picture3: "",
-              picture4: "",
-              picture5: "",
-              context:""
+              // picture2: "",
+              // picture3: "",
+              // picture4: "",
+              // picture5: "",
+              // context:""
             }
           ],
           // locations:[]
@@ -65,15 +89,14 @@ export default {
     //   );
     // },
     methods:{
-     async goDetail(event){
-        console.log(event);
-      const ret2 = await findHashName(event)
-      const {data} = ret2;
-      console.log(findHashName({event}))
-      console.log(data.hash_name);
-      // this.hashs = ret2.data;
+     async goDetail(loca_no){
+      const ret2 = await findHashName({loca_no})
+      console.log(await findHashName({loca_no}))
+      const {data} = ret2
+      this.hashs = data.hash_name;
+      console.log(data)
       this.$router.push({
-      path: `/detail3/locationdetail/${event}`
+      path: `/detail3/locationdetail/${loca_no}`
       })
       },
     }

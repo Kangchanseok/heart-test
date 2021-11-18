@@ -16,10 +16,10 @@
 
           <div class="number">01</div>
           <div class="body">            
-            <div class="location">Gyeonghuigung, South Korea</div>
-            <div class="headline" @click="gogo">Photo by Bundo Kim</div>
-            <!-- <a href="https://unsplash.com/photos/Y7IilZ5VLdA" target="_blank">
-              <div class="link">View on Unsplash</div></a> -->
+            <div class="location">Gang-Nam</div>
+            <div class="headline" @click="gogo">스시메이진</div>
+            <a href="https://media-cdn.tripadvisor.com/media/photo-s/13/dd/2a/3f/caption.jpg" target="_blank"></a>
+              <!-- div class="link">View on Unsplash</!-->
           </div>
         </div>
       </div>
