@@ -58,6 +58,7 @@
       >{{context}}</b-form-textarea>
       <b-input-group-append>
         <b-button class="writeBtn" variant="outline-primary" @click="[modifyCoData(),modifyCoData2()]">수정하기</b-button>
+        <b-button class="writeBtn" variant="outline-danger" @click="cancleModify" >취소</b-button>
       </b-input-group-append>
     </b-input-group>
   </div>
@@ -120,6 +121,9 @@ export default {
     }) 
     this.$router.go(this.$router.currentRoute);
     },
+    cancleModify(){
+      this.$router.go(this.$router.currentRoute);
+    }
     //   async deleteScData(){
     //   await deleteSubComment({subcomment_no: this.subcomment_no})
     //   this.$router.push({

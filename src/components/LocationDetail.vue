@@ -57,7 +57,7 @@
     <br/>
     <div class="line"></div>
 
- <!-- <div class="comment-box" id="comment">
+ <div class="comment-box" id="comment">
         <div class="loader" v-show="loading" >
           <span class="spinner"></span>  
         </div>
@@ -67,7 +67,7 @@
           <input v-model="data.name" class="input-name" type="text" name="name" placeholder="Your Name" required>
           <input :disabled="loading" type="submit" value="Comment">
         </form>
-</div> -->
+</div>
      </div>
   </div>
 </template>
@@ -106,31 +106,31 @@ export default {
           picture4:'',
           picture5:'',
           context: '',
-          tag:''
-            // loading: false,
-            // data: {},
+          tag:'',
+            loading: false,
+            data: {},
         };
     },
     // created(){
     //   findLocationDetailList().then(response => this.data2 = response.data);
     // },
-        // methods: {
-      // submit() {
-      //   this.loading = true;
-      //   // Save Comment
-      //   this.$http.post('http://localhost:3434', this.data).then((response) => {
-      //     // success callback
-      //     // fire event for comment
-      //     this.$emit('commented', response.data);  
-      //     // Clear the message
-      //     this.data.message = "";
-      //     this.loading = false;
-      //   // }, //(response) => {
-      //   //   // error callback
-      //   //   this.loading = false;
-      //   });
-      // }
-    // }
+        methods: {
+      submit() {
+        this.loading = true;
+        // Save Comment
+        this.$http.post('http://localhost:3434', this.data).then((response) => {
+          // success callback
+          // fire event for comment
+          this.$emit('commented', response.data);  
+          // Clear the message
+          this.data.message = "";
+          this.loading = false;
+        // }, //(response) => {
+        //   // error callback
+        //   this.loading = false;
+        });
+      }
+    }
 };
 </script>
 

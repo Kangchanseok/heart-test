@@ -29,8 +29,6 @@
 
 <script>
 import Search from '@/components/Search'
-
-
   export default{
     name:"Main",
     components:{
@@ -40,11 +38,9 @@ import Search from '@/components/Search'
     data(){
       return{
         search:'' , 
-
       }
     },
     methods: {
-
     },
     computed: { //! 검색어에 입력하면 타이틀(내용) 걸러줌 (우리꺼에 맞게 수정하기)
       filteredBlogs:function(){
@@ -54,7 +50,6 @@ import Search from '@/components/Search'
       }
     }
   
-
 }
 </script>
 
@@ -62,9 +57,7 @@ import Search from '@/components/Search'
 
 
 <style scoped>
-
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
-
 /** 메인 이미지 설정*/
 .rela-block {
   display: block;
@@ -72,16 +65,13 @@ import Search from '@/components/Search'
   text-align: center;
   box-sizing: border-box;
   overflow: hidden;
-  margin-bottom: 20px;
 }
-
 /** 메인 이미지 소스*/
 .top-section {
-  height: 100vh;
+  height: 70vh;
   background: url("https://images.unsplash.com/photo-1540175496787-f3afe88ebc00?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2922&q=80") no-repeat center;
   background-size: cover;
 }
-
 /** 메인 이미지 효과*/
 .grad-back::before {
   content: "";
@@ -92,14 +82,12 @@ import Search from '@/components/Search'
   bottom: 0;
   background: radial-gradient(transparent, rgba(0,0,0,0.3));
 }
-
 /** 메인 텍스트 설정 */
 .top-text {
   color: #fff;
   top: 58%;
   line-height: 28px;
 }
-
 .top-small-text {
   font-size: 17px;
   line-height: 24px;
@@ -107,7 +95,6 @@ import Search from '@/components/Search'
   font-weight: 400;
   margin-bottom: 30px;
 }
-
 .big-text {
   font-family: 'Nanum Gothic', sans-serif;
   text-transform: uppercase;
@@ -117,8 +104,6 @@ import Search from '@/components/Search'
   letter-spacing: 20px;
   margin-bottom: 20px;
 }
-
-
 .abs-cent-text {
   position: absolute;
   width: 90%;
@@ -127,26 +112,19 @@ import Search from '@/components/Search'
   transform: translate(-50%, -50%);
   text-align: center;
 }
-
 .section-search input {
   padding: 5px !important;
   font-size: 18px !important;
   width: 50% !important;
   border: #f4f4f4 3px solid !important;
 }
-
-
 .container h3
 {
   font-family: 'Nanum Gothic', sans-serif;
   font-size: 25px;
   padding: 20px;
 }
-
-
 /* popular css */
-
-
 .icons{
   display: inline-block;
   margin-top: 10px;
@@ -495,5 +473,4 @@ import Search from '@/components/Search'
     font-size: 0.75vw;
   }
 }
-
 </style>

@@ -90,7 +90,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
 
 
-header{
+nav{
   background-color: #7bc4c4;
   z-index: 99;
   width: 100%;
@@ -98,6 +98,11 @@ header{
   transition: .5s ease all;
   color: #fff;
   margin-top: 0;
+  display: flex;
+  align-items: center;
+  
+  justify-content: flex-end;
+  position: fixed
   
   
 }
@@ -108,7 +113,7 @@ nav{
   flex-direction: row;
   padding: 12px 0;
   transition: .5s ease all;
-  width: 90%;
+  /* width: 90%; */
   margin: 0 auto;
   @media(min-width: 1140px){
     max-width: 1140px;

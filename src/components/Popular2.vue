@@ -7,7 +7,7 @@
     <div id="hero-slides">
       <!-- <div id="slides-cont"> -->
       <div id="slides">
-        <div class="slide" style="background-image: url(https://drive.google.com/file/d/120nXsZBZhJdejmDQ_xkwJjfd7ypNDCrH/view?usp=sharing)">
+        <div class="slide" style="background-image: url(https://i.postimg.cc/k5w2g7kY/Gyeonghuigung.jpg)">
 
           <!-- <div class="icons">
             <div class="views"><i class="ion-eye"></i>9,280</div> 
@@ -16,10 +16,10 @@
 
           <div class="number">01</div>
           <div class="body">            
-            <div class="location">Gang-Nam</div>
-            <div class="headline" @click="gogo">스시메이진</div>
-            <a href="https://media-cdn.tripadvisor.com/media/photo-s/13/dd/2a/3f/caption.jpg" target="_blank"></a>
-              <!-- div class="link">View on Unsplash</!-->
+            <div class="location">Gyeonghuigung, South Korea</div>
+            <div class="headline" @click="gogo">Photo by Bundo Kim</div>
+            <!-- <a href="https://unsplash.com/photos/Y7IilZ5VLdA" target="_blank">
+              <div class="link">View on Unsplash</div></a> -->
           </div>
         </div>
       </div>
@@ -32,7 +32,7 @@
     <div id="hero-slides">
       <!-- <div id="slides-cont"> -->
       <div id="slides">
-    <div class="slide" style="background-image: url(../src/assets/Popular/Deoksugung.jpg)">
+    <div class="slide" style="background-image: url(https://i.postimg.cc/635Gr8rN/Deoksugung.jpg)">
 
           <!-- <div class="icons">
             <div class="views"><i class="ion-eye"></i>8,731</div> 
@@ -57,7 +57,7 @@
       <!-- <div id="slides-cont"> -->
   <div>
     <div id="slides">
-    <div class="slide" style="background-image: url(https://alca.tv/static/u/9b5f71cb-34a3-4fb4-a3a6-0ce9557c0acd_opt.png)">
+    <div class="slide" style="background-image: url(https://i.postimg.cc/W15D2NRW/cait-ellis-Erld-XTq-Xv0-unsplash.jpg)">
 
           <!-- <div class="icons">
             <div class="views"><i class="ion-eye"></i>10,239</div> 
@@ -82,7 +82,7 @@
     <div id="hero-slides">
       <!-- <div id="slides-cont"> -->
       <div id="slides">
-    <div class="slide" style="background-image: url(https://alca.tv/static/u/10cfd52d-e217-41e9-bb8b-ad43384a5e63_opt.png)">
+    <div class="slide" style="background-image: url(https://i.postimg.cc/fTwTkGf6/robson-hatsukami-morgan-ku9-Ftte6-Ymo-unsplash.jpg)">
 
           <!-- <div class="icons">
             <div class="views"><i class="ion-eye"></i>928</div> 
@@ -139,7 +139,6 @@ import {Hooper,
   }
    from "hooper";
 import 'hooper/dist/hooper.css';
-
 export default {
    
     components: {
@@ -166,31 +165,30 @@ methods:{
     })
   }
 }
-
 };
-
-
 </script>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
 /* @import '.css/hooper.css'; */
-
 .hooper-next, .hooper-prev {
 background-color: blue;
+}
+.hooper{
+  height: 760px;
+  
 }
 /* 
 .hooper{
   height: 700px
 } */
-.icons{
+/* .icons{
   display: inline-block;
   margin-top: 10px;
   margin-left: 280px;
-}
+} */
 #hero-slides {
-  
-  --page: 0;
+  padding-top: 30px;
   height: 100%;
   /* background: #25303c; */
   /* background : #ffffff; */
@@ -200,7 +198,6 @@ background-color: blue;
   
   overflow: hidden;
 }
-
 #hero-slides #header {
   height: 12vh;
   line-height: 12vh;
@@ -313,20 +310,6 @@ background-color: blue;
 }
 #hero-slides #slides-cont #prev:hover:before {
   left: 30%;
-}
-#hero-slides #slides-cont #next-catch,
-#hero-slides #slides-cont #prev-catch {
-  width: 10vw;
-  height: 76vh;
-  position: absolute;
-  top: 0;
-  z-index: 90;
-}
-#hero-slides #slides-cont #next-catch {
-  right: 0;
-}
-#hero-slides #slides-cont #prev-catch {
-  left: 0;
 }
 #hero-slides #slides {
   /* --slides-height: 700px; */
@@ -544,7 +527,5 @@ background-color: blue;
     font-size: 0.8vw;
     height: 700px;
   }
-
 }
-
 </style>
