@@ -11,11 +11,22 @@
        v-on:keyup.down="selectValue('down')"
        v-on:keyup.up="selectValue('up')">
     <div class="search">
-      <input class="s" placeholder="'#'을 써보세요"
+      <input 
             type="text"
+            class="s"
+            placeholder="'#'을 입력하세요"
             v-on:input="searchQuery=$event.target.value"
             @keyup.enter="onSubmit($event.target.value)"
-            >
+            
+            />
+      <button
+        @click.prevent="onSubmit($event.target.value)" 
+        type="submit"
+        class="search_searchButton"
+      >
+        <img src="@/assets/search.svg" alt="search" />
+      </button>
+
              <!-- v-model="searchQuery" autofocus @keyup="onKeyup" -->
       <!-- <button type="reset" @click="onClickResetBtn" v-show="searchQuery.length" class="btn-reset"></button> -->
       <!-- link추가와 최근검색어 기능 넣을지? -->
@@ -41,8 +52,6 @@
 
 <script>
 import { findHashNo} from '../service'
-
-
 var names = [
   { name: '#송파구' },
   { name: '#송파구 잠실' },
@@ -198,33 +207,21 @@ strong {
   vertical-align: middle;
   text-align: center;
 }
-#app .search {
-  position: relative;
-  margin: 0 auto;
-  width: 100%;
-  max-width: 600px;
-}
-#app .search .s {
-  padding: 10px 20px;
-  width: 100%;
-  max-width: 600px;
-  height: 60px;
-  box-sizing: border-box;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-  border: 1px solid #888;
-  font-size: 16px;
-}
 #app .search .r {
   display: none;
   position: absolute;
-  left: 0;
-  top: 60px;
-  width: 100%;
+  left: 302px;
+  top: 222px;
+  width: 626px;
   height: 156px;
   overflow-y: auto;
+  list-style: none;
+  
+  
 }
 #app .search .r.show {
   display: block;
+  
 }
 #app .search .r li {
   margin-top: -1px;
@@ -233,18 +230,61 @@ strong {
   height: 40px;
   background-color: #fff;
   box-sizing: border-box;
-  border: 1px solid #888;
+  border: 1px solid rgb(255, 255, 255);
   outline: none;
   font-size: 16px;
   line-height: 40px;
   cursor: pointer;
+  
 }
 #app .search .r li:hover, #app .search .r li.sel {
-  background-color: #f2f2f2;
+  background-color: #7bc4c4;
 }
 #app .search p {
   padding: 10px 0;
   text-align: right;
   font-size: 12px;
+  
+}
+.search {
+    display: flex;
+    height: 40px;
+    margin: 0 auto;
+    width: 50%;
+}
+.s {
+    width: 100%;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    
+    border: 2px solid #ffffff;
+    border-right: none;
+    border-radius: 6px 0 0 6px;
+    padding: 6px 10px;
+    height: inherit;
+    outline: none;
+}
+.s::placeholder {
+    color: rgb(0, 0, 0);
+}
+.search_searchButton {
+    height: inherit;
+    
+    color: #fff;
+    border: 0px solid #ffffff;
+    border-radius: 0 6px 6px 0;
+    border-left: none;
+    cursor: pointer;
+    font-size: 20px;
+    
+    
+}
+.search_searchButton img {
+    width: 20px;
+    height: 20px;
+    
+    
 }
 </style>

@@ -107,7 +107,7 @@ export default {
 
 </script>
 
-<style>
+<style >
 
 .gallery {
     flex-wrap: wrap;
@@ -122,7 +122,7 @@ export default {
     cursor: pointer;
 }
 
-h3 {
+/* h3 {
     display: inline-block;
-}
+} */
 </style>

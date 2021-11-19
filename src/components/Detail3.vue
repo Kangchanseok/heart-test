@@ -1,6 +1,6 @@
 <template>
   <div class="detail3">
-  <Search  class="search" />
+  <Search />
   <Detail1 />
   <Detail2 />
 
@@ -24,8 +24,9 @@ export default {
 
 
 <style scoped>
-.search{
+/* .search{
   margin-top: 0;
   margin-bottom: 0;
-}
+  
+} */
 </style>
