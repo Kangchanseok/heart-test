@@ -2,19 +2,21 @@
   <div class="gallery"  style="width: 25rem" >
     <div class="gallery-panel"  
          v-for="location in locations" :key="location.loca_no" @click="goDetail(location.loca_no)">
-         <div class="gallery-panel2"
-               v-for="hash in hashs" :key="hash.hash_name">
+         <!-- <div class="gallery-panel2"
+               v-for="hash in hashs" :key="hash.hash_name"> -->
           <div class="contents">
           <img class="test" :src= "location.picture1"
            height="320"
            width="350">
           <h3 class="test-text">{{location.title}}</h3>
-          <p class="test-text"> {{ hash.hash_name }}</p>
+          <p>{{ location.tag }}</p>
+          <!-- <p class="test-text"> {{ hash.hash_name }}</p> -->
+          
       </div>
     </div>
   </div>
   
-  </div>
+  <!-- </div> -->
   
 </template>
 
@@ -61,22 +63,23 @@ export default {
     
     data() {
         return {
-          hashs:[
-            {
-            // hash_no:'',
-            hash_name: ''
-          }
-          ],
+          // hashs:[
+          //   {
+          //   // hash_no:'',
+          //   hash_name: ''
+          // }
+          // ],
           locations: [
             {
-              loca_no:'',
+              loca_no:"",
               title: "",
               picture1: "",
               // picture2: "",
               // picture3: "",
               // picture4: "",
               // picture5: "",
-              // context:""
+              // context:"",
+              tag:"",
             }
           ],
           // locations:[]

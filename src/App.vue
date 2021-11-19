@@ -2,9 +2,7 @@
   <div id="app">
 
     <Navbar />
-    <!-- <Search /> -->
     <router-view/> 
-    <!-- <Popular2 /> -->
     <BackToTop />
     <Footer />
         
@@ -26,7 +24,7 @@ import Detail2 from '@/components/Detail2'
 import Detail3 from '@/components/Detail3'
 import LocationDetail from '@/components/LocationDetail'
 import Search from '@/components/Search'
-
+import Mypage from '@/components/Mypage'
 
 
 export default {
@@ -44,7 +42,8 @@ export default {
     Detail2,
     Detail3,
     LocationDetail,
-    Search
+    Search,
+    Mypage
     
   }
 }

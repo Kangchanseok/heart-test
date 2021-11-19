@@ -8,7 +8,7 @@ import Register from '@/components/Register'
 import Home from '@/components/Home'
 import Detail3 from '@/components/Detail3'
 import LocationDetail from '@/components/LocationDetail'
-import Detail1 from '@/components/Detail1'
+import Mypage from '@/components/Mypage'
 
 
 Vue.use(Router)
@@ -58,6 +58,11 @@ export default new Router({
       path: '/detail3/locationdetail/:locaNo',
       name: 'LocationDetail',
       component: LocationDetail
+    },
+    {
+      path: '/mypage',
+      name: 'Mypage',
+      component: Mypage
     },
     
   ],

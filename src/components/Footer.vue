@@ -1,21 +1,45 @@
 <template>
-<footer>
-<div class="rela-block footer-section">
-    <h2 class="small-header top-link">Back to Top</h2>
-    <div class="rela-block social-buttons-container">
-        <div class="social-button facebook-button"></div>
-        <div class="social-button twitter-button"></div>
-        <div class="social-button instagram-button"></div>
-        <div class="social-button behance-button"></div>
-    </div>
-    <p>Classic deluxe custom designer luxury prestige high-quality premium select gourmet pocket pencil sharpener.<br>
-        Yours for the asking, no purchase necessary. It's our way of saying thank you.</p>
-</div>
-</footer> 
+<footer class="footsie">
+  <div class="leftFooter">
+      <p>
+         <span>Useful Links</span>
+          <ul>
+              <li class="list"><a href="/">HOME</a></li>
+              <li class="list"><a href="/#/detail3">상세검색</a></li>
+              <li class="list"><a href="/#/board/free">고객센터</a></li>
+              <li class="list"><a href="/#/login">로그인</a></li>
+              <li class="list"><a href="/#/mypage">마이페이지</a></li>
+          </ul>
 
+      </p>
+  </div>
+  <div class="middleFooter">
+      <p>
+         <span>Address</span>
+          <ul>
+              <li class="list">서울특별시 강남구</li>
+              <li class="list">서초구 서초동 서초대로74길 33</li>
+              <li class="list">02-3486-3456</li>
+              <li class="list">bitacademy@bit.co.kr</li>
+              <li class="list google"><a href="https://www.google.com/maps/place/%EB%B9%84%ED%8A%B8%EA%B5%90%EC%9C%A1%EC%84%BC%ED%84%B0/@37.4945301,127.0275661,18.51z/data=!4m5!3m4!1s0x0:0x44f6db1c2b6c3bf7!8m2!3d37.4946287!4d127.0276197">View on Google Maps</a></li>
 
+          </ul>
 
+      </p>
+  </div>
+  <div class="rightFooter">
+      <p>
+         <span>Legal</span>
+          <ul>
+              <li class="list">Copyright &copy;2021</li>
+              <li class="list">All rights reserved.</li>
+              <li class="list">Terms &amp; Conditions</li>
+          </ul>
 
+      </p>
+  </div>
+
+</footer>
 
 </template>
 
@@ -23,29 +47,29 @@
 <script>
 export default {
   name:"Footer",
-  data(){
-    return {};
-  },
+  // data(){
+  //   return {};
+  // },
 
-  mounted(){
-    window.smoothscroll = () => {
-      let currentScroll = document.documentElement.scrollTop || document.body.scrollTop
-      if (currentScroll > 0) {
-        window.requestAnimationFrame(window.smoothscroll)
-        window.scrollTo(0, Math.floor(currentScroll - (currentScroll / 5)))
-      }
-    }
-    window.addEventListener('scroll', this.catchScroll)
-  },
-  destroyed () {
-    window.removeEventListener('scroll', this.catchScroll)
-  },
-  methods: {
-    backToTop(){
-      window.smoothscroll()
-      this.$emit('scrolled')
-    }      
-  },
+  // mounted(){
+  //   window.smoothscroll = () => {
+  //     let currentScroll = document.documentElement.scrollTop || document.body.scrollTop
+  //     if (currentScroll > 0) {
+  //       window.requestAnimationFrame(window.smoothscroll)
+  //       window.scrollTo(0, Math.floor(currentScroll - (currentScroll / 5)))
+  //     }
+  //   }
+  //   window.addEventListener('scroll', this.catchScroll)
+  // },
+  // destroyed () {
+  //   window.removeEventListener('scroll', this.catchScroll)
+  // },
+  // methods: {
+  //   backToTop(){
+  //     window.smoothscroll()
+  //     this.$emit('scrolled')
+  //   }      
+  // },
 
 }
 </script>
@@ -56,67 +80,64 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
 
-.small-header {
-  font-family: 'Nanum Gothic', sans-serif;
-  text-transform: uppercase;
-  text-align: center;
-  font-size: 20px;
-  line-height: 28px;
-  letter-spacing: 8px;
-  margin-bottom: 20px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
-
-.footer-section p{
-    text-align: center;
-    font-family: 'Nanum Gothic', sans-serif;
-} 
-
-
-.footer-section {
-  padding: 75px 0;
+body {
+  
+  height: 25vh;
+  font-family: 'Raleway', sans-serif;
+}
+.footsie {
   background: #7bc4c4;
+  border-top: 0.0625em solid lightgrey;
+  bottom: 0;
+  color: rgba(110, 110, 110, 0.95);
+  height: auto;
+  font-size: 1em;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  cursor: default;
+}
+.footsie .leftFooter,
+.footsie .rightFooter,
+.footsie .middleFooter {
+  flex: 1;
+  padding: 0.2em;
+}
+.leftFooter li a:hover{
   color: #fff;
 }
-.footer-section .small-header {
-  margin-bottom: 20px;
+.footsie ul {
+  list-style-type: none;
 }
-.footer-section .top-link {
-  cursor: pointer;
+.footsie .list {
+  padding-top: 0.6em;
 }
-.social-buttons-container {
-  min-height: 100px;
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto 20px;
-  text-align: center;
+.footsie .list a {
+  text-decoration: none;
+  color: rgba(110, 110, 110, 0.95);
 }
-.social-button {
-  display: inline-block;
-  position: relative;
-  transform: scale(0.75);
-  height: 75px;
-  width: 75px;
-  background-size: cover !important;
-  transition: 0.3s ease;
-  margin: 14px 2px;
-  cursor: pointer;
+.footsie .google {
+  text-decoration: underline;
 }
-.social-button:hover {
-  transform: scale(1);
-  transition: 0.3s cubic-bezier(0.3, 0.2, 0, 2.5);
+.footsie p {
+  padding: 1.25em;
 }
-.social-button.twitter-button {
-  background: url("https://cdn4.iconfinder.com/data/icons/liu-square-blac/60/twitter-square-social-media-256.png") no-repeat center;
+.footsie span {
+  font-size: 1.4em;
+  color: #ffffff;
+  font-weight: 800;
 }
-.social-button.facebook-button {
-  background: url("https://cdn4.iconfinder.com/data/icons/liu-square-blac/60/facebook-square-social-media-256.png") no-repeat center;
-}
-.social-button.instagram-button {
-  background: url("https://cdn4.iconfinder.com/data/icons/liu-square-blac/60/instagram-square-social-media-256.png") no-repeat center;
-}
-.social-button.behance-button {
-  background: url("https://cdn4.iconfinder.com/data/icons/liu-square-blac/60/behance-square-social-media-256.png") no-repeat center;
-}
+
 
 
 </style>

@@ -10,9 +10,9 @@
       <ul v-show="!mobile" class="navigation">
         <li><router-link class="link" to="/">Home</router-link></li>
         <li><router-link class="link" to="/detail3">상세 검색</router-link></li>
-        <!-- <li><router-link class="link" to= "">Location</router-link></li> -->
         <li><router-link class="link" to="/board/free">고객센터</router-link></li>
         <li><router-link class="link" to="/login">로그인</router-link></li>
+        <li><router-link class="link" to= "/mypage">마이페이지</router-link></li>
       </ul>
       <div class="icon">
         <i @click="toggleMobileNav" v-show="mobile" class="far fa-bars" :class="{'icon-active' : mobileNav }"></i>
@@ -113,7 +113,7 @@ nav{
   flex-direction: row;
   padding: 12px 0;
   transition: .5s ease all;
-  /* width: 90%; */
+  width: 100%;
   margin: 0 auto;
   @media(min-width: 1140px){
     max-width: 1140px;
