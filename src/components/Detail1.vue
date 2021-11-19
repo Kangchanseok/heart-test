@@ -9,7 +9,8 @@
            height="320"
            width="350">
           <h3 class="test-text">{{location.title}}</h3>
-          <p>{{ location.tag }}</p>
+          
+          <p>{{ location.hash_name }}</p>
           <!-- <p class="test-text"> {{ hash.hash_name }}</p> -->
           
       </div>
@@ -33,9 +34,12 @@ export default {
 
     async created(){
       // var test_li = {}
-      // var i = 0
+      var i = 0
+      var li = []
       const ret = await findLocationList()
       const {data} = ret;
+
+      console.log(ret.data[0].hash_name)
       this.locations = ret.data;
       // for (i = 0; i<= 10; i++) {
       //   test_li = created2(data[i].loca_no)
@@ -79,7 +83,8 @@ export default {
               // picture4: "",
               // picture5: "",
               // context:"",
-              tag:"",
+              // tag:"",
+              hash_name:""
             }
           ],
           // locations:[]
@@ -95,7 +100,7 @@ export default {
      async goDetail(loca_no){
       const ret2 = await findHashName({loca_no})
       console.log(await findHashName({loca_no}))
-      const {data} = ret2
+      const {data} = ret2;
       this.hashs = data.hash_name;
       console.log(data)
       this.$router.push({

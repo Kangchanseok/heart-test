@@ -9,8 +9,9 @@
             <ul class="area" id="region">
                 <li>
                     <button type="button" 
-                    :class= "{btn: isActive}" 
-                    @click="isActives(hash.hash_no)">
+                    :class= "{btn: isActive}"
+                    @click="changePage(hash.hash_name)"> 
+                    <!-- @click="isActives(hash.hash_no)"> -->
                         <span >{{hash.hash_name}}</span>
                     </button>
                 </li>
@@ -26,7 +27,7 @@
 
 
 <script>
-import {findHashList} from '../service';
+import {findHashList, selectHashName} from '../service';
 
 export default {
     name: 'hashtag',
@@ -52,10 +53,16 @@ export default {
     methods:{
         isActives(e) {
             
-            console.log(e)
+            // console.log(e)
             //    console.log(event.target.innerText);
         },
+        async changePage(hash_name){
+            const ret = await selectHashName({hash_name})
+            const {data} = ret;
+            console.log({data})
             
+        }
+               
             // 비동기 써서 데이터 넘어오면 바껴야댐
             // if (event.target  '#') {
             //     console.log(123);

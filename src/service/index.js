@@ -164,3 +164,10 @@ export const addContent = ({ user_no, title, context }) => {
       params: { loca_no }
     });
   };
+
+  // select hashname
+  export const selectHashName = ({ hash_name }) => {
+    return axios.get("http://127.0.0.1:3000/select/hashname", {
+      params: { hash_name }
+    });
+  };
