@@ -80,10 +80,10 @@ export default {
     LocationCommentCreate    
   },
  
-  async created(){
-    const ret = await findSubComment({comment_no});
-    this.subCommentList = ret.data;
-  },
+  // async created(){
+  //   const ret = await findSubComment({comment_no});
+  //   this.subCommentList = ret.data;
+  // },
   data() {  
     return {
       name: data.User.filter(
