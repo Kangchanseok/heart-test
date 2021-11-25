@@ -3,7 +3,6 @@
   <Search />
   <Detail1 />
   <Detail2 />
-
   </div>
 </template>
 
@@ -12,12 +11,13 @@
 import Search from '@/components/Search'
 import Detail1 from '@/components/Detail1';
 import Detail2 from '@/components/Detail2';
+import Location from '@/components/Location';
 export default {
   name: "Detail3",
   components: {
     Search,
     Detail1,
-    Detail2
+    Detail2,
   },
 };
 </script>

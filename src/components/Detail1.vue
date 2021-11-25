@@ -1,6 +1,6 @@
 <template>
   <div class="gallery"  style="width: 25rem" >
-    <div class="gallery-panel"  
+    <div class="gallery-panel" 
          v-for="location in locations" :key="location.loca_no" 
          @click="goDetail(location.loca_no)">
           <div class="contents">
@@ -8,40 +8,52 @@
            height="320"
            width="350">
           <h3 class="test-text">{{location.title}}</h3>
-          <p>{{ location.hash_name }}</p>          
+          <p>{{ location.hash_name }}</p>
+                  
       </div>
     </div>
   </div>  
 </template>
 
 <script>
-import {findLocationList, findHashName, selectHashName} from '../service';
+import {findLocationList, findHashName} from '../service';
 import EventBus from './EventBus'
+import {choiceSearch} from 'vuex'
+import {mapMutations} from 'vuex'
+
 
 
 
 export default {
     name: 'gallery',
+
     async created(){
-        const ret = await findLocationList();
-        this.locations = ret.data;
-        // return locations;
-      // },
-      // mounted(){
-      EventBus.$on('changePage', (hash_name) => {
-        this.hash_name = hash_name;
-        const res2 = selectHashName({hash_name}).then(function(res){
-          return res.data;
-        }).catch(function(error){
-          console.log(error);
-        });
-        console.log(res2);
-        console.log(this.locations);
-        // console.log(ret.data);
-        this.locations = res2;
-        return res2;
+      const ret = await findLocationList();
+      this.locations = ret.data;
+
+      // this.locations = this.$store.getters.justtest
+      if (this.$route.query.hash_name != null) {
+        
+        this.locations = this.$route.query.hash_name
+      }
+      // console.log(await this.$store.dispatch("viewtest"))
+      await EventBus.$on('changePage', (ret2) =>{
+        this.ret2 = ret2;
+        this.locations = this.ret2;
+      // })]
+      // console.log(this.locations)
+      // this.locations = this.$store.getters['testing']
+      // console.log(this.$store.getters['justtest'])
+      // this.locations = mapGetters({
+      //   'ret'
+      // })
       })
-      },
+      // await EventBus.$on('changePage2', (ret3) =>{
+      //   this.ret3 = ret3;
+      //   this.locations = this.ret3;
+      //   console.log(this.locations);
+      // })
+    },
          
     data() {
         return {
@@ -59,47 +71,21 @@ export default {
               hash_name:""
             }
           ],
-          // locations:[
-          //   {
-          //     loca_no:"",
-          //     title: "",
-          //     picture1: "",
-          //     // picture2: "",
-          //     // picture3: "",
-          //     // picture4: "",
-          //     // picture5: "",
-          //     // context:"",
-          //     // tag:"",
-          //     hash_name:""
-          //   }
-          // ]
-        };
+        }
     },
-    // created() {
-    //   findLocationList().then(
-    //   response =>
-    //   this.locations = response.data
-    //   );
-    // },
     methods:{
      async goDetail(loca_no){
-      const ret2 = await findHashName({loca_no})
-      // console.log(await findHashName({loca_no}))
+      // console.log(this.$store.getters['choiceSearch'])
+      const ret2 = await findHashName({loca_no});
       const {data} = ret2;
       this.hashs = data.hash_name;
-      // console.log(data)
       this.$router.push({
       path: `/detail3/locationdetail/${loca_no}`
       })
       },
-      ham1(){
-        created()
-      },
-      ham2(){
-        mounted()
-      }
-    }
+    },
 };
+
 
 </script>
 

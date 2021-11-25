@@ -6,8 +6,7 @@
    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
    viewBox="0 0 1400 1400"  width="800px" height="700px" id="Korea-svg">
     
-   <router-link :to="{name : 'Params', params: {name: '도봉구'}}">
-   <g @mouseover="도봉구 = true" @mouseleave="도봉구 = false">
+   <g @click="changePage2" id="도봉구" @mouseover="도봉구 = true" @mouseleave="도봉구 = false">
       <title>도봉구</title>
       
       <desc>
@@ -30,7 +29,7 @@
       c3.451,0.612,7.951-0.803,10.502,0c9.178,2.887,3.551,20.857,10.002,25.005c4.402,2.831,14.043,1.217,20.506,1.5
       c7.441,0.328,14.299,0.634,21.004,1C944.035,158.024,948.826,166.568,964.064,164.667z" />
       
-   </g></router-link>
+   </g>
 
 
    <router-link :to="{name : 'Params', params: {name: '동대문구'}}">
@@ -299,8 +298,8 @@
    </g></router-link>
 
 
-   <router-link :to="{name : 'Params', params: {name: '강남구'}}">
-   <g @mouseover="강남구 = true" @mouseleave="강남구 = false">
+   
+   <g id="강남구" @click="changePage2" @mouseover="강남구 = true" @mouseleave="강남구 = false">
       <title>강남구</title>
       <desc>
          <image xlink:href="/09.jpg" alt=""></image>
@@ -327,7 +326,7 @@
  c-0.609-7.787,0.043-16.854-2.002-23.006c-2.199-6.624-12.922-11.019-15.502-18.004c-2.012-5.447-1.949-13.102-3.002-19.504
  c-1.125-6.854-1.74-14.938-3.5-20.506c-2.148-6.789-6.955-12.942-10.002-19.004C815.576,898.467,812.641,891.889,809.529,885.332z
 " />
-   </g></router-link>
+   </g>
 
 
    <router-link :to="{name : 'Params', params: {name: '종로구'}}">
@@ -865,6 +864,9 @@
 </template>
 
 <script>
+
+import {selectHashName} from '../service'
+import EventBus from './EventBus';
 export default{
    data(){
       return{
@@ -895,6 +897,22 @@ export default{
          중랑구: false
       }
    },
+   methods:{
+        async changePage2(event){
+         const hash_name = event.currentTarget.id;
+         const ret3 = await selectHashName({hash_name});
+         // this.$store.commit('goSearch')
+         // EventBus.$emit('changePage2', ret3.data);
+         this.$router.push({
+        name:'Detail3',
+        query: {hash_name: ret3.data}
+      })
+         // const ret = await selectHashName(event.currentTarget.id);
+         // this.$store.commit('choiceSearch', ret);
+
+      }
+   }
+}
    //? mouseover  발생하면  event.target해서 id값이나 도봉구 같은 text값 가져와서 구분
    //? 각자 맞는 데이터 넣어주면 끝
    // methods: {
@@ -915,7 +933,7 @@ export default{
    //       this.active = true;
    //    }
    // }
-}
+// }
     // 지도 클릭 시 상세검색 페이지로 이동 && 해시태그가 선택된 상태여야함
     // methods: {
     //     tests: function() {
