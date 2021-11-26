@@ -184,97 +184,96 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap'); 
+* {
+  font-family: 'Nanum Gothic', sans-serif;
+ 
+  
+}
 html, body {
-  height: 100%;
+    height: 100%;
 }
 body {
-  background-color: #ddd;
-  font-size: 14px;
-  color: #333;
+    background-color: #ddd;
+    font-size: 14px;
+    color: #333;
 }
 strong {
-  font-weight: bold;
+    font-weight: bold;
 }
 .wrap {
-  display: table;
-  padding: 40px 20px;
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
+    display: table;
+    padding-top: 20px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
 }
 #app {
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+#app .search {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 600px;
+     margin-top: 100px;
+}
+#app .search .s {
+    padding: 10px 20px;
+    width: 1000px;
+    max-width: 600px;
+    height: 40px;
+    box-sizing: border-box;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    border: 1px solid #888;
+    
+    font-size: 16px;
+    
 }
 #app .search .r {
-  display: none;
-  position: absolute;
-  left: 302px;
-  top: 222px;
-  width: 626px;
-  height: 156px;
-  overflow-y: auto;
-  list-style: none;
-  
-  
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 40px;
+    width: 100%;
+    height: 156px;
+    overflow-y: auto;
+    list-style: none;
+    padding-left: 0;
 }
 #app .search .r.show {
-  display: block;
-  
+    display: block;
 }
 #app .search .r li {
-  margin-top: -1px;
-  padding: 0 20px;
-  width: 100%;
-  height: 40px;
-  background-color: #fff;
-  box-sizing: border-box;
-  border: 1px solid rgb(255, 255, 255);
-  outline: none;
-  font-size: 16px;
-  line-height: 40px;
-  cursor: pointer;
-  
+    margin-top: -1px;
+    padding: 0 20px;
+    width: 100%;
+    height: 40px;
+    background-color: #fff;
+    box-sizing: border-box;
+    
+    outline: none;
+    font-size: 16px;
+    line-height: 40px;
+    cursor: pointer;
+    display: flex;
 }
 #app .search .r li:hover, #app .search .r li.sel {
-  background-color: #7bc4c4;
+    background-color: #7bc4c4;
 }
 #app .search p {
-  padding: 10px 0;
-  text-align: right;
-  font-size: 12px;
-  
-}
-.search {
-    display: flex;
-    height: 40px;
-    margin: 0 auto;
-    width: 50%;
-}
-.s {
-    width: 100%;
-    color: rgb(0, 0, 0);
-    font-size: 16px;
-    line-height: 24px;
-    font-weight: 400;
-    
-    border: 2px solid #ffffff;
-    border-right: none;
-    border-radius: 6px 0 0 6px;
-    padding: 6px 10px;
-    height: inherit;
-    outline: none;
-}
-.s::placeholder {
-    color: rgb(0, 0, 0);
+    padding: 10px 0;
+    text-align: right;
+    font-size: 12px;
 }
 .search_searchButton {
-    height: inherit;
     
-    color: #fff;
-    border: 0px solid #ffffff;
-    border-radius: 0 6px 6px 0;
+    height: 40px;
+    background-color: #fff;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    border: 1px solid #888;
     border-left: none;
     cursor: pointer;
     font-size: 20px;
@@ -286,5 +285,11 @@ strong {
     height: 20px;
     
     
+}
+.search {
+    display: flex;
+    height: 40px;
+    margin: 0 auto;
+    width: 50%;
 }
 </style>

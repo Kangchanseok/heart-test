@@ -4,7 +4,7 @@
      <b-container> <!-- fields 속성을 사용해서 보여주고 싶은 컬럼만 사용 가능! -->
      <div class="boardName">고객센터</div>
     <b-table class="board" 
-     striped hover 
+     hover 
     :per-page="perPage" 
     :current-page="currentPage" 
     :items="items" 
@@ -83,21 +83,21 @@ export default {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap'); 
-
 * {
   font-family: 'Nanum Gothic', sans-serif;
+ 
   
-
 }
 .board{
   margin-top: 20px;
-
 }
 .boardName{
   text-align: left;
   font-weight: bold;
   font-size: 35px;
   margin-bottom: 40px;
-  margin-top: 20px;
+  padding-top: 100px;
+  text-align: center;
+  color: rgb(124, 124, 124);
 }
 </style>

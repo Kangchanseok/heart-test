@@ -92,9 +92,13 @@ methods: {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap'); 
+*{
+  font-family: 'Nanum Gothic', sans-serif;
+}
 body {
     background-color: #e8e7e5;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Nanum Gothic', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -104,7 +108,9 @@ body {
 }
 .pagebody {
     display: flex;
-    width: 760px;
+    width: 100%;
+    padding-right: 0;
+    
 }
 a {
     text-decoration: none;
@@ -139,7 +145,7 @@ a {
     list-style-type: none;
     /*   border-bottom: 1px solid #ccc; */
     padding: .6em .4em .6em .8em;
-    color: #eee;
+    color: rgb(255, 255, 255);
     font-size: 1.1em;
     letter-spacing: 0;
     transition: all 300ms;
@@ -152,7 +158,7 @@ a {
 .sidenav__tab__info {
     font-size: .65em;
     margin-top: 3px;
-    color: #ccc;
+    color: rgb(255, 255, 255);
     font-style: italic;
     letter-spacing: 0;
 }
@@ -168,6 +174,11 @@ a {
     box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.3);
     align-self: flex-start;
     border-radius: 2px;
+}
+.rightsection ul{
+  padding-left: 0;
+  list-style: none;
+  margin-bottom: 0;
 }
 /* Styles for Link box li */
 .linkli__header {

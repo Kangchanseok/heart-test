@@ -86,87 +86,69 @@
 
 
 <style scoped>
-
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
-
-
-nav{
+*{
+  font-family: 'Nanum Gothic', sans-serif;
+}
+nav {
+  padding: 10px 0;
   background-color: #7bc4c4;
   z-index: 99;
-  width: 100%;
-  /* position: fixed; */
-  transition: .5s ease all;
   color: #fff;
-  margin-top: 0;
-  display: flex;
+  
   align-items: center;
-  
-  justify-content: flex-end;
-  position: fixed
-  
-  
-}
-
-nav{
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  padding: 12px 0;
-  transition: .5s ease all;
   width: 100%;
-  margin: 0 auto;
-  @media(min-width: 1140px){
-    max-width: 1140px;
-  }
+  justify-content: flex-end;
+  position: fixed; 
+  /* 아니 고정하면 다른 div가 가려짐;;; */
+  
   
 }
-
+nav{
+  width: 100%;
+  transition: .5s ease all;
+  margin: 0 auto;
+  flex-direction: row;
+  
+}
 ul, .link{
   font-weight: 500;
   color: #fff;
   list-style: none;
   text-decoration: none;
+  position: relative;
 }
-
 li{
   text-transform: uppercase;
   padding: 16px;
   margin-left: 16px;
 }
-
-
 .link{
   
   font-size: 14px;
   transition: .5s ease all;
   padding-bottom: 4px;
   border-bottom: 1px solid transparent;
-
 }
-
 .link.active,
 .link:hover {
   color: rgb(255, 255, 255);
 }
-
 .nav-logo{
   position: absolute;
   top: 50%;
-  left: 0%;
+  left: 2%;
   transform: translateY(-50%);
   letter-spacing: 0px;
   color: #fff;
   transition: 0.4s ease;
   cursor: pointer;
 }
-
 .nav-logo img{
-  width: 250px;
-  height: 150px;
+  width: 170px;
   left: 10px;
   cursor: pointer;
 }
-
 .navigation {
   display: flex;
   align-items: center;
@@ -182,18 +164,14 @@ li{
   right: 24px;
   height: 100%;
 }
-
 i{
   cursor: pointer;
   font-size: 24px;
   transition: 0.8s ease all;
 }
-
-
 .icon-active{
   transform: rotate(180deg);
 }
-
 .dropdown-nav{
   display: flex;
   flex-direction: column;
@@ -205,29 +183,12 @@ i{
   top: 0;
   left: 0;
 }
-
 li {
   margin-left: 0;
 }
-
-.mobile-nav-enter-active,
-.mobile-nav-leave-active{
-  transition: 1s ease all;
-}
-
-.mobile-nav-enter-from,
-.mobile-nav-leave-to {
-  transform: translateX(-250px);
-}
-
-.mobile-nav-enter-to{
-  transform: translateX(0);
-}
-
 .link{
   color:rgb(138, 138, 138);
 }
-
 .scrolled-nav{
   background-color: #7bc4c4;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -236,6 +197,5 @@ li {
   nav{
     padding: 10px 0;
   }
-
   
 </style>

@@ -7,14 +7,15 @@
             > -->
             
             <div class="tag-container"
-            v-for="hash in hashs"
-            :key="hash.hash_no"
+            v-for="(hash, i) in hashs"
+            :key="i"
             >
         <div class="contents-tag">
             <ul class="area" id="region">
-                <li>
+                <li >
                     <button type="button"
-                    @click="(changePage(hash.hash_name))">
+                    @click="[changePage(hash.hash_name), changeColor(hash.hash_no, $event)]"
+                    :style="hash.clicked === true ? { 'background-color': '#7bc4c4', 'color' : 'white' } : null">
                     {{hash.hash_name}}
                     <!-- v-bind:class="[index.isClicked ? 'select': '']" -->
                       <!-- :class= "{btn: changePage}" -->
@@ -42,11 +43,13 @@ export default {
             // activeItem: true,
             // isClicked: false,
             // textColor: false,
+            // clicked: false,
+            // isclicked: false,
             hashs:[
                 {
                     hash_no: "",
                     hash_name: "",
-                    // isClicked: false
+                    clicked: false,
                 }
             ]
         }
@@ -54,13 +57,16 @@ export default {
     created() {
       findHashList().then(response => this.hashs = response.data);
 
-       EventBus.$on('changePage2', (ret3) =>{
-            this.ret3 = ret3;
-            this.locations = this.ret3;
-            console.log(ret3);
+       EventBus.$on('changePage2', (name) =>{
+            this.name = name;
+            // this.locations = this.name;
+            console.log(name);
+            console.log(this.name)
+            // changeColor(hash_no)
+            
+            // console.log(changeColor(hash_no))
             })  
       },
-      
     methods:{
         // refreshValue: function(element) {
         // this.hashs.forEach((e, i) => {
@@ -73,20 +79,24 @@ export default {
                 // this.isClicked = !this.isClicked
         //         this.$set(this.isClicked, i, true) = !this.$set(this.isClicked, i, false)
         // },
-        // changeColor() {
-        //     if (this.textColor === "pinkText") {
-        //         this.textColor = "blueText";
-        //     } else {
-        //         this.textColor = "pinkText"
-        //     }
-        // },
 
         // changeCheck(index){
         //     console.log(this.list[index])
         //     this.list[index] = !this.list[index];
         // },
+        changeColor: function(e) {
+            // const count = true
+            if (this.hashs[e-1].clicked === true) {
+                this.hashs[e-1].clicked = false
+            } else {
+                this.hashs[e-1].clicked = true
+            }
+            // console.log(clicked)
+            // this.$set(this.clicked, e, 'true')
+        },
 
         async changePage(hash_name){
+            // this.isclicked = !this.isclicked
             // // this.$store.commit('hash', hash_name)
             const ret2 = await selectHashName({hash_name});
             // // this.$store.commit('hash', ret2.data)
@@ -158,19 +168,7 @@ li{
 .btn{
     background-color: #7bc4c4;
 }
-.pink {
-  color: pink;
-}
-.blue {
-  color: blue;
-}
-.done{
-    color:red;
-}
-.selected{
-    color: red;
-}
-.checked {
-    color: red
+.active {
+    color: blue
 }
 </style>

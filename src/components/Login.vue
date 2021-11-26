@@ -61,42 +61,19 @@ export default {
 </script>
 
 <style scoped>
-
-html {
-  width: 100%;
-  height: 100%;
-}
-
-body {
-  background: linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
-  color: rgba(0, 0, 0, 0.6);
-  font-family: "Roboto", sans-serif;
-  font-size: 14px;
-  line-height: 1.6em;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.overlay, .form-panel.one:before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: none;
-  background: rgba(0, 0, 0, 0.8);
-  width: 100%;
-  height: 100%;
-}
-
 .form {
-  z-index: 15;
+  z-index: 10;
   position: relative;
   background: #FFFFFF;
   width: 600px;
   border-radius: 4px;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
-  margin: 100px auto 10px;
-  overflow: hidden;
+  margin: auto;
+  top: 150px;
+  margin-bottom: 300px;
+  
+  
 }
 .form-toggle {
   z-index: 10;
@@ -121,7 +98,7 @@ body {
   left: 50%;
   width: 30px;
   height: 4px;
-  background: #4285F4;
+  background: #7bc4c4;
   transform: translate(-50%, -50%);
 }
 .form-toggle:before {
@@ -139,9 +116,12 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 0 0 20px;
+  
+   
 }
 .form-group:last-child {
   margin: 0;
+  
 }
 .form-group label {
   display: block;
@@ -155,6 +135,7 @@ body {
 }
 .two .form-group label {
   color: #FFFFFF;
+  
 }
 .form-group input {
   outline: none;
@@ -183,7 +164,7 @@ body {
 }
 .form-group button {
   outline: none;
-  background: #4285F4;
+  background: #7bc4c4;
   width: 100%;
   border: 0;
   border-radius: 4px;
@@ -196,9 +177,13 @@ body {
   text-transform: uppercase;
   cursor: pointer;
 }
+.form-group button a {
+  text-decoration: none;
+  color: #FFFFFF;
+}
 .two .form-group button {
   background: #FFFFFF;
-  color: #4285F4;
+  color: #7bc4c4;
 }
 .form-group .form-remember {
   font-size: 12px;
@@ -212,53 +197,24 @@ body {
   margin: 0 10px 0 0;
 }
 .form-group .form-recovery {
-  color: #4285F4;
+  color: #2e2e2e;
   font-size: 12px;
   text-decoration: none;
 }
 .form-panel {
   padding: 60px calc(5% + 60px) 60px 60px;
   box-sizing: border-box;
+  
+  
 }
-
 .form-header {
   margin: 0 0 40px;
 }
 .form-header h1 {
   padding: 4px 0;
-  color: #4285F4;
+  color: #7bc4c4;
   font-size: 24px;
   font-weight: 700;
   text-transform: uppercase;
 }
-.two .form-header h1 {
-  position: relative;
-  z-index: 40;
-  color: #FFFFFF;
-}
-.pen-footer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 600px;
-  margin: 20px auto 100px;
-}
-.pen-footer a {
-  color: #FFFFFF;
-  font-size: 12px;
-  text-decoration: none;
-  text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.1);
-}
-.pen-footer a .material-icons {
-  width: 12px;
-  margin: 0 5px;
-  vertical-align: middle;
-  font-size: 12px;
-}
-
-.cp-fab {
-  background: #FFFFFF !important;
-  color: #4285F4 !important;
-}
-
 </style>

@@ -68,7 +68,8 @@ export default {
               // picture5: "",
               // context:"",
               // tag:"",
-              hash_name:""
+              hash_name:"",
+              hash_no:''
             }
           ],
         }
@@ -96,6 +97,7 @@ export default {
     padding: 3rem 0;
     display: grid;
     grid-template-columns:  1fr 1fr 1fr;
+    margin-top: 100px;
 }
 
 .contents{

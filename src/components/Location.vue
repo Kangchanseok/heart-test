@@ -6,7 +6,7 @@
    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
    viewBox="0 0 1400 1400"  width="800px" height="700px" id="Korea-svg">
     
-   <g @click="changePage2" id="도봉구" @mouseover="도봉구 = true" @mouseleave="도봉구 = false">
+   <g @click="changePage2" id="도봉구" class=1 @mouseover="도봉구 = true" @mouseleave="도봉구 = false">
       <title>도봉구</title>
       
       <desc>
@@ -901,12 +901,14 @@ export default{
         async changePage2(event){
          const hash_name = event.currentTarget.id;
          const ret3 = await selectHashName({hash_name});
-         // this.$store.commit('goSearch')
-         // EventBus.$emit('changePage2', ret3.data);
+         EventBus.$emit('changePage2', hash_name);
          this.$router.push({
         name:'Detail3',
-        query: {hash_name: ret3.data}
+        query: { 
+                 hash_name: ret3.data
+               }
       })
+      // console.log(ret3.data)
          // const ret = await selectHashName(event.currentTarget.id);
          // this.$store.commit('choiceSearch', ret);
 
