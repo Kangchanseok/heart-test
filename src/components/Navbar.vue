@@ -154,6 +154,7 @@ li{
   align-items: center;
   flex: 1;
   justify-content: flex-end;
+  padding-left: 500px;
  
 }
 .icon{

@@ -18,8 +18,6 @@
 <script>
 import {findLocationList, findHashName} from '../service';
 import EventBus from './EventBus'
-import {choiceSearch} from 'vuex'
-import {mapMutations} from 'vuex'
 
 
 
@@ -30,23 +28,15 @@ export default {
     async created(){
       const ret = await findLocationList();
       this.locations = ret.data;
-
-      // this.locations = this.$store.getters.justtest
-      if (this.$route.query.hash_name != null) {
-        
-        this.locations = this.$route.query.hash_name
-      }
-      // console.log(await this.$store.dispatch("viewtest"))
+      // 지도 router
+        if (this.$route.query.hash_name != null) {
+          this.locations = this.$route.query.hash_name
+        }
+      // 해시태그 선택
       await EventBus.$on('changePage', (ret2) =>{
         this.ret2 = ret2;
         this.locations = this.ret2;
-      // })]
-      // console.log(this.locations)
-      // this.locations = this.$store.getters['testing']
-      // console.log(this.$store.getters['justtest'])
-      // this.locations = mapGetters({
-      //   'ret'
-      // })
+      
       })
       // await EventBus.$on('changePage2', (ret3) =>{
       //   this.ret3 = ret3;

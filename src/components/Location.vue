@@ -900,74 +900,21 @@ export default{
    methods:{
         async changePage2(event){
          const hash_name = event.currentTarget.id;
+         const locationhash = event.currentTarget.id
          const ret3 = await selectHashName({hash_name});
          EventBus.$emit('changePage2', hash_name);
          this.$router.push({
         name:'Detail3',
-        query: { 
-                 hash_name: ret3.data
+        query: {
+                  // detail2(해시태그)
+                 hash_name: ret3.data,
+                 // detail1(사진)
+                 locationhash: locationhash
                }
       })
-      // console.log(ret3.data)
-         // const ret = await selectHashName(event.currentTarget.id);
-         // this.$store.commit('choiceSearch', ret);
-
       }
    }
 }
-   //? mouseover  발생하면  event.target해서 id값이나 도봉구 같은 text값 가져와서 구분
-   //? 각자 맞는 데이터 넣어주면 끝
-   // methods: {
-   //    mouseOver: function(event) {
-   //       console.log('들어옴')
-   //       if(event){
-   //          console.log(event.target.tagName)
-   //       }
-         
-   //    },
-   //    mouseLeave: function () {
-   //       console.log('나감')
-         
-   //    }
-   // },
-   // methods:{
-   //    mouseOver: function(){
-   //       this.active = true;
-   //    }
-   // }
-// }
-    // 지도 클릭 시 상세검색 페이지로 이동 && 해시태그가 선택된 상태여야함
-    // methods: {
-    //     tests: function() {
-    //         console.log(123)
-      // imgPath = "https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/";
-      //   }
-        // clickparams() {
-        //     this.$router.push({name: 'Params', params: {name: '도봉구'}});
-        //     alert(123);
-        // },
-//     }
-// }
-//    koreasvg.addEventListener("mouseover", function(e){ 
-//       var province = e.target.parentNode;
-//       if(e.target.nodeName == "path") {
-//       for (var i=0; i < allProvinces.length; i++) {
-//          allProvinces[i].classList.remove("active");
-//       }
-//       province.classList.add("active");
-//       //? 구이름
-//       var provinceName = province.querySelector("title").innerHTML,
-//       provincePara = province.querySelector("desc p");
-//       //? 이미지 파일 아무거나 가져와서 imgPath에 경로 넣기
-//       sourceImg = province.querySelector("img"),
-//       //? imgpath 폴더경로
-//       imgPath = "/img";
-//       // imgPath = "https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/";
-//       provinceInfo.innerHTML = "";
-//       provinceInfo.insertAdjacentHTML("afterbegin", "<img src="+imgPath + sourceImg.getAttribute('xlink:href')+"><h1>"+provinceName+"</h1>");
-//       provinceInfo.classList.add("show");
-//       }
-//    })
 </script>
 
 <style scoped>

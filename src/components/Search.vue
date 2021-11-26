@@ -51,10 +51,10 @@
 </template>
 
 <script>
-import { findHashNo} from '../service'
+import { selectHashName} from '../service'
 var names = [
   { name: '#송파구' },
-  { name: '#송파구 잠실' },
+  { name: '#도봉구' },
   { name: '#잠실 카트장' },
   { name: '#잠실 놀거리' },
   { name: '#잠실 카페' },
@@ -81,16 +81,19 @@ export default {
   //     },
   methods: {
         async onSubmit(hash_name){
-      // hashname은 #이 안 붙어서 검색할수도있음(사용자가)
-      // 조건문으로 #이 없다면 넣어줌
       if (hash_name.indexOf('#') == -1) {
         hash_name= '#'.concat(hash_name)
       }
-      const ret = await findHashNo({hash_name})
-      const {data} = ret;
-      console.log(data.hash_no);
+      var searchhash = hash_name
+      const ret3 = await selectHashName({hash_name})
+      // const {data} = ret;
+      // console.log(data.hash_name);
       this.$router.push ({
-          path: '/detail3'
+          name: 'Detail3',
+          query: {
+            hash_name: ret3.data,
+            searchhash: searchhash
+          }
       })
       
       

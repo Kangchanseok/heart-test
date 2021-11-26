@@ -40,11 +40,6 @@ export default {
     name: 'hashtag',
     data(){
         return{
-            // activeItem: true,
-            // isClicked: false,
-            // textColor: false,
-            // clicked: false,
-            // isclicked: false,
             hashs:[
                 {
                     hash_no: "",
@@ -54,37 +49,38 @@ export default {
             ]
         }
     },
-    created() {
-      findHashList().then(response => this.hashs = response.data);
-
+    async created() {
+    // locationhash
+    // searchhash
+    console.log(this.$route.query.locationhash)
+    console.log(this.$route.query.searchhash)
+    //   findHashList().then(response => this.hashs = response.data);
+      if (this.$route.query.locationhash != null || this.$route.query.searchhash != null) {
+          var locationhash = null
+          if (this.$route.query.locationhash != null) {
+            locationhash = '#'+this.$route.query.locationhash
+          }
+          if (this.$route.query.searchhash != null) {
+              locationhash = this.$route.query.searchhash
+          }
+        const ret10 = await findHashList({locationhash})
+        for (let i = 0; i < 25; i++) {
+            if (ret10.data[i].hash_name == locationhash) {
+                console.log(ret10.data[i].clicked)
+                ret10.data[i].clicked = true
+            }
+            // this.hashs = ret10.data[i]
+        }
+        this.hashs = ret10.data
+        } else {
+            findHashList().then(response => this.hashs = response.data);
+        }
        EventBus.$on('changePage2', (name) =>{
             this.name = name;
-            // this.locations = this.name;
-            console.log(name);
-            console.log(this.name)
-            // changeColor(hash_no)
-            
-            // console.log(changeColor(hash_no))
             })  
       },
     methods:{
-        // refreshValue: function(element) {
-        // this.hashs.forEach((e, i) => {
-        //     if (e.hash_no == element.hash_no) {
-        //         console.log(this.hashs[i].isClicked)
-        //         this.hash[i].isClicked = true
-        //     }
-        // });
-        // selectItem(i) {
-                // this.isClicked = !this.isClicked
-        //         this.$set(this.isClicked, i, true) = !this.$set(this.isClicked, i, false)
-        // },
-
-        // changeCheck(index){
-        //     console.log(this.list[index])
-        //     this.list[index] = !this.list[index];
-        // },
-        changeColor: function(e) {
+        changeColor(e) {
             // const count = true
             if (this.hashs[e-1].clicked === true) {
                 this.hashs[e-1].clicked = false
