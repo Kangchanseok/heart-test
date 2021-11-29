@@ -200,6 +200,7 @@ strong {
     
 }
 #app .search .r {
+  
     display: none;
     position: absolute;
     left: 0;
@@ -211,9 +212,13 @@ strong {
     padding-left: 0;
 }
 #app .search .r.show {
+    
     display: block;
 }
 #app .search .r li {
+    border-left:1px solid;
+    border-right:1px solid;
+    border-bottom:1px solid;
     margin-top: -1px;
     padding: 0 20px;
     width: 100%;
@@ -221,7 +226,7 @@ strong {
     background-color: #fff;
     box-sizing: border-box;
     
-    outline: none;
+    outline:black;
     font-size: 16px;
     line-height: 40px;
     cursor: pointer;
