@@ -14,8 +14,9 @@
             <ul class="area" id="region">
                 <li >
                     <button type="button"
-                    @click="[changePage(hash.hash_name), changeColor(hash.hash_no, $event)]"
-                    :style="hash.clicked === true ? { 'background-color': '#7bc4c4', 'color' : 'white' } : null">
+                    @click="changePage(hash.hash_name) , changeColor(hash.hash_no, $event)"
+                    :style="hash.clicked === true ? { 'background-color': '#7bc4c4', 'color' : 'white' } : null"
+                    >
                     {{hash.hash_name}}
                     <!-- v-bind:class="[index.isClicked ? 'select': '']" -->
                       <!-- :class= "{btn: changePage}" -->
@@ -52,8 +53,8 @@ export default {
     async created() {
     // locationhash
     // searchhash
-    console.log(this.$route.query.locationhash)
-    console.log(this.$route.query.searchhash)
+    // console.log(this.$route.query.locationhash)
+    // console.log(this.$route.query.searchhash)
     //   findHashList().then(response => this.hashs = response.data);
       if (this.$route.query.locationhash != null || this.$route.query.searchhash != null) {
           var locationhash = null
@@ -92,14 +93,19 @@ export default {
         },
 
         async changePage(hash_name){
-            // this.isclicked = !this.isclicked
-            // // this.$store.commit('hash', hash_name)
+            // const test = []
+            // if (test in hash_name) {
+                
+            // }
+            // else {}
+            // test.append(hash_name)
             const ret2 = await selectHashName({hash_name});
-            // // this.$store.commit('hash', ret2.data)
-            // // console.log(ret2.data);
             EventBus.$emit('changePage', ret2.data);
         
-        }
+        },
+        // changePage11(){
+        //      findHashList().then(response => this.hashs = response.data);
+        // }
         
 
         // async changePage(hash_name){

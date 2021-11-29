@@ -1,38 +1,23 @@
 <template>
-    <!-- <form @submit.prevent="onSubmit($event.target.value)"> -->
-        <!-- <div id="app"
-        v-on:keyup.down="selectValue('down')"
-        v-on:keyup.up="selectValue('up')">
-        <input type="text" v-model="inputValue" placeholder="검색어를 입력하세요" autofocus @keyup="onKeyup">
-        <button type="reset" @click="onClickResetBtn" v-show="inputValue.length" class="btn-reset"></button>
-        </div> -->
         <div class="wrap">
   <div id="app"
        v-on:keyup.down="selectValue('down')"
        v-on:keyup.up="selectValue('up')">
+
     <div class="search">
-      <input 
+          <input 
             type="text"
             class="s"
             placeholder="'#'을 입력하세요"
             v-on:input="searchQuery=$event.target.value"
             @keyup.enter="onSubmit($event.target.value)"
-            
             />
-      <button
-        @click.prevent="onSubmit($event.target.value)" 
-        type="submit"
-        class="search_searchButton"
-      >
-        <img src="@/assets/search.svg" alt="search" />
-      </button>
-
-             <!-- v-model="searchQuery" autofocus @keyup="onKeyup" -->
-      <!-- <button type="reset" @click="onClickResetBtn" v-show="searchQuery.length" class="btn-reset"></button> -->
-      <!-- link추가와 최근검색어 기능 넣을지? -->
-      <!-- input값 감싸서 상세검색페이지에 보내면 hashtag값 선택 -->
-      <!-- vuex??사용해야되나 -->
-      <!-- 키보드로도 선택이 가능한데 필요한가??.. -->
+            <button 
+            type="submit" 
+            class="search_searchButton" 
+            @click="getSearch()">
+            <img src="../assets/search2.jpg" alt="search" />
+            </button>
       <ul class="r" tabindex="0"
           v-bind:class="{ show: isActive }"
           >
@@ -47,7 +32,6 @@
     </div>
   </div>
 </div>
-    <!-- </form> -->
 </template>
 
 <script>
@@ -73,60 +57,38 @@ export default {
       names: names,
     }
   },
-  // watch:{
-  //       value(newVal, oldVal){
-  //         console.log(newVal)
-  //           this.searchQuery = newVal
-  //       }
-  //     },
   methods: {
         async onSubmit(hash_name){
+      // hashname은 #이 안 붙어서 검색할수도있음(사용자가)
+      // 조건문으로 #이 없다면 넣어줌
       if (hash_name.indexOf('#') == -1) {
         hash_name= '#'.concat(hash_name)
       }
       var searchhash = hash_name
       const ret3 = await selectHashName({hash_name})
-      // const {data} = ret;
-      // console.log(data.hash_name);
       this.$router.push ({
           name: 'Detail3',
           query: {
             hash_name: ret3.data,
             searchhash: searchhash
           }
-      })
-      
-      
-    //   const ret = await findLocation({loca_no: Number(this.$route.params.locaNo)})
-    //   this.items = ret.data;
-      // 1. #hashname으로 구분된 것들을 axios.get으로 해당 hashdata받아옴
-      // 1-1. hashid만 받아오고 상세검색에서 선택되게 하는게 나으려나? 이게 낫겠다
-      // 2. 받아오고 링크로 넘겨주면서 해시 선택되게 할거임
-      // node axios쿼리문 추가하면 끝, 비동기처리해야함 -> async, await
-    //     axios.get(url[config]).then(res => {
-    //       console.log(config)
-    //   })
-      // vuex로 보내거나
-      // axios로 hashname db로 보내줌
-      // axios.post()
-      // this.$emit('@submit',this.searchQuery.trim())
+        })
       },
-    //     onClickResetBtn(){
-    //         this.searchQuery = ''
-    //         this.$emit('@reset')
-    //     },
-    //     onKeyup(){
-    //         if(this.searchQuery.length === 0){
-    //             this.$emit('@reset')
-    //         }
-    //     },
+    async getSearch(){
+       var hash_name = document.querySelector('.s').value;
+       this.onSubmit(hash_name);
+       console.log(hash_name)
+       },
     changeValue (str) {
       console.log(`change value: ${str}`)
+      
       this.isActive = false
       this.searchQuery = ''
       document.querySelector('.s').value = str
+      
     },
     selectValue (keycode, str) {
+     
       if (this.isActive === true) {
         const hasClass = document.querySelector('.r').classList.contains('key')
         if (keycode === 'down') {
@@ -161,7 +123,9 @@ export default {
         if (keycode === 'enter' && hasClass) {
           this.changeValue(str)
         }
+        
       }
+      
     }
   },
   computed: {
@@ -280,15 +244,16 @@ strong {
     border-left: none;
     cursor: pointer;
     font-size: 20px;
+    /* position: absolute; */
     
     
 }
 .search_searchButton img {
     width: 20px;
     height: 20px;
+    /* position: relative; */
     
-    
-}
+ }
 .search {
     display: flex;
     height: 40px;

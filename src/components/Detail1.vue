@@ -34,6 +34,7 @@ export default {
         }
       // 해시태그 선택
       await EventBus.$on('changePage', (ret2) =>{
+        
         this.ret2 = ret2;
         this.locations = this.ret2;
       

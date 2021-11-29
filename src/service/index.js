@@ -171,3 +171,8 @@ export const addContent = ({ user_no, title, context }) => {
       params: { hash_name }
     });
   };
+
+  // 인기게시물
+  export const popularList = () => {
+    return axios.get("http://127.0.0.1:3000/find/popular_list");
+  };

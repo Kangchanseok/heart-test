@@ -17,7 +17,7 @@
           <div class="number">01</div>
           <div class="body">            
             <div class="location">Gyeonghuigung, South Korea</div>
-            <div class="headline" @click="gogo">Photo by Bundo Kim</div>
+            <div class="headline" @click="test">Photo by Bundo Kim</div>
             <!-- <a href="https://unsplash.com/photos/Y7IilZ5VLdA" target="_blank">
               <div class="link">View on Unsplash</div></a> -->
           </div>
@@ -139,6 +139,8 @@ import {Hooper,
   }
    from "hooper";
 import 'hooper/dist/hooper.css';
+import { popularList } from '../service'
+
 export default {
    
     components: {
@@ -163,6 +165,9 @@ methods:{
     this.$router.push({
       path: "/detail3/locationdetail/1"
     })
+  },
+  test() {
+    console.log(popularList)
   }
 }
 };
