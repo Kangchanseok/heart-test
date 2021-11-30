@@ -75,6 +75,7 @@ export default {
       path: `/detail3/locationdetail/${loca_no}`
       })
       },
+      
     },
 };
 

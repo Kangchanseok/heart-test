@@ -14,7 +14,7 @@
             <ul class="area" id="region">
                 <li >
                     <button type="button"
-                    @click="changePage(hash.hash_name) , changeColor(hash.hash_no, $event)"
+                    @click="[changePage(hash.hash_name),changeColor(hash.hash_no, $event)]"
                     :style="hash.clicked === true ? { 'background-color': '#7bc4c4', 'color' : 'white' } : null"
                     >
                     {{hash.hash_name}}
@@ -51,10 +51,6 @@ export default {
         }
     },
     async created() {
-    // locationhash
-    // searchhash
-    // console.log(this.$route.query.locationhash)
-    // console.log(this.$route.query.searchhash)
     //   findHashList().then(response => this.hashs = response.data);
       if (this.$route.query.locationhash != null || this.$route.query.searchhash != null) {
           var locationhash = null
@@ -65,7 +61,7 @@ export default {
               locationhash = this.$route.query.searchhash
           }
         const ret10 = await findHashList({locationhash})
-        for (let i = 0; i < 25; i++) {
+        for (let i = 0; i < 25; i++) { // 해쉬태그 넣을때마다 숫자 바꿔주자..
             if (ret10.data[i].hash_name == locationhash) {
                 console.log(ret10.data[i].clicked)
                 ret10.data[i].clicked = true
@@ -144,10 +140,11 @@ export default {
 
 .contents-tag li button {
     padding: 7px 20px;
-    border-top-left-radius: 35px;
+    /* border-top-left-radius: 35px;
     border-top-right-radius: 35px;
     border-bottom-left-radius: 35px;
-    border-bottom-right-radius: 35px;
+    border-bottom-right-radius: 35px; */
+    border:none;
 }
 
 ul{
