@@ -12,18 +12,26 @@
                   
       </div>
     </div>
+    <infinite-loading @infinite="infiniteHandler" spinner="bubbles">
+      <div slot="no-more" style="color:rgb(102,102,102); font-size: 14px; padding: 10px 0px;">No More</div>
+      <div slot="no-results" style="color:rgb(102,102,102); font-size: 14px; padding: 10px 0px;">결과가 없어용 ㅠㅠ</div>
+    </infinite-loading>
   </div>  
 </template>
 
 <script>
 import {findLocationList, findHashName} from '../service';
 import EventBus from './EventBus'
-
+import InfiniteLoading from 'vue-infinite-loading'
+import axios from 'axios';
 
 
 
 export default {
     name: 'gallery',
+    components: {
+      InfiniteLoading
+    },
 
     async created(){
       const ret = await findLocationList();
@@ -48,6 +56,7 @@ export default {
          
     data() {
         return {
+          startNo:0,
           locations: [
             {
               loca_no:"",
@@ -66,6 +75,32 @@ export default {
         }
     },
     methods:{
+      infiniteHandler($state){
+        axios.get("http://127.0.0.1:3000/find/location_list",{
+          params:{
+            "startNo":"this.startNo"
+          }
+        }).then((res) => {
+          setTimeout(() =>{
+            if(res.data.length){
+              console.log(res.data.length)
+              console.log(res.data)
+              this.locations = this.locations.concat(res.data);
+              // console.log("after", this.locations.length, this.startNo);
+              $state.loaded();
+              this.startNo += 1;
+              if(this.locations.length / 40 < 1){
+                $state.complete(); // 데이터 없으면 로딩 끝?
+              }
+            } else {
+              $state.complete();
+            }
+          }, 1000)
+        }).catch(err => {
+          console.error(err);
+        });
+      },
+
      async goDetail(loca_no){
       // console.log(this.$store.getters['choiceSearch'])
       const ret2 = await findHashName({loca_no});

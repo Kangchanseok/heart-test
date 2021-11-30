@@ -14,7 +14,7 @@
             <ul class="area" id="region">
                 <li >
                     <button type="button"
-                    @click="[changePage(hash.hash_name),changeColor(hash.hash_no, $event)]"
+                    @click="[changeColor(hash.hash_no, $event),changePage(hash.hash_name)]"
                     :style="hash.clicked === true ? { 'background-color': '#7bc4c4', 'color' : 'white' } : null"
                     >
                     {{hash.hash_name}}
@@ -33,7 +33,7 @@
 </template>
        
 <script>
-import {findHashList, selectHashName} from '../service';
+import {findHashList, selectHashName,findLocationList} from '../service';
 import EventBus from './EventBus'
 
 
@@ -71,10 +71,11 @@ export default {
         this.hashs = ret10.data
         } else {
             findHashList().then(response => this.hashs = response.data);
+
         }
-       EventBus.$on('changePage2', (name) =>{
-            this.name = name;
-            })  
+    //    EventBus.$on('changePage2', (name) =>{
+    //         this.name = name;
+    //         }) 
       },
     methods:{
         changeColor(e) {
@@ -82,22 +83,32 @@ export default {
             if (this.hashs[e-1].clicked === true) {
                 this.hashs[e-1].clicked = false
             } else {
+                for (let i = 0; i < 25; i++) {
+                    this.hashs[i].clicked = false
+                }
                 this.hashs[e-1].clicked = true
-            }
-            // console.log(clicked)
-            // this.$set(this.clicked, e, 'true')
+            } 
         },
 
         async changePage(hash_name){
-            // const test = []
-            // if (test in hash_name) {
-                
-            // }
-            // else {}
-            // test.append(hash_name)
-            const ret2 = await selectHashName({hash_name});
+            var ret2 = {};
+            var count = 0
+            console.log(count)
+            for (let i = 0; i < 25; i++) {
+            if (this.hashs[i].clicked == true) {
+                count += 1
+                console.log(this.hashs[i].clicked)
+            }
+        }
+        console.log(count)
+        console.log(hash_name)
+        if (count == 0) {
+                ret2 = await findLocationList();
+            } else if (count == 1) {
+                ret2 = await selectHashName({hash_name});
+            }
             EventBus.$emit('changePage', ret2.data);
-        
+            
         },
         // changePage11(){
         //      findHashList().then(response => this.hashs = response.data);

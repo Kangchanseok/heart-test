@@ -526,7 +526,7 @@ background-color: blue;
 }
 @media (min-width: 1650px) {
   .body {
-    --slide-per-age: 4;
+    --slide-per-page: 4;
   }
   #hero-slides #slides .slide {
     font-size: 0.8vw;
