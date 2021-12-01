@@ -1,15 +1,16 @@
 <template>
-  <div class="gallery"  style="width: 25rem" >
+  <div class="gallery" style="width: 25rem" >
     <div class="gallery-panel" 
          v-for="location in locations" :key="location.loca_no" 
-         @click="goDetail(location.loca_no)">
+         @click="goDetail(location.loca_no)"
+         >
           <div class="contents">
+            <!--  v-if="location.loca_no != ''" -->
           <img class="test" :src= "location.picture1"
            height="320"
            width="350">
           <h3 class="test-text">{{location.title}}</h3>
           <p>{{ location.hash_name }}</p>
-                  
       </div>
     </div>
     <infinite-loading @infinite="infiniteHandler" spinner="bubbles">
@@ -34,62 +35,56 @@ export default {
     },
 
     async created(){
-      const ret = await findLocationList();
-      this.locations = ret.data;
+      // created 초기값 지우면 무한반복은 안됨
+      // 대신 지우면 null값이 들어간 요소가 하나 나옴
+      // 지도나 검색창으로 이동시 기존데이터와 무한스크롤같이 나옴
+      // 새로고침하면 기존 데이터 null값으로 변함
+      // const ret = await findLocationList();
+      // this.locations = ret.data;
       // 지도 router
         if (this.$route.query.hash_name != null) {
           this.locations = this.$route.query.hash_name
         }
       // 해시태그 선택
       await EventBus.$on('changePage', (ret2) =>{
-        
-        this.ret2 = ret2;
-        this.locations = this.ret2;
-      
+          this.ret2 = ret2;
+          this.locations = this.ret2;
       })
-      // await EventBus.$on('changePage2', (ret3) =>{
-      //   this.ret3 = ret3;
-      //   this.locations = this.ret3;
-      //   console.log(this.locations);
-      // })
     },
          
     data() {
         return {
           startNo:0,
           locations: [
-            {
-              loca_no:"",
-              title: "",
-              picture1: "",
-              // picture2: "",
-              // picture3: "",
-              // picture4: "",
-              // picture5: "",
-              // context:"",
-              // tag:"",
-              hash_name:"",
-              hash_no:''
-            }
+            // {
+            //   loca_no:"",
+            //   title: "",
+            //   picture1: "",
+            //   // picture2: "",
+            //   // picture3: "",
+            //   // picture4: "",
+            //   // picture5: "",
+            //   // context:"",
+            //   // tag:"",
+            //   hash_name:"",
+            //   hash_no:''
+            // }
           ],
         }
     },
     methods:{
       infiniteHandler($state){
-        axios.get("http://127.0.0.1:3000/find/location_list",{
+        axios.get("http://127.0.0.1:3000/find/location_list" ,{
           params:{
             "startNo":"this.startNo"
           }
         }).then((res) => {
           setTimeout(() =>{
             if(res.data.length){
-              console.log(res.data.length)
-              console.log(res.data)
               this.locations = this.locations.concat(res.data);
-              // console.log("after", this.locations.length, this.startNo);
               $state.loaded();
-              this.startNo += 1;
-              if(this.locations.length / 40 < 1){
+              this.startNo += 1
+              if(this.locations.length / 10 < 1){
                 $state.complete(); // 데이터 없으면 로딩 끝?
               }
             } else {

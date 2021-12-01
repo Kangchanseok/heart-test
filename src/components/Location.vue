@@ -902,7 +902,7 @@ export default{
          const hash_name = event.currentTarget.id;
          const locationhash = event.currentTarget.id
          const ret3 = await selectHashName({hash_name});
-         EventBus.$emit('changePage2', hash_name);
+         // EventBus.$emit('changePage2', hash_name);
          this.$router.push({
         name:'Detail3',
         query: {

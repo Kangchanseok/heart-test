@@ -3,34 +3,51 @@
     <div>
       <div class="test-title">
           <h1>{{title}}</h1>
-          <p>{{tag}}</p>
+          <p>{{context1}}</p>
       </div>
 
 <div class="line"></div>
-        <div class="contents-Detail">
-            <img 
-            class="test"
-            :src= "picture1"
-            height="500"
-            width="600"
-            />
+        <div class="contents-Detail" v-if="picture6 != null">
             <img 
             class="test"
             :src= "picture2"
             height="500"
             width="600"
             />
+            <div>{{context2}}</div>
             <img 
             class="test"
             :src= "picture3"
             height="500"
             width="600"
             />
+            <div>{{context3}}</div>
+            <img 
+            class="test"
+            :src= "picture4"
+            height="500"
+            width="600"
+            />
+            <div>{{context4}}</div>
+            <img 
+            class="test"
+            :src= "picture5"
+            height="500"
+            width="600"
+            />
+            <div>{{context5}}</div>
+            <img 
+            class="test"
+            :src= "picture6"
+            height="500"
+            width="600"
+            />
+            <div>{{context6}}</div>
         </div>
    
 
     <div style="border: 3px solid black; padding: 100px; margin-top: 20px;
-    margin-left:100px; margin-right:100px; ">{{context}}</div>
+    margin-left:100px; margin-right:100px; ">{{context7}}</div>
     <br/>
     <br/>
     <div class="line"></div>
@@ -65,7 +82,14 @@ export default {
       this.picture3 = data.picture3;
       this.picture4 = data.picture4;
       this.picture5 = data.picture5;
-      this.context = data.context;
+      this.context1 = data.context1;
+      this.context2 = data.context2;
+      this.context3 = data.context3;
+      this.context4 = data.context4;
+      this.context5 = data.context5;
+      this.picture6 = data.picture6;
+      this.context6 = data.context6;
+      this.context7 = data.context7;
       this.tag = data.tag;
       
     },
@@ -79,7 +103,14 @@ export default {
           picture3:'',
           picture4:'',
           picture5:'',
-          context: '',
+          context1: '',
+          context2:'',
+          context3:'',
+          context4:'',
+          context5:'',
+          picture6:'',
+          context6:'',
+          context7:'',
           tag:''            
         };
     },
