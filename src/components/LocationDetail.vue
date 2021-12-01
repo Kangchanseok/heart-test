@@ -7,36 +7,36 @@
       </div>
 
 <div class="line"></div>
-        <div class="contents-Detail" v-if="picture6 != null">
-            <img 
+        <div class="contents-Detail" >
+            <img v-if="picture2!=''"
             class="test"
             :src= "picture2"
             height="500"
             width="600"
             />
             <div>{{context2}}</div>
-            <img 
+            <img v-if="picture3!=''"
             class="test"
             :src= "picture3"
             height="500"
             width="600"
             />
             <div>{{context3}}</div>
-            <img 
+            <img v-if="picture4!=''"
             class="test"
             :src= "picture4"
             height="500"
             width="600"
             />
             <div>{{context4}}</div>
-            <img 
+            <img v-if="picture5!=''"
             class="test"
             :src= "picture5"
             height="500"
             width="600"
             />
             <div>{{context5}}</div>
-            <img 
+            <img v-if="picture6!=''" 
             class="test"
             :src= "picture6"
             height="500"
