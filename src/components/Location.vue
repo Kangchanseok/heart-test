@@ -904,6 +904,7 @@ export default{
          const ret3 = await selectHashName({hash_name});
          // EventBus.$emit('changePage2', hash_name);
          this.$router.push({
+         path:'/detail3',
         name:'Detail3',
         query: {
                   // detail2(해시태그)

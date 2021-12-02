@@ -42,7 +42,13 @@ export default {
       // 지도 router
         if (this.$route.query.hash_name != null) {
           this.locations = this.$route.query.hash_name
-        }
+          if(this.locations[0].hash_name == undefined){
+            this.$router.push({
+              path:'/detail3'
+            })
+          }
+        } 
+        
       // 해시태그 선택
       await EventBus.$on('changePage', (ret2) =>{
           this.ret2 = ret2;
@@ -67,7 +73,7 @@ export default {
             //   hash_no:''
             // }
           ],
-          limit:6,
+          limit:0,
           busy:false,
           locationsitems:[]
         }
@@ -77,7 +83,9 @@ export default {
     },  
     mounted(){
       this.infiniteHandler()
+      this.$route.query.hash_name
     },
+    
     methods:{
      async infiniteHandler($state){
         await axios.get(api ,{
@@ -87,20 +95,38 @@ export default {
         }).then((res) => {
           setTimeout(() =>{
             const temp = []
-            if (this.busy === false){
-              for (let i = this.locations.length + 1; i <= this.locations.length + 3; i++){
+            // if ( this.$route.query.hash_name != null){
+              
+            //   $state.complete();
+            // }  
+             if (this.busy === false ){
+               
+              for (let i = this.locations.length  ; i <= this.locations.length + 3; i++){
+                
                 this.locationsitems = res.data
-                temp.push(this.locationsitems[i])
-                if (this.locationsitems.length - 1 === i){
+                
+                if (this.locationsitems.length  === i || this.$route.query.hash_name != null|| this.ret2 != null ){
+                  
                   this.busy = true
+                  
                   break;
+                  
                 }
+                
+                temp.push(this.locationsitems[i])
+                
+                
               }
+              
             }
+            
             if (this.busy === true){
-              $state.complete()
+              
+              $state.complete();
+              
             }
             this.locations = this.locations.concat(temp)
+            
             $state.loaded()
 
             // if(res.data.length){
