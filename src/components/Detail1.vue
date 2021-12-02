@@ -14,7 +14,7 @@
       </div>
     </div>
     <infinite-loading @infinite="infiniteHandler" spinner="bubbles">
-      <div slot="no-more" style="color:rgb(102,102,102); font-size: 14px; padding: 10px 0px;">No More</div>
+      <div slot="no-more" style="color:rgb(102,102,102); font-size: 14px; padding: 10px 0px;">No More Data</div>
       <div slot="no-results" style="color:rgb(102,102,102); font-size: 14px; padding: 10px 0px;">결과가 없어용 ㅠㅠ</div>
     </infinite-loading>
   </div>  
@@ -25,14 +25,12 @@ import {findLocationList, findHashName} from '../service';
 import EventBus from './EventBus'
 import InfiniteLoading from 'vue-infinite-loading'
 import axios from 'axios';
-
+const api = "http://127.0.0.1:3000/find/location_list";
 
 
 export default {
     name: 'gallery',
-    components: {
-      InfiniteLoading
-    },
+    
 
     async created(){
       // created 초기값 지우면 무한반복은 안됨
@@ -53,8 +51,7 @@ export default {
     },
          
     data() {
-        return {
-          startNo:0,
+        return{
           locations: [
             // {
             //   loca_no:"",
@@ -70,26 +67,61 @@ export default {
             //   hash_no:''
             // }
           ],
+          limit:6,
+          busy:false,
+          locationsitems:[]
         }
+        },
+        components: {
+      InfiniteLoading
+    },  
+    mounted(){
+      this.infiniteHandler()
     },
     methods:{
-      infiniteHandler($state){
-        axios.get("http://127.0.0.1:3000/find/location_list" ,{
+     async infiniteHandler($state){
+        await axios.get(api ,{
           params:{
-            "startNo":"this.startNo"
+            limit:this.limit
           }
         }).then((res) => {
           setTimeout(() =>{
-            if(res.data.length){
-              this.locations = this.locations.concat(res.data);
-              $state.loaded();
-              this.startNo += 1
-              if(this.locations.length / 10 < 1){
-                $state.complete(); // 데이터 없으면 로딩 끝?
+            const temp = []
+            if (this.busy === false){
+              for (let i = this.locations.length + 1; i <= this.locations.length + 3; i++){
+                this.locationsitems = res.data
+                temp.push(this.locationsitems[i])
+                if (this.locationsitems.length - 1 === i){
+                  this.busy = true
+                  break;
+                }
               }
-            } else {
-              $state.complete();
             }
+            if (this.busy === true){
+              $state.complete()
+            }
+            this.locations = this.locations.concat(temp)
+            $state.loaded()
+
+            // if(res.data.length){
+            //   // console.log(res.data) // 여기에서만 돌아가는중
+            //   // console.log($state.startNo)
+            //   this.locations = this.locations.concat(res.data);
+            //   // this.locations = this.locations.concat(...res.data);
+            //   // this.locations = [...res.data]
+            //   // this.limit += 3;
+            //   $state.loaded();
+            //   // console.log(this.locations.length)
+            //   // this.$refs.InfiniteLoading.stateChanger.reset()
+            // if(this.locations.length / 20 < 1){
+            //     console.log(12) // 안들어옴
+            //     $state.complete(); // 데이터 없으면 로딩 끝?
+            //   }
+            // } else {
+            //   console.log(123) // 안들어옴
+            //   $state.complete();
+            // }
+
           }, 1000)
         }).catch(err => {
           console.error(err);

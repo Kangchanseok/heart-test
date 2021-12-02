@@ -8,7 +8,8 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
 state:{
     hash_name: '',
-    ret2: {}
+    ret2: {},
+    limit: 0
 },
 mutations:{
     hash(state, ret2) {
