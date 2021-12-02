@@ -14,7 +14,7 @@
       </div>
     </div>
     <infinite-loading @infinite="infiniteHandler" spinner="bubbles">
-      <div slot="no-more" style="color:rgb(102,102,102); font-size: 14px; padding: 10px 0px;">No More Data</div>
+      <div slot="no-more" style="color:rgb(102,102,102); font-size: 14px; padding: 10px 0px;">No More Data :)</div>
       <div slot="no-results" style="color:rgb(102,102,102); font-size: 14px; padding: 10px 0px;">결과가 없어용 ㅠㅠ</div>
     </infinite-loading>
   </div>  

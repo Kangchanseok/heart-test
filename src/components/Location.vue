@@ -32,8 +32,7 @@
    </g>
 
 
-   <router-link :to="{name : 'Params', params: {name: '동대문구'}}">
-   <g @mouseover="동대문구 = true" @mouseleave="동대문구 = false">
+   <g @click="changePage2" id="동대문구" @mouseover="동대문구 = true" @mouseleave="동대문구 = false">
       <title>동대문구</title>
       <desc>
          <image xlink:href="/02.jpg"></image>
@@ -50,12 +49,12 @@
  c-1.777-8.816,6.691-12.109,9.502-18.004c3.188-6.685,2.475-12.889,5.502-20.004c13.135-9.705,25.787-19.891,43.01-25.506
  c5.984-9.353,9.824-20.849,17.004-29.006C935.932,569.802,939.6,566.134,943.059,562.258z
 " />
-   </g></router-link>
+   </g>
 
 
 
-   <router-link :to="{name : 'Params', params: {name: '동작구'}}">
-   <g @mouseover="동작구 = true" @mouseleave="동작구 = false">
+   
+   <g @click="changePage2" id="동작구" @mouseover="동작구 = true" @mouseleave="동작구 = false">
       <title>동작구</title>
       <desc>
          <image xlink:href="/03.jpg" alt=""></image>
@@ -76,12 +75,12 @@
  c8.821-3.948,20.193-3.832,30.507-7.002c2.514-8.961,8.113-16.396,10.002-25.506c1.771-8.537-0.226-17.053,1.5-26.506
  c0.636-3.48,3.329-7.236,5.001-11.002C533.56,938.992,541.504,925.207,549.469,914.338z
 " />
-   </g></router-link>
+   </g>
 
 
 
-   <router-link :to="{name : 'Params', params: {name: '은평구'}}">
-   <g @mouseover="은평구 = true" @mouseleave="은평구 = false">
+   
+   <g @click="changePage2" id="은평구" @mouseover="은평구 = true" @mouseleave="은평구 = false">
       <title>은평구</title>
       <desc>
          <image xlink:href="/04.jpg" alt=""></image>
@@ -108,11 +107,10 @@
  c3.694,0.163,8,1.385,11.503,0c7.246-2.866,6.368-17.586,19.004-13.503c0.693,1.141,3.481,0.187,5.001,0.5
  C569.141,330.705,572.308,330.705,575.476,330.705z
 " />
-   </g></router-link>
+   </g>
 
 
-   <router-link :to="{name : 'Params', params: {name: '강북구'}}">
-   <g @mouseover="강북구 = true" @mouseleave="강북구 = false">
+   <g @click="changePage2" id="강북구" @mouseover="강북구 = true" @mouseleave="강북구 = false">
       <title>강북구</title>
       <desc>
          <image xlink:href="/05.jpeg" alt=""></image>
@@ -134,13 +132,12 @@
       c6.334-11.432,14.252-23.222,21.004-34.508c2.314-3.867,5.734-8.378,7.002-12.002c4.479-12.813,3.801-26.4,8.502-40.509
       C784.264,197.082,796.582,192.563,809.029,188.173z
 " />
-   </g></router-link>
+   </g>
 
 
 
 
-   <router-link :to="{name : 'Params', params: {name: '강동구'}}">
-   <g @mouseover="강동구 = true" @mouseleave="강동구 = false">
+   <g  @click="changePage2" id="강동구" @mouseover="강동구 = true" @mouseleave="강동구 = false">
       <title>강동구</title>
       <desc>
          <image xlink:href="/06.jpeg" alt=""></image>
@@ -160,12 +157,11 @@
  c5.16-14.568,16.49-35.228,7.002-51.011c-3.82-0.68-7.887-1.115-12.502-1.001c-3.299-2.87-5.486-6.851-8.502-10.003
  c4.039-21.131,4.615-45.729,18.504-57.012C1164.984,745.842,1167.152,743.675,1169.111,741.299z
 " />
-   </g></router-link>
+   </g>
 
 
 
-   <router-link :to="{name : 'Params', params: {name: '강서구'}}">
-   <g @mouseover="강서구 = true" @mouseleave="강서구 = false">
+   <g @click="changePage2" id="강서구" @mouseover="강서구 = true" @mouseleave="강서구 = false">
       <title>강서구</title>
       <desc>
          <image xlink:href="/07.jpg" alt=""></image>
@@ -191,12 +187,12 @@
  c3.839-3.569,7.796-7.497,13.003-12.002c6.48-5.608,15.725-9.435,13.003-23.005c1.155-1.678,0.175-5.493,0.5-8.002
  c1.876-13.255-8.925-25.063-6.001-37.508C126.606,538.5,132.789,536.269,134.875,530.751z
 " />
-   </g></router-link>
+   </g>
 
 
 
-   <router-link :to="{name : 'Params', params: {name: '금천구'}}">
-   <g @mouseover="금천구 = true" @mouseleave="금천구 = false">
+  
+   <g @click="changePage2" id="금천구" @mouseover="금천구 = true" @mouseleave="금천구 = false">
       <title>금천구</title>
       <desc>
          <image xlink:href="/08.jpg" alt=""></image>
@@ -213,13 +209,13 @@
  c-2.895-34.114-17.084-56.934-26.506-84.52c2.5,0,5.001,0,7.501,0c3.009,0.833,9.495,0.833,12.503,0c2.834,0,5.668,0,8.502,0
  c1.849-0.319,4.982,0.647,6.002-0.5c2.667,0,5.334,0,8.001,0C405.284,1063.053,408.418,1064.02,409.438,1062.872z
 " />
-   </g></router-link>
+   </g>
 
 
 
 
-   <router-link :to="{name : 'Params', params: {name: '구로구'}}">
-   <g @mouseover="구로구 = true" @mouseleave="구로구 = false">
+   
+   <g @click="changePage2" id="구로구" @mouseover="구로구 = true" @mouseleave="구로구 = false">
       <title>구로구</title>
       <desc>
          <image xlink:href="/09.jpg" alt=""></image>
@@ -247,12 +243,12 @@
  c0.317,1.685-0.644,4.646,0.5,5.501c0,2.834,0,5.668,0,8.502c0.317,1.684-0.644,4.646,0.5,5.502
  C428.942,1035.032,428.942,1037.699,428.942,1040.367z
 " />
-   </g></router-link>
+   </g>
 
 
 
-   <router-link :to="{name : 'Params', params: {name: '관악구'}}">
-   <g @mouseover="관악구 = true" @mouseleave="관악구 = false">
+   
+   <g @click="changePage2" id="관악구" @mouseover="관악구 = true" @mouseleave="관악구 = false">
       <title>관악구</title>
       <desc>
          <image xlink:href="/02.jpg" alt=""></image>
@@ -273,11 +269,11 @@
  c-1.588,13.631,1.807,20.663,6.002,29.007c7.521,14.96,15.389,32.314,24.006,43.51c-3.738,0.93-8.176,1.16-11.502,2.5
  C718.799,1185.691,706.297,1198.194,694.002,1210.906z
 " />
-   </g></router-link>
+   </g>
 
 
-    <router-link :to="{name : 'Params', params: {name: '광진구'}}">
-   <g @mouseover="광진구 = true" @mouseleave="광진구 = false">
+    
+   <g @click="changePage2" id="광진구" @mouseover="광진구 = true" @mouseleave="광진구 = false">
       <title>광진구</title>
       <desc>
          <image xlink:href="/04.jpg" alt=""></image>
@@ -295,7 +291,7 @@
  c-2.334,0-4.668,0-7.002,0c-3.334,0-6.668,0-10.002,0c-1.52,0.314-4.309-0.641-5.002,0.5
  C995.094,881.143,980.262,877.802,968.564,871.328z
 " />
-   </g></router-link>
+   </g>
 
 
    
@@ -329,8 +325,8 @@
    </g>
 
 
-   <router-link :to="{name : 'Params', params: {name: '종로구'}}">
-   <g @mouseover="종로구 = true" @mouseleave="종로구 = false">
+  
+   <g @click="changePage2" id="종로구" @mouseover="종로구 = true" @mouseleave="종로구 = false">
       <title>종로구</title>
       <desc>
          <image xlink:href="/06.jpeg" alt=""></image>
@@ -353,11 +349,11 @@
  c-3.002,0-6.002,0-9.002,0c-2.014,0.321-5.318-0.65-6.502,0.5c-12.729,0.941-23.139,4.201-35.508,5.501c-8.336,0-16.672,0-25.006,0
  c-4.959-3.876-8.289-9.382-14.004-12.503C726.826,681.454,721.691,681.454,720.008,682.285z
 " />
-   </g></router-link>
+   </g>
 
 
-   <router-link :to="{name : 'Params', params: {name: '중구'}}">
-   <g @mouseover="중구 = true" @mouseleave="중구 = false">
+  
+   <g @click="changePage2" id="중구" @mouseover="중구 = true" @mouseleave="중구 = false">
       <title>중구</title>
       <desc>
          <image xlink:href="/03.jpg" alt=""></image>
@@ -376,11 +372,11 @@
  c0.834,0,1.668,0,2.502,0c0,2.834,0,5.668,0,8.502c0,3.001,0,6.002,0,9.002c-1.148,1.02-0.182,4.154-0.5,6.002
  C852.039,717.46,852.039,720.127,852.039,722.795z
 " />
-   </g></router-link>
+   </g>
 
 
-   <router-link :to="{name : 'Params', params: {name: '중랑구'}}">
-   <g @mouseover="중랑구 = true" @mouseleave="중랑구 = false">
+ 
+   <g @click="changePage2" id="중랑구" @mouseover="중랑구 = true" @mouseleave="중랑구 = false">
       <title>중랑구</title>
       <desc>
          <image xlink:href="/04.jpg" alt=""></image>
@@ -398,11 +394,11 @@
  c1.684-0.317,4.645,0.644,5.5-0.5c2.668,0,5.334,0,8.002,0c1.684-0.317,4.645,0.644,5.502-0.5
  C1110.217,479.025,1114.6,476.073,1120.1,474.238z
 " />
-   </g></router-link>
+   </g>
 
 
-   <router-link :to="{name : 'Params', params: {name: '마포구'}}">
-   <g @mouseover="마포구 = true" @mouseleave="마포구 = false">
+  
+   <g @click="changePage2" id="마포구" @mouseover="마포구 = true" @mouseleave="마포구 = false">
       <title>마포구</title>
       <desc>
          <image xlink:href="/07.jpg" alt=""></image>
@@ -424,12 +420,12 @@
  c8.283-2.733,16.484-15.161,25.005-17.004c9.141-1.977,18.662,0.807,29.507-1c3.474-3.274,7.478-7.106,11.502-11.503
  c3.063-3.346,9.383-8.809,10.502-12.503c0.708-2.338-0.158-4.918,0.5-7.001C393.398,591.544,399.557,589.176,402.936,583.763z
 " />
-   </g></router-link>
+   </g>
 
 
 
-   <router-link :to="{name : 'Params', params: {name: '노원구'}}">
-   <g @mouseover="노원구 = true" @mouseleave="노원구 = false">
+  
+   <g @click="changePage2" id="노원구" @mouseover="노원구 = true" @mouseleave="노원구 = false">
       <title>노원구</title>
       <desc>
          <image xlink:href="/08.jpg" alt=""></image>
@@ -455,12 +451,12 @@
  c3.346,4.858,12.357,11.303,14.004,17.004c2.277,7.894-0.465,15.084,1.5,26.006c-3.293,4.746-15.668,6.805-18.004,12.003
  c-1.809,4.022,0.287,9.412-0.5,16.003C1083.416,300.207,1082.436,304.021,1083.592,305.699z
 " />
-   </g></router-link>
+   </g>
 
 
 
-   <router-link :to="{name : 'Params', params: {name: '서초구'}}">
-   <g @mouseover="서초구 = true" @mouseleave="서초구 = false">
+ 
+   <g @click="changePage2" id="서초구" @mouseover="서초구 = true" @mouseleave="서초구 = false">
       <title>서초구</title>
       <desc>
          <image xlink:href="/09.jpg" alt=""></image>
@@ -490,12 +486,12 @@
  c-2.219-4.882-3.709-9.038-6.002-13.503c-7.08-1.088-14.927-1.41-23.005-1.5c-1.562-5.441-2.924-11.08-4.001-17.004
  c19.89-0.508,35.938,1.268,50.012-4.502c6.559-2.688,13.355-10.818,19.004-16.004C772.443,924.47,790.729,906.379,806.527,888.332z
 " />
-   </g></router-link>
+   </g>
 
 
 
-   <router-link :to="{name : 'Params', params: {name: '서대문구'}}">
-   <g @mouseover="서대문구 = true" @mouseleave="서대문구 = false">
+ 
+   <g @click="changePage2" id="서대문구" @mouseover="서대문구 = true" @mouseleave="서대문구 = false">
       <title>서대문구</title>
       <desc>
          <image xlink:href="/09.jpg" alt=""></image>
@@ -515,11 +511,11 @@
  c2.945,11.225,5.782,22.557,8.002,34.508c-4.303,13.218-8.536,28.992-13.003,44.01c-1.528,5.135-4.425,10.297-4.501,14.504
  c-0.115,6.354,4.344,11.713,5.501,18.004c1.625,2.043,3.458,3.876,5.501,5.501C648.116,684.328,649.95,686.162,651.993,687.787z
 " />
-   </g></router-link>
+   </g>
 
 
-   <router-link :to="{name : 'Params', params: {name: '성북구'}}">
-   <g @mouseover="성북구 = true" @mouseleave="성북구 = false">
+ 
+   <g @click="changePage2" id="성북구" @mouseover="성북구 = true" @mouseleave="성북구 = false">
       <title>성북구</title>
       <desc>
          <image xlink:href="/09.jpg" alt=""></image>
@@ -541,11 +537,11 @@
  c-2.35-6.257-5.504-12.853-7.502-19.505c-5.582-18.59-7.576-37.961-14.002-53.512c-4.844-3.493-10.78-5.892-14.504-10.503
  c6.551-1.802,13.174,0.948,18.004-1C724.17,405.237,724.545,395.769,729.51,392.219z
 " />
-   </g></router-link>
+   </g>
 
 
-   <router-link :to="{name : 'Params', params: {name: '성동구'}}">
-   <g @mouseover="성동구 = true" @mouseleave="성동구 = false">
+   
+   <g @click="changePage2" id="성동구" @mouseover="성동구 = true" @mouseleave="성동구 = false">
       <title>성동구</title>
       <desc>
          <image xlink:href="/03.jpg" alt=""></image>
@@ -562,11 +558,11 @@
  c0-2.834,0-5.668,0-8.502c1.15-1.184,0.18-4.489,0.5-6.501c0-2.5,0-5.001,0-7.501c4.824,2.01,6.006,7.664,13.004,7.501
  C870.236,701.93,873.023,700.976,874.543,701.29z
 " />
-   </g></router-link>
+   </g>
 
 
-    <router-link :to="{name : 'Params', params: {name: '송파구'}}">
-   <g @mouseover="송파구 = true" @mouseleave="송파구 = false">
+  
+   <g @click="changePage2" id="송파구" @mouseover="송파구 = true" @mouseleave="송파구 = false">
       <title>송파구</title>
       <desc>
          <image xlink:href="/03.jpg" alt=""></image>
@@ -593,11 +589,11 @@
  c7.645-3.023,11.229-8.839,16.004-15.004c8.344-10.771,16.424-21.131,24.506-31.508c5.502-7.063,12.068-13.736,16.004-21.004
  C1133.998,825.777,1137.637,816.13,1142.104,808.314z
 " />
-   </g></router-link>
+   </g>
 
 
-   <router-link :to="{name : 'Params', params: {name: '양천구'}}">
-   <g @mouseover="양천구 = true" @mouseleave="양천구 = false">
+ 
+   <g @click="changePage2" id="양천구" @mouseover="양천구 = true" @mouseleave="양천구 = false">
       <title>양천구</title>
       <desc>
          <image xlink:href="/03.jpg" alt=""></image>
@@ -618,11 +614,11 @@
  c-1.747-5.422-3.626-10.71-6.001-15.503c-9.487-1.849-19.228-3.443-29.007-5.001c1.961-7.553,11.313-18.918,12.503-27.006
  c1.75-11.883,0-27.833,0-43.01c0-15.213,2.144-31.803,0-43.51C207.808,816.662,200.691,810.254,199.39,804.313z
 " />
-   </g></router-link>
+   </g>
 
 
-   <router-link :to="{name : 'Params', params: {name: '영등포구'}}">
-   <g @mouseover="영등포구 = true" @mouseleave="영등포구 = false">
+  
+   <g @click="changePage2" id="영등포구" @mouseover="영등포구 = true" @mouseleave="영등포구 = false">
       <title>영등포구</title>
       <desc>
          <image xlink:href="/03.jpg" alt=""></image>
@@ -643,12 +639,12 @@
  c-20.856-23.653-42.328-46.692-74.017-59.514c2.068,15.437,4.544,30.464,9.502,43.01c5.697,5.112,13,14.698,21.004,17.004
  c10.17,2.929,21.25,0.715,34.008,1.001C589.714,900.138,598.159,902.816,597.48,900.335z
 " />
-   </g></router-link>
+   </g>
 
 
 
-   <router-link :to="{name : 'Params', params: {name: '용산구'}}">
-   <g  id="용산구" @mouseover="용산구 = true" @mouseleave="용산구 = false">
+  
+   <g @click="changePage2" id="용산구" @mouseover="용산구 = true" @mouseleave="용산구 = false">
       <desc >
          <title>용산구</title>
          <image xlink:href="https://images.unsplash.com/photo-1636911963109-c94c745fb272?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"  alt=""></image>
@@ -664,7 +660,7 @@
  c2.834,0,5.668,0,8.502,0c2.344-0.324,5.988,0.654,7.502-0.5c3.334,0,6.668,0,10.002,0
  C730.596,766.053,735.563,764.919,737.012,767.305z
 " />
-   </g></router-link>
+   </g>
 
 </svg>
 <div id="all">
@@ -948,7 +944,7 @@ export default{
 #provinceInfo {
   
   position:absolute;
-  top: 0;
+  top: -10%;
   right: 0;
   width: 40%;
   
@@ -962,6 +958,10 @@ export default{
   pointer-events: none;
   /* opacity: 0; */
   transition: 1s;
+}
+#provinceInfo div img{
+   width: 810px;
+   height:500px;
 }
 @media all and (max-width: 800px) {
   #provinceInfo {
