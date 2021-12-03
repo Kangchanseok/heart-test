@@ -3,16 +3,19 @@
     <!-- 수정누르면 템플릿 보였다 안보였다하게 -->
     <template v-if="disappear">
     <div class="comment-list-item" >
-      <div class="comment-list-item-name" >
-        <div>{{name}}</div>
-        <div>{{commentObj.regdate}}</div>
-      </div>
-      <div class="comment-list-item-context">{{commentObj.context}}</div>
-      <div class="comment-list-item-button">
+      
+      <div class="img"></div>
 
+      <div class="comment-list-item-name" >
+        <div class="name-name">{{name}}</div>
+        <div class="comment-list-item-time">{{commentObj.regdate}}</div>
+        <div class="comment-list-item-context">{{commentObj.context}}</div>
+      </div>
+
+      <div class="comment-list-item-button">
         <b-button size="sm"  class="btn1" variant="outline-success" @click="modifyCoData">수정</b-button>
         <b-button size="sm" class="btn2" variant="outline-danger"
-        @click="deleteCoData">삭제</b-button>
+          @click="deleteCoData">삭제</b-button>
         <!-- <b-button variant="info" @click="subCommentToggle">대댓글 달기</b-button> -->
       </div>
     </div>
@@ -135,46 +138,54 @@ export default {
 </script>
 <style scoped>
 .comment-list-item {
-  display: flex;
-  justify-content:space-between;
-  padding-bottom: 1em;
-  
-  
+  display: grid;
+  padding-bottom: 20px;
 }
 .comment-list-item-name {
-  display: flex;
-  flex-direction:column ;
-  justify-content: center;
-  align-items: center;
-  border: 0.5px solid black;
-  padding: 1em;
+  /* justify-content: center; */
+  /* border: 0.5px solid rgb(139, 139, 139); */
   height: 60px;
   text-align: center;
-  width: 130px;
+  width: 700px;
+  
+}
+.name-name{
+  grid-row: 1;
+  font-weight: bold;
+  text-align: left;
+  
+}
+.comment-list-item-time{
+  font-size: 6px;
+  position: relative;
+  bottom: 20px;
+  right: 245px;
   
 }
 .comment-list-item-context {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50em;
-  border: 0.5px solid black;
-  height: 125px;
-  
+  text-align: left;
+  width: 31em;
+  position: relative;
+  /* border: 0.5px solid rgb(139, 139, 139); */
+  bottom: 12px;
+  left: 15px;
 }
 .comment-list-item-button {
-  display:flex;
-  flex-direction: column;
+  grid-column: 4;
+  grid-row: 1;
   justify-content: center;
   align-items: center;
-  border: 0.5px solid black;
-  padding: 0.5em;
-  height: 125px;
+  /* border: 0.5px solid rgb(139, 139, 139); */
+  border-left: none;
+  height: 60px;
   padding-bottom: 1px;
   writing-mode: horizontal-tb;
+  width: 120px;
+  
 }
 .btn {
-  margin-bottom: 1em;
+  
+  margin-right: 1em;
 }
 .comment-list-item-subcomment-list {
   display: flex;
@@ -186,6 +197,14 @@ export default {
   height: 40px;
   font-size: 10px;
   writing-mode: horizontal-tb;
-
+}
+.img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #7bc4c4;
+    position: relative;
+    bottom: 3px;
+    
 }
 </style>

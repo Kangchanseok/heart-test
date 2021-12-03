@@ -1,10 +1,15 @@
 <template>
-  <div>
+  <div class="all-all">
     <br/>
     <a class="btn btn-primary" href="/#/board/free">목록으로</a>
     <b-container>
       <br/>
-    <b-card >
+    <b-card class="card-all">
+
+          <div class="content-detail-content-info-header">
+            세부내용 보기
+          </div>
+
       <div class="content-detail-content-info">
         <div class="content-detail-content-info-left">
           <div class="content-detail-content-info-left-number">
@@ -47,7 +52,6 @@
 <script>
 import CommentList from "./CommentList";
 import {findContent, deleteContent} from '../service'
-
 export default {
   name: "ContentDetail",
   components: {
@@ -87,14 +91,36 @@ export default {
       })
     }
     
-  },
+  }
 };
 </script>
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+*{
+  font-family: 'Nanum Gothic', sans-serif;
+}
+.all-all{
+  padding-top: 100px;
+  padding-bottom: 50px;
+}
+.card-all{
+  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.3);
+  width: 1000px;
+  margin: 0px auto;
+}
+.content-detail-content-info-header{
+  border: 1px solid rgb(236, 236, 236);
+  background-color: #7bc4c4;
+  font-weight: 600;
+  padding: 0.4rem;
+  margin-bottom: 2px;
+  }
 .content-detail-content-info {
-  border: 1px solid black;
+  border: 1px solid rgb(236, 236, 236);
   display: flex;
   justify-content: space-between;
+  height: 45px;
+  margin-bottom: 2px;
 }
 .content-detail-content-info-left {
   width: 300px;
@@ -103,14 +129,17 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
+  font-size: 12px;
 }
 .content-detail-content-info-center {
-  width: 300px;
+  width: 700px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   padding: 1rem;
+  font-size: 18px;
+  font-weight: 600;
 }
 .content-detail-content-info-right {
   width: 300px;
@@ -119,21 +148,21 @@ export default {
   justify-content: center;
   align-items: center;
   padding: 1rem;
+  font-size: 11px;
 }
 .content-detail-content {
-  border: 1px solid black;
-  margin-top: 1rem;
+  border: 1px solid rgb(236, 236, 236);
   padding-top: 1rem;
   min-height: 300px;
 }
 .content-detail-button {
-  border: 1px solid black;
-  margin-top: 1rem;
-  padding: 2rem;
+  
+  height: 50px;
+  padding: 0.3rem;
   
 }
 .content-detail-comment {
-  border: 1px solid black;
+  
   margin-top: 1rem;
   padding: 2rem;
 }

@@ -148,9 +148,14 @@ export const addContent = ({ user_no, title, context }) => {
       params: { hash_no }
     });
   };
-  
+  // 지역별 해시태그
   export const findHashList = () => {
     return axios.get("http://127.0.0.1:3000/find/hash_list");
+  };
+
+  // 놀거리별 해시태그
+  export const findHashList2 = () => {
+    return axios.get("http://127.0.0.1:3000/find/hash_list2");
   };
 
   export const findHashNo = ({ hash_name }) =>{

@@ -54,6 +54,15 @@ export default {
           this.ret2 = ret2;
           this.locations = this.ret2;
       })
+      // 중복 해시태그
+      await EventBus.$on('changePage3', (ret3) =>{
+        console.log({ret3})
+        console.log(this.locations)
+          
+          console.log(123456789)
+          this.locations = {ret3};
+      })
+     
     },
          
     data() {
@@ -128,6 +137,8 @@ export default {
             this.locations = this.locations.concat(temp)
             
             $state.loaded()
+
+            
 
             // if(res.data.length){
             //   // console.log(res.data) // 여기에서만 돌아가는중

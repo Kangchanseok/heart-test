@@ -28,12 +28,37 @@
             </ul>
             </div>
         </div>
+        <br/><br/><br/>
+        
+
+         <div class="tag-container2"
+            v-for="(hash2, j) in hashs2"
+            :key="j"
+            >
+        <div class="contents-tag2">
+            <ul class="area2" id="region2">
+                <li >
+                    <button type="button"
+                    @click="changePage3(hash2.hash_name)"
+                    :style="hash2.clicked === true ? { 'background-color': '#7bc4c4', 'color' : 'white' } : null"
+                    >
+                    {{hash2.hash_name}}
+                    <!-- v-bind:class="[index.isClicked ? 'select': '']" -->
+                      <!-- :class= "{btn: changePage}" -->
+                      <!-- :aria-pressed="changePage(hash.hash_name) ? 'true' : 'false'" -->
+                     <!-- @click="changePage(hash.hash_name)"> -->
+                    <!-- @click="isActives(hash.hash_no)"> -->
+                    </button>
+                </li>
+            </ul>
+            </div>
+        </div>
         </div>
     
 </template>
        
 <script>
-import {findHashList, selectHashName,findLocationList} from '../service';
+import {findHashList, findHashList2, selectHashName,findLocationList} from '../service';
 import EventBus from './EventBus'
 
 
@@ -41,13 +66,21 @@ export default {
     name: 'hashtag',
     data(){
         return{
+            hashs2: [
+                {
+                    hash_no: "",
+                    hash_name: "",
+                    clicked: false,
+                }
+            ],
             hashs:[
                 {
                     hash_no: "",
                     hash_name: "",
                     clicked: false,
                 }
-            ]
+            ],
+            hashsdata: [],
         }
     },
     async created() {
@@ -71,6 +104,7 @@ export default {
         this.hashs = ret10.data
         } else {
             findHashList().then(response => this.hashs = response.data);
+            findHashList2().then(response => this.hashs2 = response.data);
 
         }
     //    EventBus.$on('changePage2', (name) =>{
@@ -107,8 +141,38 @@ export default {
             } else if (count == 1) {
                 ret2 = await selectHashName({hash_name});
             }
+            this.hashsdata=ret2.data
             EventBus.$emit('changePage', ret2.data);
             
+        },
+
+        async changePage3(hash_name) {
+            var ret2 = {};
+            var ret3 = {};
+            ret2 = await selectHashName({hash_name});
+            // console.log(this.hashsdata) // 강남구
+            // console.log(ret2.data) // 친구랑
+
+            // #을 기준으로 쪼개고 #구이름 제일 앞이니까 #[0]비교해서 구이름만 비교
+            // split로 hash_name 쪼갠다음에 ret2.data랑 this.hashsdata의 hash_name비교하고 ret2.data에 넣어주면 끝
+
+            // const splitdata = ret2.data[0].hash_name.split(' ')
+            // console.log(splitdata[0]);
+
+            for (let i = 0; i < this.hashsdata.length; i++){ // 컨텐츠별 해시태그 갯수만큼 돌려줘야함
+            const splitdata2 = this.hashsdata[i].hash_name.split(' ');
+                for (let j = 0; j < 2; j++) {
+                const splitdata = ret2.data[j].hash_name.split(' ');
+                if (splitdata[0] == splitdata2[0]) {
+                    ret3 = ret2.data[j]
+                }
+            }
+        }
+        console.log(123124)
+            // console.log(this.splitdata);
+            console.log(ret3)
+            EventBus.$emit('changePage3', ret3);
+
         },
         // changePage11(){
         //      findHashList().then(response => this.hashs = response.data);

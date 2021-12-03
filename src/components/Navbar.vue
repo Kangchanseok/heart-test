@@ -116,7 +116,8 @@ ul, .link{
   color: #fff;
   list-style: none;
   text-decoration: none;
-  position: relative;
+  /* 로고 전체 클릭할려면 position 없어야 함 */
+  /* position: relative; */
 }
 li{
   text-transform: uppercase;
@@ -154,7 +155,6 @@ li{
   align-items: center;
   flex: 1;
   justify-content: flex-end;
-  padding-left: 500px;
  
 }
 .icon{
