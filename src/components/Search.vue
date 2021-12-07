@@ -62,6 +62,7 @@ var names = [
   { name: '#구로구' },
   { name: '#금천구' },
   { name: '#노원구' },
+  { name: '#가족끼리'}
 ]
 export default {
   data () {

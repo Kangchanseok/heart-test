@@ -158,6 +158,11 @@ export const addContent = ({ user_no, title, context }) => {
     return axios.get("http://127.0.0.1:3000/find/hash_list2");
   };
 
+  // search && location함수
+  export const findHashList3 = () => {
+    return axios.get("http://127.0.0.1:3000/find/hash_list3");
+  };
+
   export const findHashNo = ({ hash_name }) =>{
     return axios.get("http://127.0.0.1:3000/find/hashno", {
       params: { hash_name }

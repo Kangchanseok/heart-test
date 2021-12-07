@@ -56,11 +56,8 @@ export default {
       })
       // 중복 해시태그
       await EventBus.$on('changePage3', (ret3) =>{
-        console.log({ret3})
-        console.log(this.locations)
-          
-          console.log(123456789)
-          this.locations = {ret3};
+        console.log(ret3)
+          this.locations = ret3;
       })
      
     },
