@@ -186,3 +186,10 @@ export const addContent = ({ user_no, title, context }) => {
   export const popularList = () => {
     return axios.get("http://127.0.0.1:3000/find/popular_list");
   };
+
+  // map data
+  export const findMap = ({ title }) => {
+    return axios.get("http://127.0.0.1:3000/find/map", {
+      params: { title }
+    });
+  };

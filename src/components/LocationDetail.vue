@@ -44,7 +44,36 @@
             />
             <div>{{context6}}</div>
         </div>
-   
+        <div>
+    <naver-maps
+      :height="height"
+      :width="width"
+      :mapOptions="mapOptions"
+      :initLayers="initLayers"
+      v-if="this.mapOptions.lat != 0"
+      @load="onLoad">
+      <naver-info-window
+        class="info-window"
+        @load="onWindowLoad"
+        :isOpen="info"
+        :marker="marker">
+        <div class="info-window-container">
+            <!-- 마크 안에 정보 들어가는 곳 -->
+            <!-- 데이터가 null값인것도 생각해서 꾸며주기 ㅎㅎ.. -->
+          <h1>{{mapdata.map_name}}</h1>
+          <h2>{{mapdata.map_address}}</h2>
+          <p>{{mapdata.map_tel}}</p>
+          <p>{{mapdata.map_page}}</p>
+          <p>{{mapdata.map_time}}</p>
+        </div>
+      </naver-info-window>
+      <naver-marker :lat="this.mapOptions.lat" :lng="this.mapOptions.lng" @click="onMarkerClicked" @load="onMarkerLoaded"/>
+      <naver-ground-overlay
+        :bounds="{south:36.7,north:36.9,west:126.5,east:127.5}"/>
+    </naver-maps>
+    <!-- 얘도 이쁘게 바꿔야함 -->
+    <p>마크 클릭시 자세한정보가 나옵니다</p>
+  </div>
 
     <div style="border: 3px solid black; padding: 100px; margin-top: 20px;
     margin-left:100px; margin-right:100px; ">{{context7}}</div>
@@ -55,15 +84,13 @@
     <div class="content-detail-comment">
         <LocationCommentList :locaNo="locaNo"/>
       </div>
-
- 
      </div>
   </div>
 </template>
 
 <script>
 import Backtotop from '@/components/BackToTop.vue';
-import {findLocation} from '../service';
+import {findLocation, findMap} from '../service';
 import LocationCommentList from './LocationCommentList';
 
 export default {
@@ -72,9 +99,24 @@ export default {
         Backtotop,
         LocationCommentList
     },
+    // async beforecreate() {
+    //     const ret2 = await findMap({title : this.$route.query.title})
+    //     // 넣어야할 데이터들
+    //     this.mapdata = ret2.data[0]
+    //     console.log(this.mapOptions.lat)
+    //     this.mapOptions.lat = Number(ret2.data[0].lat)
+    //     this.mapOptions.lng = Number(ret2.data[0].lng)
+    //     console.log(Number(ret2.data[0].lat))
+    // },
     async created(){
-      const ret = await findLocation({loca_no: Number(this.$route.params.locaNo)})
-      console.log(this.$route.params.locaNo)
+        const ret2 = await findMap({title : this.$route.query.title})
+        // 넣어야할 데이터들
+        this.mapdata = ret2.data[0]
+        this.mapOptions.lat = Number(ret2.data[0].lat)
+        this.mapOptions.lng = Number(ret2.data[0].lng)
+        console.log(Number(ret2.data[0].lat))
+    //   const ret = await findLocation({loca_no: Number(this.$route.params.locaNo)})
+      const ret = await findLocation({loca_no: Number(this.$route.query.loca_no)})
       const {data} = ret;
       this.title = data.title;
       this.picture1 = data.picture1;
@@ -91,11 +133,28 @@ export default {
       this.context6 = data.context6;
       this.context7 = data.context7;
       this.tag = data.tag;
-      
+    //   var title = this.$route.query.title
+        
     },
     data(){
       const locaNo = Number(this.$route.params.locaNo);
         return{
+            width: 700,
+        height: 700,
+        info: false,
+        marker: null,
+        count: 1,
+        map: null,
+        isCTT: false,
+        mapOptions: {
+          lat: 0,
+          lng: 0,
+          zoom: 17,
+          zoomControl: true,
+          zoomControlOptions: {position: 'TOP_RIGHT'},
+          mapTypeControl: true,
+        },
+        initLayers: ['BACKGROUND', 'BACKGROUND_DETAIL', 'POI_KOREAN', 'TRANSIT', 'ENGLISH', 'CHINESE', 'JAPANESE'],
           locaNo: locaNo,
           title: '',
           picture1: "",
@@ -111,40 +170,62 @@ export default {
           picture6:'',
           context6:'',
           context7:'',
-          tag:''            
+          tag:'',
+          mapdata:[]
         };
     },
     // created(){
     //   findLocationDetailList().then(response => this.data2 = response.data);
     // },
-        methods: {
-      
-    }
-};
+    computed: {
+      markclick() {
+        return this.mapdata;
+      }
+    },
+    mounted(){
+        setInterval(() => this.count++, 1000);
+    },
+    methods: {
+      onLoad(vue){
+        this.map = vue;
+        console.log(this.mapOptions.lng)
+      },
+      onWindowLoad(that) {
+      },
+      onMarkerClicked(event) {
+        this.info = !this.info;
+      },
+      onMarkerLoaded(vue) {
+        this.marker = vue.marker;
+      }
+    },
+  };
 </script>
 
-<style>
-
+<style scoped>
+/* 글씨 */
+.info-window-container {
+    padding: 10px;
+    width: 300px;
+    height: 100px;
+  }
+  /* 하얀색 박스 */
+.info-window { 
+    width: 500px;
+    height: 100px;
+}
 .test-title h1 {
     padding-top: 100px;
-
-    
 }
 
 .test-title p {
-    padding-bottom: 70px;
-
-    
+    padding-bottom: 70px;   
 }
-
 
 .contents3 h2{
     padding: 100px;
     padding-bottom: 20px;
-
-    
 }
-
 
 .test-taglist{
     margin: 0 auto;
@@ -157,18 +238,15 @@ export default {
     left: 380px;
 }
 
-
 .test-taglist ul{
     padding: 15px 0 0 15px;
     list-style: none;
-    
 }
 
 .test-taglist ul li {
     float: left;
     width: auto;
     padding: 5px;
-    
 }
 
 .test-taglist ul li a:hover {
@@ -183,7 +261,6 @@ export default {
     padding: 0 20px;
 }
 
-
 .test-taglist ul li a {
     display: inline-block;
     overflow: hidden;
@@ -193,13 +270,11 @@ export default {
     font-weight: 400;
     color: #777;
     border: 1px solid #d8d7d7;
-    border-radius: 7px;
-    
+    border-radius: 7px;  
 }
 
 a:link{
     text-decoration: none;
-    
 }
 
 .line{

@@ -55,7 +55,7 @@ export default new Router({
       component: Create
     },
     {
-      path: '/detail3/locationdetail/:locaNo',
+      path: '/detail3/locationdetail', // /:locaNo
       name: 'LocationDetail',
       component: LocationDetail
     },
@@ -64,7 +64,6 @@ export default new Router({
       name: 'Mypage',
       component: Mypage
     },
-    
   ],
   // mode:'history'
   

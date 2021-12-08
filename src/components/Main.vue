@@ -28,6 +28,7 @@
 
 
 <script>
+import { mapGetters } from 'vuex'
 import Search from '@/components/Search'
   export default{
     name:"Main",
@@ -47,7 +48,22 @@ import Search from '@/components/Search'
         return this.blogs.filter((blog)=>{
           return blog.title.match(this.search)
         });
-      }
+      },
+      ...mapGetters(['token', 'user']),
+    isLoggedIn () {
+      return this.token != null
+    },
+    isAdmin () {
+      return this.user && this.user.roleType === 'ADMIN'
+    },
+    username () {
+      if (!this.user) return ''
+      return this.user.username
+    },
+    roleType () {
+      if (!this.user) return ''
+      return this.user.roleType
+    }
     }
   
 }

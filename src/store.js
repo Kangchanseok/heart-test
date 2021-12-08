@@ -2,8 +2,8 @@ import Vue from "vue";
 import Vuex from "vuex";
 import {findHashName, selectHashName} from './service'
 
-
 Vue.use(Vuex);
+// const debug = process.env.NODE_ENV !== 'production'
 
 export const store = new Vuex.Store({
 state:{
@@ -46,6 +46,7 @@ actions:{
     //     this.ret = test
     // }
 },
+
 })
 
 

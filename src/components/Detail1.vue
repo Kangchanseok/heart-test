@@ -2,7 +2,7 @@
   <div class="gallery" style="width: 25rem" >
     <div class="gallery-panel" 
          v-for="location in locations" :key="location.loca_no" 
-         @click="goDetail(location.loca_no)"
+         @click="goDetail(location.loca_no, location.title)"
          >
           <div class="contents">
             <!--  v-if="location.loca_no != ''" -->
@@ -108,35 +108,20 @@ export default {
              if (this.busy === false ){
                
               for (let i = this.locations.length  ; i <= this.locations.length + 3; i++){
-                
                 this.locationsitems = res.data
-                
                 if (this.locationsitems.length  === i || this.$route.query.hash_name != null|| this.ret2 != null ){
-                  
                   this.busy = true
-                  
-                  break;
-                  
+                  break; 
                 }
-                
-                temp.push(this.locationsitems[i])
-                
-                
-              }
-              
+                temp.push(this.locationsitems[i]) 
+              } 
             }
-            
             if (this.busy === true){
-              
-              $state.complete();
-              
+              $state.complete();             
             }
             this.locations = this.locations.concat(temp)
             
             $state.loaded()
-
-            
-
             // if(res.data.length){
             //   // console.log(res.data) // 여기에서만 돌아가는중
             //   // console.log($state.startNo)
@@ -155,23 +140,23 @@ export default {
             //   console.log(123) // 안들어옴
             //   $state.complete();
             // }
-
           }, 1000)
         }).catch(err => {
           console.error(err);
         });
       },
 
-     async goDetail(loca_no){
-      // console.log(this.$store.getters['choiceSearch'])
-      const ret2 = await findHashName({loca_no});
-      const {data} = ret2;
-      this.hashs = data.hash_name;
+     async goDetail(loca_no, title){
       this.$router.push({
-      path: `/detail3/locationdetail/${loca_no}`
-      })
-      },
+        name: 'LocationDetail',
+        query: {
+          loca_no: loca_no,
+          title: title
+        }
+      // path: `/detail3/locationdetail/${loca_no}`
       
+      })
+      }, 
     },
 };
 
