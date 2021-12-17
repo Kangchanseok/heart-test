@@ -7,15 +7,16 @@
       <div class="img"></div>
 
       <div class="comment-list-item-name" >
-        <div class="name-name">{{name}}</div>
+        <div class="name-name">{{commentObj.username}}</div>
         <div class="comment-list-item-time">{{commentObj.regdate}}</div>
         <div class="comment-list-item-context">{{commentObj.context}}</div>
       </div>
 
       <div class="comment-list-item-button">
-        <b-button size="sm"  class="btn1" variant="outline-success" @click="modifyCoData">수정</b-button>
+        <b-button size="sm"  class="btn1" variant="outline-success"
+          @click="dbId == storeId ? modifyCoData() : notCorrectMsg()">수정</b-button>
         <b-button size="sm" class="btn2" variant="outline-danger"
-          @click="deleteCoData">삭제</b-button>
+          @click="dbId == storeId ? deleteCoData(): notCorrectMsg()">삭제</b-button>
         <!-- <b-button variant="info" @click="subCommentToggle">대댓글 달기</b-button> -->
       </div>
     </div>
@@ -82,24 +83,32 @@ export default {
   components: {
     CommentCreate    
   },
- 
-  async created(){
-    const ret = await findSubComment({comment_no});
-    this.subCommentList = ret.data;
-  },
+  // async created(){
+  //   const ret = await findSubComment({comment_no});
+  //   this.subCommentList = ret.data;
+  // },
   data() {  
     return {
-      name: data.User.filter(
-        item => item.user_no === this.commentObj.user_no
-      )[0].name,
+      // name: this.$store.state.account.user.filter(
+      //   item => item === this.commentObj.user_no
+      // )[0].name,
+      // name: this.$store.state.account.user,
+      name: '',
       subCommentList: [],
       subCommentCreateToggle: false,
       modifyCreateToggle: false,
       disappear: true,
-      context:`${this.commentObj.context}`
+      context:`${this.commentObj.context}`,
+      dbId: `${this.commentObj.user_id}`,
+      storeId: `${this.$store.state.account.user.userId}`
     };
   },
   methods: {
+
+
+     notCorrectMsg(){
+       alert('권한이 존재하지 않습니다.')
+     },
     // subCommentToggle() {
     //   this.subCommentCreateToggle = !this.subCommentCreateToggle;
     // },

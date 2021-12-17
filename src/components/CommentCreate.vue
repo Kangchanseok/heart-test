@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     async createComment() {
-      await addComment({user_no:1,
+      await addComment({user_no:this.$store.state.account.user,
        content_no:this.contentNo,
        context:this.context
         })

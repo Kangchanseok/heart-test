@@ -1,4 +1,5 @@
 <template>
+
     <div class="hashtag" >
 
         <!-- <div class="tag-container"
@@ -28,13 +29,17 @@
             </ul>
             </div>
         </div>
-        <br/><br/><br/>
+        
+        <br/><br/>
+        <div class="line3"></div>
 
          <div class="tag-container2"
             v-for="(hash2, j) in hashs2"
             :key="j"
             >
+            
         <div class="contents-tag2">
+          
             <ul class="area2" id="region2">
                 <li >
                     <button type="button"
@@ -57,7 +62,7 @@
 </template>
 
 <script>
-import {findHashList, findHashList2, findHashList3, selectHashName, findLocationList} from '../service'
+import {findHashList, findHashList2, findHashList3, selectHashName, findLocationList, selectheart} from '../service'
 import EventBus from './EventBus'
 
 export default {
@@ -204,14 +209,34 @@ export default {
         ret2 = await findLocationList()
       } else if (count == 1 && check_hash == 0) { // 4. 지역만 선택되었을경우
         ret2 = await selectHashName({hash_name})
-        console.log(ret2)
+        console.log(ret2.data[0])
       }
       console.log(ret3.length)
       if (ret3.length != 0) {
         this.hashsdata = ret2
+        var user = this.$store.state.account.user
+        var clickheart = await selectheart({user})
+        for (let i = 0; i < ret2.length; i++) {
+          for (let j = 0; j < clickheart.length; j++) {
+            if (ret2.data[i].title == clickheart[j].title) {
+              ret2.data[i].liked = true
+              ret2.data[i].like_color = 'red'
+            }
+          }
+        }
         EventBus.$emit('changePage', ret2)
       } else if (ret3.length == 0) {
         this.hashsdata = ret2.data
+        var user = this.$store.state.account.user
+        var clickheart = await selectheart({user})
+        for (let i = 0; i < ret2.data.length; i++) {
+          for (let j = 0; j < clickheart.length; j++) {
+            if (ret2.data[i].title == clickheart[j].title) {
+              ret2.data[i].liked = true
+              ret2.data[i].like_color = 'red'
+            }
+          }
+        }
         EventBus.$emit('changePage', ret2.data)
       }
     },
@@ -408,6 +433,16 @@ export default {
       // console.log(123124)
       // console.log(this.splitdata);
       // console.log(ret3)
+      var user = this.$store.state.account.user
+        var clickheart = await selectheart({user})
+        for (let i = 0; i < ret3.length; i++) {
+          for (let j = 0; j < clickheart.length; j++) {
+            if (ret3[i].title == clickheart[j].title) {
+              ret3[i].liked = true
+              ret3[i].like_color = 'red'
+            }
+          }
+        }
       EventBus.$emit('changePage3', ret3)
     },
     changeColor2 (e) {
@@ -452,49 +487,69 @@ export default {
 </script>
 
 <style scoped>
-
+.contents-tag{
+  text-align: center;
+  align-items: center;
+}
 .hashtag{
     background-color: rgb(243, 243, 243);
     border-radius: 10px;
-    padding: 8px;
+    padding: 20px;
+    /* display: block; */
+    /* -webkit-box-pack: end; */
+    /* -ms-flex-pack: end; */
+    /* justify-content: flex-end; */
     position: absolute;
-    left: 1200px;
-    top: 300px;
-
+   
+    left: 1300px;
+    top: 400px;
     display: grid;
     grid-template-columns:  1fr 1fr 1fr;
+    
 }
-
-.contents-tag li button {
-    padding: 7px 20px;
-    /* border-top-left-radius: 35px;
+.hashtag li button {
+  
+    padding: 7px 3px;
+    border-top-left-radius: 35px;
     border-top-right-radius: 35px;
     border-bottom-left-radius: 35px;
-    border-bottom-right-radius: 35px; */
+    border-bottom-right-radius: 35px;
     border:none;
+    width: 80px;
+    text-align: center;
+    
 }
-
 ul{
     display: block;
+    padding: 0;
+    margin: 0;
+    font-size: 13px;
+    align-items: center;
+    
+    
 }
-
 li{
     list-style: none;
+    
+    align-items: center;
+    text-align: center;
+    
 }
-
-.btn{
+button{
     border: 0 none;
     cursor: pointer;
-
+    /* background-color: rgb(243, 243, 243); */
+display: block
+    
 }
-.btn:hover{
+button:hover{
     color: #ffffff;
     background-color: #7bc4c4;
 }
-.btn{
-    background-color: #7bc4c4;
-}
-.active {
-    color: blue
-}
+/* .line3{
+  border: 1px solid rgb(207, 207, 207);
+  
+} */
+
+
 </style>

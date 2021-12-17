@@ -2,15 +2,24 @@
   <div class="gallery" style="width: 25rem" >
     <div class="gallery-panel" 
          v-for="location in locations" :key="location.loca_no" 
-         @click="goDetail(location.loca_no, location.title)"
          >
           <div class="contents">
             <!--  v-if="location.loca_no != ''" -->
           <img class="test" :src= "location.picture1"
            height="320"
-           width="350">
-          <h3 class="test-text">{{location.title}}</h3>
-          <p>{{ location.hash_name }}</p>
+           width="350"
+           @click="goDetail(location.loca_no, location.title)">
+          <h3 class="test-loc-title" @click="goDetail(location.loca_no, location.title)">{{location.title}}</h3>
+          <p class="test-test" @click="goDetail(location.loca_no, location.title)">{{ location.hash_name }}</p>
+          <!-- 좋아요 버튼 -->
+          <button class="like"  v-on:click="like(location)"> 
+        <svg class="heart"  id="heart" xmlns="http://www.w3.org/2000/svg" 
+            width="20"  viewBox="0 0 32 31"><title>heart</title><g  stroke-width="2">
+            <path id="heart" d="M10.55 2.31a8.07 8.07 0 0 0-8.07 8.08c0 3.15 2.16 5.66 4.28 7.61 3.35 3.44 6.46 7.37 9.59 11.08 
+            2.92-3.86 5.48-7.41 8.91-11.36 1.72-2.24 4.71-4.18 4.7-7.33a8.07 8.07 0 0 0-0.79-3.49l0.02-0.06-0.05-0.01a8.07 8.07 0 0 0-12.85-2.26l-0.12 0.02a8.07 8.07 0 0 0-5.62-2.28z" 
+            stroke-linecap="round" stroke-linejoin="round" :style="location.liked === true ? {'fill': 'red'} : null"></path></g></svg>
+        <span></span>
+          </button>
       </div>
     </div>
     <infinite-loading @infinite="infiniteHandler" spinner="bubbles">
@@ -21,7 +30,7 @@
 </template>
 
 <script>
-import {findLocationList, findHashName} from '../service';
+import {updateheart, deleteheart, selectheart, getallheart} from '../service';
 import EventBus from './EventBus'
 import InfiniteLoading from 'vue-infinite-loading'
 import axios from 'axios';
@@ -33,6 +42,10 @@ export default {
     
 
     async created(){
+      
+    var user = this.$store.state.account.user
+      var test = await selectheart({user})
+      this.test = test.data
       // created 초기값 지우면 무한반복은 안됨
       // 대신 지우면 null값이 들어간 요소가 하나 나옴
       // 지도나 검색창으로 이동시 기존데이터와 무한스크롤같이 나옴
@@ -40,6 +53,7 @@ export default {
       // const ret = await findLocationList();
       // this.locations = ret.data;
       // 지도 router
+      
         if (this.$route.query.hash_name != null) {
           this.locations = this.$route.query.hash_name
           if(this.locations[0].hash_name == undefined){
@@ -48,22 +62,48 @@ export default {
             })
           }
         } 
-        
+        var clickheart = await selectheart({user})
       // 해시태그 선택
+      console.log(clickheart)
       await EventBus.$on('changePage', (ret2) =>{
+        
+       console.log(clickheart) // user_id, titlw존재
+        for (let i = 0; i < ret2.length; i++) {
+          for (let j = 0; j < clickheart.length; j++) {
+            if (ret2.data[i].title == clickheart[j].title) {
+              ret2.data[i].liked = true
+              console.log(ret2.data[i])
+              ret2.data[i].like_color = 'red'
+            }
+          }
+        }
           this.ret2 = ret2;
           this.locations = this.ret2;
       })
       // 중복 해시태그
+      var clickheart2 = selectheart({user})
+
       await EventBus.$on('changePage3', (ret3) =>{
-        console.log(ret3)
+        var user = this.$store.state.account.user
+        for (let i = 0; i < ret3.length; i++) {
+          for (let j = 0; j < clickheart.length; j++) {
+            if (ret3[i].title == clickheart[j].title) {
+              console.log(ret3)
+              ret3[i].liked = true
+              ret3[i].like_color = 'red'
+            }
+          }
+        }
           this.locations = ret3;
       })
+     
      
     },
          
     data() {
         return{
+          
+          test: [],
           locations: [
             // {
             //   loca_no:"",
@@ -90,28 +130,92 @@ export default {
     mounted(){
       this.infiniteHandler()
       this.$route.query.hash_name
+      
     },
     
     methods:{
+      async like(event){
+        // console.log(this.$store.state.account.user)
+        // console.log(event) // location정보 가져옴
+        // console.log(event.loca_no)
+        // console.log(event.liked)
+
+        if (this.$store.state.account.user != null) {
+          var user = this.$store.state.account.user
+          var title = event.title
+          for (let x =0; x < this.locations.length; x++) {
+            if (this.locations[x].loca_no == event.loca_no) { // 클릭된 loca_no이랑 같은것이 전체중에 있다면
+              var clickliked = event.liked // event.liked의 상태를 넣어줌
+            // console.log(clickliked)
+        if(clickliked == false){ // clickliked가 false인 경우
+          // db테이블에 liked와 like_color, liektotal 컬럼 추가
+          for (let z = 0; z < this.locations.length; z++) {
+            if (this.locations[z].loca_no == event.loca_no) {
+              this.locations[z].like_color = 'rgb(255, 54, 54)'
+              this.locations[z].liked = true
+              // console.log(this.locations[z].like_color)
+              console.log(123214123)
+              await updateheart({user, title}) // 해당 loca_no를 updateheart
+            }
+          }
+        }else{ // clickliked가 true인 상태일경우
+          for (let t = 0; t < this.locations.length; t++) {
+            if (this.locations[t].loca_no == event.loca_no) {
+              console.log('asdawee')
+              this.locations[t].like_color = ''
+              this.locations[t].liked = false
+              // console.log(this.locations[t].like_color)
+              await deleteheart({user, title}) // db에서 삭제
+            }
+          }
+          // this.like_color = '',
+          // this.liked = false
+          // await deleteheart(user, title) // db에서 삭제
+          }
+          }
+          }
+        }
+        else {
+          alert('로그인 이후 좋아요 클릭이 가능합니다.')
+        }
+        // console.log(this.locationsitems)
+        // console.log(this.locations)
+      },
+      
      async infiniteHandler($state){
+       
         await axios.get(api ,{
           params:{
             limit:this.limit
           }
         }).then((res) => {
           setTimeout(() =>{
+            
             const temp = []
+            
+            
             // if ( this.$route.query.hash_name != null){
               
             //   $state.complete();
             // }  
              if (this.busy === false ){
                
+               
               for (let i = this.locations.length  ; i <= this.locations.length + 3; i++){
                 this.locationsitems = res.data
                 if (this.locationsitems.length  === i || this.$route.query.hash_name != null|| this.ret2 != null ){
                   this.busy = true
                   break; 
+                }
+                // 인피니트로딩 될때 좋아요 표시 --> 유저가 누른
+                
+                for (let k=0; k < this.test.length; k++) {
+                  if (this.locationsitems[i].title == this.test[k].title) {
+                    // console.log(this.test[k])
+                    if (this.test[k].user_id == this.$store.state.account.user) {
+                      this.locationsitems[i].liked = true
+                    }
+                  }
                 }
                 temp.push(this.locationsitems[i]) 
               } 
@@ -164,21 +268,79 @@ export default {
 </script>
 
 <style >
+.heart{
+  transition:all .1s ease;
+  stroke:#ff3636;
+  fill:none;
+  margin-right:10px;
+}
+button:active .heart{
+  transform:scale(0.9)
+}
+.like a,
+button {
+  color: rgba(0,0,0,0.7);
+}
+button {
+  background: none;
+  font: inherit;
+  padding: 0.3em 1em;
+  display:flex;
+  align-items:center;
+  transition:0.1s ease;
+  border: 0;
+}
 
 .gallery {
     flex-wrap: wrap;
     padding: 3rem 0;
     display: grid;
     grid-template-columns:  1fr 1fr 1fr;
-    margin-top: 100px;
+    margin-top: 30px;
+    padding-left: 120px;
 }
-
 .contents{
     margin: 5px;
     border: 1px solid rgb(196, 196, 196);
     cursor: pointer;
+    border-radius: 4px;
 }
-
+.contents:hover{
+    /* border-radius: 4px; */
+    box-shadow: inset 0 0 0 1px rgb(0 0 0 / 15%);
+    content: "";
+    top: -4px;
+    position: relative;
+}
+.test-loc-name{
+    color: #848c94;
+    font-size: 15px;
+    max-width: 100%;
+    overflow: hidden;
+    margin: 0;
+    text-align: left;
+    padding: 10px 0 0 10px;
+}
+.test-loc-title{
+    color: #000000;
+    font-size: 25px;
+    max-width: 100%;
+    overflow: hidden;
+    margin: 0;
+    text-align: left;
+    padding: 10px 0 10px 10px;
+  
+}
+.test-test{
+    color: #858585;
+    font-size: 12px;
+    max-width: 100%;
+    overflow: hidden;
+    margin: 0;
+    text-align: left;
+    padding: 0 0 10px 10px;
+  
+}
 /* h3 {
     display: inline-block;
 } */

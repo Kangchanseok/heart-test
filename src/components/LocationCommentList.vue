@@ -24,6 +24,7 @@ export default {
   async created(){
     const ret = await findLocationComment({loca_no: this.locaNo})
     this.comments = ret.data
+    console.log(this.comments)
   },
   data() {
     return {

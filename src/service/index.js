@@ -193,3 +193,36 @@ export const addContent = ({ user_no, title, context }) => {
       params: { title }
     });
   };
+
+  // get-user-name
+  export const getusername = ({ token }) => {
+    return axios.get("http://127.0.0.1:3000/find/username", {
+      params: { token }
+    });
+  };
+
+  // updateheart
+  export const updateheart = ({user, title }) => {
+    return axios.post("http://127.0.0.1:3000/updateheart", {
+      user, title
+    });
+  };
+
+  // deleteheart
+  export const deleteheart = ({user, title }) => {
+    return axios.post("http://127.0.0.1:3000/deleteheart", {
+      user, title
+    });
+  };
+
+  // selectheart
+  export const selectheart = ({ user }) => {
+    return axios.get("http://127.0.0.1:3000/selectheart", {
+      params: { user }
+    });
+  };
+
+  // getallheart
+  export const getallheart = () => {
+    return axios.get("http://127.0.0.1:3000/find/getallheart");
+  };

@@ -5,22 +5,22 @@
 
 
     <fieldset>
-      <legend>회원정보 수정 폼</legend>
+      <legend>회원탈퇴</legend>
       <div>
-        <label class="label" for="name">닉네임</label>
-        <input type="text"  name="name" id="name" required="" v-model="name" >
+        <label class="label" for="name">이름</label>
+        <input type="text"  name="name" id="name" required="" v-model="name" readonly >
       </div>
-      <div>
+      <!-- <div>
         <label class="label" for="idname">아이디</label>
         <input type="text" class="lock" name="idname" id="idname" required="" v-model="idname" readonly>
-      </div>
-      <div>
+      </div> -->
+      <!-- <div>
         <label class="label" for="password">비밀번호</label>
         <input type="password" name="password" id="password" required="" v-model="password">
-      </div>
+      </div> -->
       <div>
-        <label class="label" for="phone">핸드폰번호</label>
-        <input type="text" name="phone" id="phone" required="" v-model="phone">
+        <label class="label" for="phone">가입일</label>
+        <input type="text" name="phone" id="phone" required="" v-model="phone" readonly>
       </div>
       <div>
         <label class="label" for="email">Email</label>
@@ -78,7 +78,7 @@
         <span class="counter">{{ message.text.length }} / {{ message.maxlength }}</span>
       </div> -->
       <div>
-        <input type="submit" value="수정하기">
+        <input type="submit" value="회원탈퇴">
       </div>
     </fieldset>
   </form>

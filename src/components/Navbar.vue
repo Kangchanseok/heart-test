@@ -6,13 +6,17 @@
        <router-link to="/">
           <img class="pic" src="../assets/Noolim-logo.png" >
        </router-link>
+      
       </div>
+      
       <ul v-show="!mobile" class="navigation">
+        <div v-if="this.$store.state.account.token != null" class="blank"> 안녕하세요 개구리중사케로로 님</div>
         <li><router-link class="link" to="/">Home</router-link></li>
         <li><router-link class="link" to="/detail3">상세 검색</router-link></li>
         <li><router-link class="link" to="/board/free">고객센터</router-link></li>
-        <li><router-link class="link" to="/login">로그인</router-link></li>
-        <li><router-link class="link" to= "/mypage">마이페이지</router-link></li>
+        <li v-if="this.$store.state.account.token == null"><router-link class="link" to="/login">로그인</router-link></li>
+        <li v-if="this.$store.state.account.token != null"><router-link class="link" to= "/mypage">마이페이지</router-link></li>
+        <li v-if="this.$store.state.account.token != null"><router-link class="link" to="/logout">로그아웃</router-link></li>
       </ul>
       <div class="icon">
         <i @click="toggleMobileNav" v-show="mobile" class="far fa-bars" :class="{'icon-active' : mobileNav }"></i>
@@ -45,9 +49,11 @@
         mobile: null,
         mobileNav: null,
         windowWidth: null,
+        
       };
     },
     created(){
+      console.log(this.$store.state.account.token)
       window.addEventListener('resize', this.checkScreen);
       this.checkScreen();
     },
@@ -55,6 +61,8 @@
       window.addEventListener("scroll", this.updateScroll);
     },
     methods: {
+
+
       toggleMobileNav(){
         this.mobileNav = !this.mobileNav;
       },
@@ -89,6 +97,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
 *{
   font-family: 'Nanum Gothic', sans-serif;
+}
+.blank{
+  margin-left: 800px;
+  font-size: 15px;
+  /* background-color: black; */
 }
 nav {
   padding: 10px 0;

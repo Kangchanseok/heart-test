@@ -36,7 +36,8 @@ export default {
   },
   methods: {
     async createComment() {
-      await addLocationComment({user_no:1,
+      await addLocationComment({
+       user_no:this.$store.state.account.user,
        loca_no:this.locaNo,
        context:this.context
         })

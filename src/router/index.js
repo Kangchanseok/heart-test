@@ -9,15 +9,27 @@ import Home from '@/components/Home'
 import Detail3 from '@/components/Detail3'
 import LocationDetail from '@/components/LocationDetail'
 import Mypage from '@/components/Mypage'
+import OauthRedirect from '@/components/oauth/Redirect'
+import IndexPage from '@/components/Index'
+import Logout from '@/components/Logout'
+import store from '../store/index'
 
 
 Vue.use(Router)
+
+const requireAuth = () => (to, from, next) =>{
+  if (store.state.account.token != null){
+    return next();
+  }
+  next('/login');
+};
 
 export default new Router({
 
   scrollBehavior(to, from, savedPosition) {
     return {x:0, y:0};
   },
+  component: IndexPage,
   routes: [
     {
       path: '/',
@@ -37,7 +49,8 @@ export default new Router({
     {
       path: '/board/free',
       name: 'Board',
-      component: Board
+      component: Board,
+      beforeEnter: requireAuth()      
     },
     {
       path: '/detail3',
@@ -47,12 +60,14 @@ export default new Router({
     {
       path: '/board/free/detail/:contentNo',
       name: 'ContentDetail',
-      component: ContentDetatil
+      component: ContentDetatil,
+      beforeEnter: requireAuth()
     },
     {
       path: '/board/free/create/:contentNo?',
       name: 'Create',
-      component: Create
+      component: Create,
+      beforeEnter: requireAuth()
     },
     {
       path: '/detail3/locationdetail', // /:locaNo
@@ -62,7 +77,18 @@ export default new Router({
     {
       path: '/mypage',
       name: 'Mypage',
-      component: Mypage
+      component: Mypage,
+      beforeEnter: requireAuth()
+    },
+    {
+      path: '/oauth/redirect',
+      name: 'OauthRedrect',
+      component: OauthRedirect
+    },
+    {
+      path:'/logout',
+      name: 'Logout',
+      component: Logout
     },
   ],
   // mode:'history'

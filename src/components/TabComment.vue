@@ -32,26 +32,26 @@ export default {
     data(){
         return{
                 links: [
-      {
+      { 
         title: "내가 쓴 댓글의 글 제목은 여기에",
-        category: "댓글",
+        category: "좋아요",
         url: "내가 쓴 내용은 여기에?"
       },
       {
         title: "강남에 엄청 맛있는 집이 있다던데 ",
-        category: "댓글",
+        category: "고객센터",
         url: "ㄴ그런곳은 없어여.... 그냥 빨리 먹는게 답"
       },
-      {
-        title: "압구정 비트카페 주소 알수있나요?",
-        category: "Q&A",
-        url: "ㄴ답변 준비중입니다."
-      },
-      {
-        title: "Cedward - id pariatur nostrud ex",
-        category: "Research",
-        url: "https://Exozent.com/veniam/ut/culpa"
-      }
+      // {
+      //   title: "압구정 비트카페 주소 알수있나요?",
+      //   category: "Q&A",
+      //   url: "ㄴ답변 준비중입니다."
+      // },
+      // {
+      //   title: "Cedward - id pariatur nostrud ex",
+      //   category: "Research",
+      //   url: "https://Exozent.com/veniam/ut/culpa"
+      // }
     ],
     categories: [],
     selectedCategory: ''

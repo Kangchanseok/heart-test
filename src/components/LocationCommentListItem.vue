@@ -4,15 +4,16 @@
     <template v-if="disappear">
     <div class="comment-list-item" >
       <div class="comment-list-item-name" >
-        <div>{{name}}</div>
+        <div>{{commentObj.username}}</div>
         <div>{{commentObj.regdate}}</div>
       </div>
       <div class="comment-list-item-context">{{commentObj.context}}</div>
       <div class="comment-list-item-button">
 
-        <b-button size="sm"  class="btn1" variant="outline-success" @click="modifyCoData">수정</b-button>
+        <b-button size="sm"  class="btn1" variant="outline-success"
+         @click="dbId == storeId ? modifyCoData() : notCorrectMsg()">수정</b-button>
         <b-button size="sm" class="btn2" variant="outline-danger"
-        @click="deleteCoData">삭제</b-button>
+         @click="dbId == storeId ? deleteCoData(): notCorrectMsg()">삭제</b-button>
         <!-- <b-button variant="info" @click="subCommentToggle">대댓글 달기</b-button> -->
       </div>
     </div>
@@ -86,17 +87,23 @@ export default {
   // },
   data() {  
     return {
-      name: data.User.filter(
-        item => item.user_no === this.commentObj.user_no
-      )[0].name,
+      // name: data.User.filter(
+      //   item => item.user_no === this.commentObj.user_no
+      // )[0].name,
+      name: '',
       subCommentList: [],
       subCommentCreateToggle: false,
       modifyCreateToggle: false,
       disappear: true,
-      context:`${this.commentObj.context}`
+      context:`${this.commentObj.context}`,
+      dbId: `${this.commentObj.user_id}`,
+      storeId: `${this.$store.state.account.user.userId}`
     };
   },
   methods: {
+    notCorrectMsg(){
+       alert('권한이 존재하지 않습니다.')
+     },
     // subCommentToggle() {
     //   this.subCommentCreateToggle = !this.subCommentCreateToggle;
     // },
